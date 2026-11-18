@@ -6,10 +6,10 @@
 | Cidadão e território | Pessoas que relatam problemas de iluminação e equipes de triagem. Osasco/SP é território **demonstrativo**, sujeito ao alinhamento da ficha com o grupo. Sem operação municipal comprovada. |
 | Problema | Receber ocorrências uma a uma exige validar campos, conferir repetições e organizar encaminhamentos manualmente. |
 | Proposta de valor | Organizar lotes fictícios, separar pendências e manter rastreabilidade até a triagem humana; benefício proposto, sem redução de tempo ou custo medida em campo. |
-| Arquitetura | CSV/JSON → Python RPA → validação + SQLite → cliente da IA → resultados JSON + auditoria → revisão humana. Workflow de GitHub Actions preparado. Consumo pelo backend/interface do Akona ainda pendente. |
+| Arquitetura | CSV/JSON → Python RPA → validação + SQLite → cliente da IA → resultados JSON + auditoria → revisão humana. Workflow de GitHub Actions executado em nuvem no modo simulado. Consumo pelo backend/interface do Akona ainda pendente. |
 | Fontes de dados | Exemplos autorais fictícios em `examples/`; contrato OpenAPI público da IA. Não usa base municipal, cidadãos reais ou sensor conectado. |
 | Modelos de IA | Serviço existente: Qwen2.5-1.5B-Instruct, RAG e LoRA r1, implantação PyTorch FP32 informada pelo projeto de IA. O RPA não instala modelo, baixa pesos ou treina. O simulador não executa IA. |
-| URLs | [MVP informado](https://ca-akona-energy-prod.salmoncoast-770d275b.eastus2.azurecontainerapps.io/), [IA pública](https://laia020-citizentech-iluminacao-ia.hf.space/demo), [API](https://laia020-citizentech-iluminacao-ia.hf.space/docs), [repositório da IA](https://github.com/laia020/citizentech-iluminacao-ia). **Repositório público do RPA e vídeo: pendentes de publicação/fornecimento.** Repositório do Akona não fornecido. |
+| URLs | [MVP informado](https://ca-akona-energy-prod.salmoncoast-770d275b.eastus2.azurecontainerapps.io/), [IA pública](https://laia020-citizentech-iluminacao-ia.hf.space/demo), [API](https://laia020-citizentech-iluminacao-ia.hf.space/docs), [repositório da IA](https://github.com/laia020/citizentech-iluminacao-ia). [Repositório público do RPA](https://github.com/laia020/citizentech-rpa). **Vídeo: pendente de gravação/publicação.** Repositório do Akona não fornecido. |
 | Indicadores | Medidos nesta POC: contagens operacionais nos arquivos de execução e resultados dos testes. Propostos para estudo futuro: tempo de triagem, completude e encaminhamentos revisados. Não há medição de impacto de campo. |
 | ODS | ODS 11: organização de relatos sobre infraestrutura urbana; ODS 7: apoio proposto à gestão da iluminação. Não demonstra economia de energia ou cumprimento de metas. |
 
@@ -30,7 +30,8 @@
 - Lote real: a API pública retornou **HTTP 503** para as duas ocorrências válidas. 4 entradas, 0 processadas, 0 duplicadas, 2 pendências e 2 falhas. Quatro tentativas HTTP no total, contadas separadamente dos itens. [Auditoria real](docs/evidencias/real-indisponibilidade/auditoria.jsonl).
 - Uma retomada controlada, cerca de dez minutos depois, usou uma tentativa por ID e também recebeu 503: [segunda auditoria real](docs/evidencias/real-retomada/auditoria.jsonl). Foram seis chamadas reais no total das duas execuções, sem testes de carga nem repetição de 502.
 - **Integração funcional RPA–IA ainda parcial:** comunicação HTTP e tratamento de indisponibilidade comprovados; análise bem-sucedida pelo componente remoto não comprovada nesta execução. O backend e a interface do Akona não consumiram a saída.
-- GitHub público, execução hospedada, vídeo e envio ao Teams permanecem pendentes. Não houve commit, push, deploy ou alteração do projeto de IA.
+- [Código publicado no GitHub](https://github.com/laia020/citizentech-rpa), com [CI aprovada em Ubuntu](https://github.com/laia020/citizentech-rpa/actions/runs/44296025620). O [primeiro lote hospedado](https://github.com/laia020/citizentech-rpa/actions/runs/44296057126) concluiu em modo **simulado**: 4 entradas, 1 processada, 1 duplicada e 2 pendências, sem depender do Mac. Não comprova consumo pela IA. Vídeo e envio ao Teams permanecem pendentes; o projeto de IA não foi alterado.
+- [Segunda execução hospedada](https://github.com/laia020/citizentech-rpa/actions/runs/44296159102) restaurou o estado do primeiro run: 0 novos processamentos, 2 duplicatas e 2 pendências. Restauração e idempotência foram verificadas fora do Mac, sem rede de IA. [Registro da publicação](docs/evidencias/publicacao.json).
 
 ## Executar localmente
 
@@ -94,19 +95,19 @@ HTTP 429/503: até 2 tentativas por padrão (máximo configurável 3), espera pr
 
 ## Execução em nuvem
 
-[Workflow manual](.github/workflows/rpa.yml) preparado para `ubuntu-latest`, sem runner no Mac. **Ainda não executado no GitHub.** A publicação do repositório e o primeiro run precisam de autorização e evidência antes de afirmar independência operacional do Mac.
+[Workflow manual](.github/workflows/rpa.yml) validado em `ubuntu-latest`, executor hospedado do GitHub, sem runner no Mac. [Execução concluída em modo simulado](https://github.com/laia020/citizentech-rpa/actions/runs/44296057126); resultados públicos preservados em [evidências de nuvem](docs/evidencias/nuvem-simulado/resumo.json). O teste hospedado não consultou a IA.
 
-Após publicar e habilitar Actions:
+Para reproduzir no repositório publicado:
 
-1. Abra **Actions → Lote CitizenTech RPA → Run workflow**. Comece em `simulado`.
-2. Primeira execução: deixe `estado_run_id` vazio e confirme `iniciar_estado`.
-3. Nas próximas execuções, informe o ID do run **mais recente** que contém `rpa-state`, inclusive se houve falha na API. Desmarque `iniciar_estado`. Não reutilize um ancestral mais antigo.
+1. Abra [Actions → Lote CitizenTech RPA](https://github.com/laia020/citizentech-rpa/actions/workflows/rpa.yml) e clique em **Run workflow**. Comece em `simulado`.
+2. O estado deste repositório já foi inicializado. Para continuar, restaure o run **mais recente** com `rpa-state`. Somente em outra cópia nova, sem histórico a preservar: deixe `estado_run_id` vazio e confirme `iniciar_estado`.
+3. Nas próximas execuções, informe o ID do run **mais recente** que contém `rpa-state`, inclusive se houve falha na API. Último run de lote desta validação: **44296159102**. Desmarque `iniciar_estado`. Não reutilize um ancestral mais antigo; confira se houve execuções posteriores.
 4. Para testar a comunicação pública, selecione `real` e `lote-real.json`. Retomada de 429/503 é explícita.
 5. Baixe `rpa-resultados` e `rpa-state`. Confira o resumo mesmo quando o job falhar.
 
 Restauração inexistente, inválida ou expirada aborta sem criar uma base substituta. Artifacts têm retenção configurada de **14 dias**, sujeitos às políticas do GitHub; não são banco permanente nem garantia de persistência. Se o job for cancelado ou falhar antes do upload do estado mais recente, **não restaure um estado anterior e continue cegamente**: preserve logs e reconcilie os itens enviados. A restauração é operacional, não automática; a seleção correta do run é responsabilidade do operador. O SQLite local de desenvolvimento não é enviado automaticamente ao GitHub. Começar lá com estado novo não deduplica as consultas feitas aqui.
 
-A CI roda apenas testes simulados. Os workflows usam permissões de leitura e actions fixadas por SHA. Não criam recursos pagos, fazem commits, publicam páginas ou acionam reparos. Artefatos do Actions exigem login e acesso de leitura; a amostra versionada em `docs/evidencias/` será a evidência pública após a publicação. Confira as cotas da conta antes de executar e não habilite cobrança adicional sem aprovação.
+A CI roda apenas testes simulados. Os workflows usam permissões de leitura e actions fixadas por SHA. Não criam recursos pagos, fazem commits, publicam páginas ou acionam reparos. Artefatos do Actions exigem login e acesso de leitura; as amostras versionadas em `docs/evidencias/` são evidências públicas, acessíveis sem baixar artifacts. Confira as cotas da conta antes de executar e não habilite cobrança adicional sem aprovação.
 
 ## Documentação e entrega
 

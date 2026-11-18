@@ -1,5 +1,5 @@
 {
-  "data_hora": "2026-11-18T11:32:52.981544+00:00",
+  "data_hora": "2026-11-18T11:38:11.439805+00:00",
   "teste_ia": false,
   "testes_aprovados": 26,
   "contrato_sha256_conferido": true,
@@ -23,6 +23,28 @@
         "processados": 1,
         "duplicados": 1,
         "pendencias": 1,
+        "falhas": 0
+      }
+    },
+    {
+      "cenario": "nuvem-repeticao",
+      "execucao_id": "120bdef0a90b4fe9b4d6bf4750ec06a3",
+      "contagens": {
+        "entradas": 4,
+        "processados": 0,
+        "duplicados": 2,
+        "pendencias": 2,
+        "falhas": 0
+      }
+    },
+    {
+      "cenario": "nuvem-simulado",
+      "execucao_id": "b181a214ff2a41e58647c764150b2acc",
+      "contagens": {
+        "entradas": 4,
+        "processados": 1,
+        "duplicados": 1,
+        "pendencias": 2,
         "falhas": 0
       }
     },
@@ -87,11 +109,13 @@
       "https://docs.astral.sh/uv/guides/integration/github/",
       "https://docs.github.com/en/actions/how-tos/manage-workflow-runs/download-workflow-artifacts",
       "https://github.com/laia020/citizentech-iluminacao-ia",
+      "https://github.com/laia020/citizentech-rpa",
+      "https://github.com/laia020/citizentech-rpa/actions/runs/44296057126",
       "https://laia020-citizentech-iluminacao-ia.hf.space/demo",
       "https://laia020-citizentech-iluminacao-ia.hf.space/docs",
       "https://laia020-citizentech-iluminacao-ia.hf.space/openapi.json"
     ],
-    "sha256": "4157f76642640a1553898be7ee040acaab5b8c230ba109bc7d177500a4f68976"
+    "sha256": "98c8cf41e80c5db74f43e5d6d2ff0eca9d84e0564d7f049eb5fc16b4af876af4"
   },
   "links_http": [
     {
@@ -111,6 +135,14 @@
       "status": 200
     },
     {
+      "url": "https://github.com/laia020/citizentech-rpa",
+      "status": 200
+    },
+    {
+      "url": "https://github.com/laia020/citizentech-rpa/actions/runs/44296057126",
+      "status": 200
+    },
+    {
       "url": "https://laia020-citizentech-iluminacao-ia.hf.space/demo",
       "status": 200
     },
@@ -124,7 +156,7 @@
     }
   ],
   "sha256_evidencias": {
-    "docs/evidencias/README.md": "59453c018af8b62cae42c30be18ea2ed2dee06f84c9a5bb3d2f1821857dd1cd5",
+    "docs/evidencias/README.md": "27366a010a090c44b55261c47fc22a15317957bf08b49c252457381e8c8ffcd2",
     "docs/evidencias/arquivo-ausente/auditoria.jsonl": "f85ddda4b9625889088b7a3e5e939e3f338de8c4dd8e07b371250644bf5c1e51",
     "docs/evidencias/arquivo-ausente/pendencias.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
     "docs/evidencias/arquivo-ausente/resultados.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
@@ -135,6 +167,17 @@
     "docs/evidencias/csv-simulado/pendencias.json": "9627bf85d8da8e505aa13cae7067026f6145709062a6a7bca0bf2ca7a746d479",
     "docs/evidencias/csv-simulado/resultados.json": "0e6fceb1e6d1e6b5489fbefa8b66a487f6ce060b39bcf7ef2fd992feedc034a9",
     "docs/evidencias/csv-simulado/resumo.json": "d45a1e6aa261440b5538f3d249ceab403e5ad6c56cb13fa9a97bb2c8dcfce1aa",
+    "docs/evidencias/nuvem-repeticao/auditoria.jsonl": "21a0fe0a628e9666a0a1403b1e4cd80c986e4159bcc21e2800947568723835ef",
+    "docs/evidencias/nuvem-repeticao/github-run.json": "02b6841a9128fbb0241d95e0c26f6c505e2cc8fa0abf012821a507fba55db986",
+    "docs/evidencias/nuvem-repeticao/pendencias.json": "9d6460cc87617917f7af61f046310a5654f2cf1ddbc033d88f69b4f66c49ab7c",
+    "docs/evidencias/nuvem-repeticao/resultados.json": "d6a1d1f1e21c52cde49b34c58f3bb3a5cef8c8f69fcc9c80f9f49949ae680143",
+    "docs/evidencias/nuvem-repeticao/resumo.json": "a5cb963870d391334b3459a35009e8a827ba538c42ff288119b01a8d8d1c26b2",
+    "docs/evidencias/nuvem-simulado/auditoria.jsonl": "4bb790c5f9aee3bf9dd4f4acf92201a2b069696cf4e1b3f1d5bfeee9fb6a013f",
+    "docs/evidencias/nuvem-simulado/github-run.json": "51241ef5073487a7428758e96c93b8742c08297024c8453e7423ba45731b015f",
+    "docs/evidencias/nuvem-simulado/pendencias.json": "e8f9d8760e623121618abd2d7693ad638168eeeb617464e06ef55a8bd52adbf7",
+    "docs/evidencias/nuvem-simulado/resultados.json": "fabec3644c74e22d3af8591958fa8decbd56b217c2e85de2d94d5d2adffc249d",
+    "docs/evidencias/nuvem-simulado/resumo.json": "1ae172465508b5384d5cbae2d1645258b3f54b65215878e902f16b3ca9afc6a8",
+    "docs/evidencias/publicacao.json": "537367b9dd2e44921f6efd2007b4e69d3b1d96c8a06a3ac478808a312be1e429",
     "docs/evidencias/real-indisponibilidade/auditoria.jsonl": "1f07a5e2677c85dd9960327608875f5495987ad45cb97c6fc444cc06221d517a",
     "docs/evidencias/real-indisponibilidade/pendencias.json": "89e91790ddcb870e4ba939239a697d470e4d97e42ad4a9390ee7c5b794b57add",
     "docs/evidencias/real-indisponibilidade/resultados.json": "89e91790ddcb870e4ba939239a697d470e4d97e42ad4a9390ee7c5b794b57add",

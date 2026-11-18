@@ -1,0 +1,46 @@
+{
+  "verificado_em": "2026-11-18T11:37:52.843550+00:00",
+  "repositorio_url": "https://github.com/laia020/citizentech-rpa",
+  "publico": true,
+  "verificacao_sem_credenciais": {
+    "url": "https://raw.githubusercontent.com/laia020/citizentech-rpa/main/README.md",
+    "status": 200,
+    "readme_primeiro_commit_sha256": "d51d4a41ac79be2de9409eaf31279af0c0b8825ce732af3418068536ffbb7115"
+  },
+  "commit_aplicacao_validado": "ffd88033ee39b38f174d52eff22c12561446843b",
+  "ci": {
+    "conclusion": "success",
+    "createdAt": "2026-11-18T11:35:09Z",
+    "databaseId": 44296025620,
+    "headSha": "ffd88033ee39b38f174d52eff22c12561446843b",
+    "status": "completed",
+    "updatedAt": "2026-11-18T11:35:23Z",
+    "url": "https://github.com/laia020/citizentech-rpa/actions/runs/44296025620",
+    "workflowName": "Testes sem rede de IA",
+    "evidencia_testes": [
+      "tests\tRun uv run --no-sync python -m unittest discover -s tests -v\t2026-11-18T11:35:20.2114346Z Ran 26 tests in 0.228s"
+    ]
+  },
+  "lote_hospedado": {
+    "conclusion": "success",
+    "createdAt": "2026-11-18T11:35:20Z",
+    "databaseId": 44296057126,
+    "headSha": "ffd88033ee39b38f174d52eff22c12561446843b",
+    "status": "completed",
+    "updatedAt": "2026-11-18T11:35:33Z",
+    "url": "https://github.com/laia020/citizentech-rpa/actions/runs/44296057126",
+    "workflowName": "Lote CitizenTech RPA"
+  },
+  "lote_restaurando_estado": {
+    "conclusion": "success",
+    "createdAt": "2026-11-18T11:36:00Z",
+    "databaseId": 44296159102,
+    "headSha": "ffd88033ee39b38f174d52eff22c12561446843b",
+    "status": "completed",
+    "updatedAt": "2026-11-18T11:36:18Z",
+    "url": "https://github.com/laia020/citizentech-rpa/actions/runs/44296159102",
+    "workflowName": "Lote CitizenTech RPA"
+  },
+  "modo_lotes": "simulado",
+  "integracao_ia_com_sucesso": false
+}

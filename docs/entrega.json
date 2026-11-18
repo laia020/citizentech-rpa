@@ -1,16 +1,33 @@
 {
   "data_revisao": "2026-11-18",
   "produto": "Akona Energy",
-  "repositorio_rpa_url": null,
+  "repositorio_rpa_url": "https://github.com/laia020/citizentech-rpa",
   "video_url": null,
-  "workflow_publico_url": null,
+  "workflow_publico_url": "https://github.com/laia020/citizentech-rpa/actions/runs/44296057126",
   "integracao_bem_sucedida": false,
   "ficha_alinhada_com_grupo": false,
   "equipe": [
-    {"nome": "Lucas Laia Manentti", "rm": "97709"},
-    {"nome": "Guilherme Faustino Vargas", "rm": "98278"},
-    {"nome": "Ryan Perez Pacheco", "rm": "98782"},
-    {"nome": "João Lucas Yudi Redi Handa", "rm": "98458"},
-    {"nome": "Guilherme Dal Posolo Matheus", "rm": "98694"}
-  ]
+    {
+      "nome": "Lucas Laia Manentti",
+      "rm": "97709"
+    },
+    {
+      "nome": "Guilherme Faustino Vargas",
+      "rm": "98278"
+    },
+    {
+      "nome": "Ryan Perez Pacheco",
+      "rm": "98782"
+    },
+    {
+      "nome": "João Lucas Yudi Redi Handa",
+      "rm": "98458"
+    },
+    {
+      "nome": "Guilherme Dal Posolo Matheus",
+      "rm": "98694"
+    }
+  ],
+  "ci_url": "https://github.com/laia020/citizentech-rpa/actions/runs/44296025620",
+  "workflow_repeticao_url": "https://github.com/laia020/citizentech-rpa/actions/runs/44296159102"
 }

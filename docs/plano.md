@@ -17,3 +17,7 @@ Escolhas desta POC: CSV/JSON, lote fictício de iluminação, Python 3.12, uv, j
 ## Fronteiras
 
 Não alterar o projeto de IA, seus pesos, corpus, prompts, treinamento, ambiente ou implantação. Não instalar bibliotecas de IA. Não enviar chamados ao Akona publicado. Não contatar terceiros. Não confundir comunicação HTTP com análise remota bem-sucedida ou importação no MVP. Repositório do Akona e alinhamento da ficha técnica dependem do grupo.
+
+## Publicação autorizada em 18/11/2026
+
+Após a revisão da POC, o usuário autorizou subir o projeto ao Git. Código publicado em https://github.com/laia020/citizentech-rpa, preservando a etapa local acima como histórico. A CI foi aprovada e o primeiro workflow de lote foi executado com sucesso em runner hospedado, modo simulado. Não foi feita nova chamada real à IA nem alteração no Akona publicado.

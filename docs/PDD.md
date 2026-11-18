@@ -47,4 +47,4 @@ Fonte editável: [processo.bpmn](processo.bpmn). Vista macro: início/fim, taref
 
 ## Critérios de aceite e limites
 
-Testes de sucesso, decisão e falha devem passar e produzir evidência. Outra parte da CitizenTech precisa consumir efetivamente o registro normalizado. Na execução real documentada, o serviço retornou 503 e esse aceite de integração bem-sucedida permanece parcial. Não há importação pelo Akona, comprovação de reparo ou validação municipal. GitHub público, workflow hospedado e vídeo ainda dependem da conclusão das etapas de entrega.
+Testes de sucesso, decisão e falha devem passar e produzir evidência. Outra parte da CitizenTech precisa consumir efetivamente o registro normalizado. Na execução real documentada, o serviço retornou 503 e esse aceite de integração bem-sucedida permanece parcial. Não há importação pelo Akona, comprovação de reparo ou validação municipal. GitHub público e workflow simulado hospedado foram concluídos após autorização. O vídeo continua pendente; o workflow não demonstra consumo remoto pela IA.

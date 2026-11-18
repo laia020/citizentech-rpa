@@ -1,0 +1,120 @@
+[
+  {
+    "execucao_id": "b181a214ff2a41e58647c764150b2acc",
+    "linha": 1,
+    "integracao": "simulada",
+    "ocorrencia_id": "RPA-DEMO-001",
+    "item_ref": "1bcf1932e22c7375",
+    "fingerprint": "d9fe064fdcd7de03f838b65d131446c7bd4153c6d92c1f92ccd0e1ad06ae9691",
+    "entrada": {
+      "ocorrencia_id": "RPA-DEMO-001",
+      "pergunta": "O que pode ser registrado e encaminhado sem determinar a causa?",
+      "simulada": true,
+      "relato": "Uma luminária pública fictícia foi observada apagada à noite. A causa não foi inspecionada.",
+      "municipio": "Osasco/SP - território demonstrativo",
+      "sensores": [],
+      "observacoes_visuais": [],
+      "bairro": "Bairro fictício A",
+      "ponto": "Poste fictício 01",
+      "tipo": "luminaria_apagada"
+    },
+    "status_rpa": "processado",
+    "codigo": "ok",
+    "ia": {
+      "request_id": "SIMULADO-74d9dc2467aa493e9f7a54448b71e7bd",
+      "ocorrencia_id": "RPA-DEMO-001",
+      "analise": {
+        "status": "analise_preliminar",
+        "resumo": "SIMULAÇÃO: observação organizada, sem análise de modelo ou diagnóstico.",
+        "hipoteses": [],
+        "informacoes_faltantes": [],
+        "fontes": [],
+        "encaminhamento": "SIMULAÇÃO: submeter a revisão humana; nenhum chamado foi criado."
+      },
+      "referencias": [],
+      "execucao": {
+        "modo": "rag_finetuning",
+        "modelo": "SIMULADO - nenhum modelo executado",
+        "versao_base": "simulacao-rpa-1",
+        "duracao_ms": 0
+      }
+    },
+    "status_ia": "analise_preliminar",
+    "destino": "revisao_humana",
+    "request_id": "SIMULADO-74d9dc2467aa493e9f7a54448b71e7bd"
+  },
+  {
+    "execucao_id": "b181a214ff2a41e58647c764150b2acc",
+    "linha": 2,
+    "integracao": "simulada",
+    "ocorrencia_id": "RPA-DEMO-001",
+    "item_ref": "1bcf1932e22c7375",
+    "fingerprint": "d9fe064fdcd7de03f838b65d131446c7bd4153c6d92c1f92ccd0e1ad06ae9691",
+    "entrada": {
+      "ocorrencia_id": "RPA-DEMO-001",
+      "pergunta": "O que pode ser registrado e encaminhado sem determinar a causa?",
+      "simulada": true,
+      "relato": "Uma luminária pública fictícia foi observada apagada à noite. A causa não foi inspecionada.",
+      "municipio": "Osasco/SP - território demonstrativo",
+      "sensores": [],
+      "observacoes_visuais": [],
+      "bairro": "Bairro fictício A",
+      "ponto": "Poste fictício 01",
+      "tipo": "luminaria_apagada"
+    },
+    "status_rpa": "duplicado",
+    "codigo": "ja_processado",
+    "execucao_original": "b181a214ff2a41e58647c764150b2acc",
+    "ia": {
+      "request_id": "SIMULADO-74d9dc2467aa493e9f7a54448b71e7bd",
+      "ocorrencia_id": "RPA-DEMO-001",
+      "analise": {
+        "status": "analise_preliminar",
+        "resumo": "SIMULAÇÃO: observação organizada, sem análise de modelo ou diagnóstico.",
+        "hipoteses": [],
+        "informacoes_faltantes": [],
+        "fontes": [],
+        "encaminhamento": "SIMULAÇÃO: submeter a revisão humana; nenhum chamado foi criado."
+      },
+      "referencias": [],
+      "execucao": {
+        "modo": "rag_finetuning",
+        "modelo": "SIMULADO - nenhum modelo executado",
+        "versao_base": "simulacao-rpa-1",
+        "duracao_ms": 0
+      }
+    },
+    "request_id": "SIMULADO-74d9dc2467aa493e9f7a54448b71e7bd",
+    "status_ia": "analise_preliminar",
+    "destino": "revisao_humana"
+  },
+  {
+    "execucao_id": "b181a214ff2a41e58647c764150b2acc",
+    "linha": 3,
+    "integracao": "simulada",
+    "ocorrencia_id": "RPA-DEMO-001",
+    "item_ref": "1bcf1932e22c7375",
+    "fingerprint": "eeefd2fddff7c2112bb3a58c153221a0051cd7af7a6d454db27576e1fcd3f1e8",
+    "entrada": {
+      "ocorrencia_id": "RPA-DEMO-001",
+      "pergunta": "O que pode ser registrado e encaminhado sem determinar a causa?",
+      "simulada": true,
+      "relato": "Observação fictícia divergente: a luminária está acesa.",
+      "municipio": "Osasco/SP - território demonstrativo",
+      "sensores": [],
+      "observacoes_visuais": [],
+      "bairro": "Bairro fictício A",
+      "ponto": "Poste fictício 01",
+      "tipo": "luminaria_apagada"
+    },
+    "status_rpa": "pendente",
+    "codigo": "id_conflitante"
+  },
+  {
+    "execucao_id": "b181a214ff2a41e58647c764150b2acc",
+    "linha": 4,
+    "integracao": "simulada",
+    "status_rpa": "pendente",
+    "codigo": "observacao_ausente"
+  }
+]

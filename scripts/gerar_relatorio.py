@@ -153,16 +153,19 @@ def main():
     ia="https://laia020-citizentech-iluminacao-ia.hf.space"
     mvp="https://ca-akona-energy-prod.salmoncoast-770d275b.eastus2.azurecontainerapps.io/"
     repo_ia="https://github.com/laia020/citizentech-iluminacao-ia"
+    repo_rpa=info.get("repositorio_rpa_url")
+    workflow=info.get("workflow_publico_url")
+    repo_label=link("GitHub do RPA",repo_rpa) if repo_rpa else "GitHub do RPA: pendente"
     ficha=[
         ["Campo", "Ficha Técnica comum - versão do componente"],
         ["Produto", "Akona Energy - automação de ocorrências de iluminação pública."],
         ["Cidadão / território", "Pessoas que relatam problemas e equipes de triagem. Osasco/SP demonstrativo, a alinhar com o grupo. Sem operação municipal comprovada."],
         ["Problema", "Recepção individual de relatos exige validar campos, conferir duplicidades e organizar encaminhamentos manualmente."],
         ["Proposta de valor", "Organizar lotes e pendências para triagem humana rastreável. Benefício esperado ao cidadão; não há ganho de tempo ou custo medido em campo."],
-        ["Arquitetura", "CSV/JSON → Python RPA → validação + SQLite → cliente IA → JSON e auditoria → revisão humana. Workflow hospedado preparado; Akona não conectado."],
+        ["Arquitetura", "CSV/JSON → Python RPA → validação + SQLite → cliente IA → JSON e auditoria → revisão humana. Workflow hospedado validado em simulação; Akona não conectado."],
         ["Fontes de dados", "Lotes autorais fictícios e contrato OpenAPI público. Sem base municipal, sensor conectado ou dados pessoais de moradores."],
         ["Modelos de IA", "Serviço existente: Qwen2.5-1.5B-Instruct + RAG + LoRA r1, PyTorch FP32, conforme projeto da IA. RPA não baixa pesos nem treina. Simulador não executa modelo."],
-        ["MVP / repositórios", link("MVP informado",mvp)+" · "+link("IA pública",ia+"/demo")+" · "+link("Repositório da IA",repo_ia)+".<br/>GitHub do RPA: pendente. Repositório do Akona: não fornecido."],
+        ["MVP / repositórios", link("MVP informado",mvp)+" · "+link("IA pública",ia+"/demo")+" · "+link("Repositório da IA",repo_ia)+".<br/>"+repo_label+". Repositório do Akona: não fornecido."],
         ["Indicadores", "Medidos: contagens por execução e testes. Propostos: completude, tempo de triagem e revisão humana. Sem impacto municipal/energético comprovado."],
         ["ODS", "ODS 11: relatos de infraestrutura urbana; ODS 7: apoio proposto à gestão da iluminação. Alinhamento sem impacto de campo demonstrado."],
     ]
@@ -234,8 +237,8 @@ def main():
         p("Para consulta intencional à IA pública: trocar para examples/lote-real.json e acrescentar --modo real. Apenas dados fictícios. Uma falha 429/503 anterior pode ser retomada com --retomar-falhas; sucessos não são reenviados. A API pode estar indisponível. Não há fallback no Mac."),
         h("Persistência e recuperação"),
         p("Estado em state/ocorrencias.sqlite3, fora do Git, chave (modo, ID), fingerprint do conteúdo canônico completo. Simulação e real são separados. O arquivo deve ser preservado entre reinicializações. Antes do POST, grava em_envio; interrupção/timeout não autoriza replay, pois a API não fornece consulta por chave idempotente. Resultados incertos ficam para revisão humana."),
-        h("Workflow hospedado preparado, execução ainda pendente"),
-        p("GitHub Actions com workflow_dispatch e ubuntu-latest; sem runner no Mac. Depois da publicação autorizada, selecionar modo e exemplo. Na primeira execução confirmar novo estado; nas seguintes informar o run mais recente com rpa-state. Restauração ausente/inválida aborta. Os resultados são arquivados mesmo em erro de API. O ponto de entrada passou somente no teste local."),
+        h("Workflow hospedado validado em modo simulado"),
+        p("GitHub Actions com workflow_dispatch e ubuntu-latest; sem runner no Mac. "+(link("Primeiro lote hospedado concluído",workflow) if workflow else "Execução hospedada pendente")+". Em simulação: 4 entradas, 1 processada, 1 duplicada e 2 pendências, sem chamada à IA. A segunda execução restaurou o estado: 0 novos processamentos e 2 duplicatas. O estado deste repositório já foi inicializado: nas próximas execuções restaurar o run mais recente com rpa-state. Restauração ausente/inválida aborta. Novo estado precisa de confirmação explícita. Resultados são arquivados mesmo em erro de API."),
         p("Artifacts configurados por 14 dias, sujeitos à política da conta. São armazenamento temporário, não banco permanente. Cancelamento ou falha antes do upload exige reconciliação; não continuar a partir de estado antigo cegamente. A base usada no Mac não é transferida automaticamente. Baixar artefatos exige login e leitura no GitHub."),
         h("Segurança e LGPD"),
         p("Whitelist, limites de tamanho, HTTPS e sem redirecionamentos; credenciais fora do código. simulada: true é declaração, não detector de dados pessoais. Revisar os lotes antes do envio. Auditoria minimizada; arquivos 0600 e diretórios de execução 0700 no Mac/Linux, sem criptografia do SQLite. Retenção e acesso para uso real exigem definição do responsável. Não há diagnóstico elétrico, conversão ADC/lux, reparo ou mensagem automática a terceiros."),
@@ -245,16 +248,16 @@ def main():
         table([
             ["Etapa obrigatória", "Evidência", "Estado"],
             ["1. Mapeamento", "PDD, BPMN editável e vistas neste PDF.", "Concluído"],
-            ["2. Desenvolvimento", "Código e testes locais; falta versionar/publicar GitHub.", "Parcial"],
+            ["2. Desenvolvimento", "Código versionado e público; CI aprovada em Ubuntu.", "Concluído"],
             ["3. Decisão e lote", "Lote de quatro itens, regras e laço sequencial.", "Concluído"],
             ["4. Exceções", "Falhas simuladas e HTTP 503 real preservado.", "Concluído"],
             ["5. Logs e auditoria", "UTC, itens, tentativas e códigos sanitizados.", "Concluído"],
             ["6. Integração", "HTTP real; sem análise 200 e sem consumo no Akona.", "Parcial"],
             ["7. Testes", f"{tests['testes']} aprovados: sucesso, decisão e falha.", "Concluído"],
-            ["8. Documentação/publicação", "README, PDD, PDF e roteiro; falta GitHub público.", "Parcial"],
+            ["8. Documentação/publicação", "README, PDD e código públicos; falta vídeo/link final.", "Parcial"],
         ],[147,w-224,77]),
         h("Pendências necessárias antes do envio final"),
-        p("Autorizar publicação do GitHub de RPA, commit/push e primeiro workflow; comprovar consumo real bem-sucedido pela IA ou por outro componente autorizado; alinhar a Ficha Técnica com o grupo; gravar e publicar vídeo específico de até 3 minutos. Repositório/contrato do Akona são necessários apenas para integração adicional com seu backend/interface."),
+        p("Publicação do GitHub de RPA autorizada e realizada; CI e workflow simulado hospedado concluídos. Falta comprovar consumo real bem-sucedido pela IA ou por outro componente autorizado, alinhar a Ficha Técnica com o grupo e gravar/publicar vídeo específico de até 3 minutos. Repositório/contrato do Akona são necessários apenas para integração adicional com seu backend/interface."),
         p("Roteiro pronto em docs/roteiro-video.md: problema e papel (20 s), BPMN (25 s), execução e decisão (40 s), integração real (40 s), falhas e auditoria (30 s), links e limites (20 s). Gravar a execução verdadeira; roteiro e imagens não equivalem ao vídeo entregue."),
         table([
             ["Link de entrega", "Estado"],

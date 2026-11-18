@@ -1,0 +1,18 @@
+{
+  "versao": "1.0",
+  "execucao_id": "120bdef0a90b4fe9b4d6bf4750ec06a3",
+  "inicio": "2026-11-18T11:36:12.251+00:00",
+  "modo": "simulado",
+  "diretorio": "runs/120bdef0a90b4fe9b4d6bf4750ec06a3",
+  "contagens": {
+    "entradas": 4,
+    "processados": 0,
+    "duplicados": 2,
+    "pendencias": 2,
+    "falhas": 0
+  },
+  "exit_code": 0,
+  "entrada_sha256": "7fad8abfd636b9666b379d5824ae91c97e4c5d8d29dafdd2e0997de065e0a9d7",
+  "fim": "2026-11-18T11:36:12.259+00:00",
+  "situacao": "concluida_com_pendencias"
+}

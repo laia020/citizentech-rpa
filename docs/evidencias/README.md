@@ -14,4 +14,8 @@
 
 Os arquivos em `logs/` são cópias sanitizadas das auditorias dessas execuções. São exemplos pequenos com dados fictícios. Resultados históricos são preservados; não substituir uma execução que falhou por um sucesso simulado. O resumo contém SHA-256 do lote para vincular aos arquivos de `examples/`.
 
-Links do PDF: MVP, repositório da IA, demonstração, API/OpenAPI e GitHub Docs retornaram HTTP 200 na verificação. A documentação oficial do uv retornou HTTP 403 ao HEAD deste ambiente; seu conteúdo foi consultado pela ferramenta web. Essa restrição de acesso é registrada, sem afirmar que todos os links responderam 200. As URLs de GitHub do RPA e vídeo permanecem pendentes e não foram inventadas.
+Na verificação inicial, os links do MVP, repositório da IA, demonstração, API/OpenAPI e GitHub Docs retornaram HTTP 200. Na revalidação durante a publicação, o HEAD do MVP apresentou falha de rede; o resultado atual é preservado em `validacao-artefatos.json`, sem inferir a causa ou alterar o serviço. A documentação oficial do uv retornou HTTP 403 ao HEAD deste ambiente; seu conteúdo foi consultado pela ferramenta web. Essa restrição de acesso é registrada, sem afirmar que todos os links responderam 200. O GitHub do RPA foi publicado com autorização e sua URL foi inserida no relatório. A URL de vídeo permanece pendente, sem ser inventada.
+
+- `nuvem-simulado/`: primeiro lote no executor hospedado do GitHub, modo simulado, 4 entradas, 1 processada, 1 duplicada e 2 pendências. `github-run.json` vincula os arquivos ao run público e ao commit executado. Não houve inferência de IA.
+- `nuvem-repeticao/`: segundo run hospedado restaurou o artifact de estado do primeiro, com 0 novos processamentos e 2 duplicatas. Modo simulado, sem rede de IA.
+- `publicacao.json`: repositório público verificado sem credenciais, SHA executado, CI com 26 testes aprovados e links dos dois runs hospedados.
