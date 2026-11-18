@@ -1,0 +1,38 @@
+[
+  {
+    "ocorrencia_id": "RPA-DEMO-001",
+    "pergunta": "O que pode ser registrado e encaminhado sem determinar a causa?",
+    "simulada": true,
+    "relato": "Uma luminária pública fictícia foi observada apagada à noite. A causa não foi inspecionada.",
+    "municipio": "Osasco/SP - território demonstrativo",
+    "tipo": "luminaria_apagada",
+    "bairro": "Bairro fictício A",
+    "ponto": "Poste fictício 01"
+  },
+  {
+    "ocorrencia_id": "RPA-DEMO-001",
+    "pergunta": "O que pode ser registrado e encaminhado sem determinar a causa?",
+    "simulada": true,
+    "relato": "Uma luminária pública fictícia foi observada apagada à noite. A causa não foi inspecionada.",
+    "municipio": "Osasco/SP - território demonstrativo",
+    "tipo": "luminaria_apagada",
+    "bairro": "Bairro fictício A",
+    "ponto": "Poste fictício 01"
+  },
+  {
+    "ocorrencia_id": "RPA-DEMO-001",
+    "pergunta": "O que pode ser registrado e encaminhado sem determinar a causa?",
+    "simulada": true,
+    "relato": "Observação fictícia divergente: a luminária está acesa.",
+    "municipio": "Osasco/SP - território demonstrativo",
+    "tipo": "luminaria_apagada",
+    "bairro": "Bairro fictício A",
+    "ponto": "Poste fictício 01"
+  },
+  {
+    "ocorrencia_id": "RPA-DEMO-002",
+    "pergunta": "Como registrar uma observação fictícia sem diagnóstico?",
+    "simulada": true,
+    "relato": ""
+  }
+]

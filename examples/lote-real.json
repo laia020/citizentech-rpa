@@ -1,0 +1,41 @@
+[
+  {
+    "ocorrencia_id": "RPA-LIVE-20261118-001",
+    "pergunta": "O que pode ser registrado e encaminhado sem determinar a causa?",
+    "simulada": true,
+    "relato": "Uma luminária pública foi observada apagada à noite. A causa não foi inspecionada.",
+    "sensores": [],
+    "observacoes_visuais": [],
+    "tipo": "luminaria_apagada",
+    "bairro": "Bairro fictício de demonstração",
+    "ponto": "Poste fictício A"
+  },
+  {
+    "ocorrencia_id": "RPA-LIVE-20261118-001",
+    "pergunta": "O que pode ser registrado e encaminhado sem determinar a causa?",
+    "simulada": true,
+    "relato": "Uma luminária pública foi observada apagada à noite. A causa não foi inspecionada.",
+    "sensores": [],
+    "observacoes_visuais": [],
+    "tipo": "luminaria_apagada",
+    "bairro": "Bairro fictício de demonstração",
+    "ponto": "Poste fictício A"
+  },
+  {
+    "ocorrencia_id": "RPA-LIVE-20261118-002",
+    "pergunta": "É possível converter a leitura ADC em lux sem uma referência de calibração?",
+    "simulada": true,
+    "relato": "Leitura fictícia de luminosidade sem referência de calibração fornecida.",
+    "sensores": [{"tipo": "luminosidade", "valor": 83, "unidade": "ADC", "calibrado": false}],
+    "observacoes_visuais": [],
+    "tipo": "verificacao_luminosidade",
+    "bairro": "Bairro fictício de demonstração",
+    "ponto": "Poste fictício B"
+  },
+  {
+    "ocorrencia_id": "RPA-LIVE-20261118-003",
+    "pergunta": "Como registrar?",
+    "simulada": true,
+    "relato": ""
+  }
+]

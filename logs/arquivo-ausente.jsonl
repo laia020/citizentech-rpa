@@ -1,0 +1,3 @@
+{"data_hora": "2026-11-18T11:25:46.772+00:00", "execucao_id": "23bf5494e46d4bb89de351767d6ff7cc", "etapa": "lote", "resultado": "iniciado", "modo": "simulado"}
+{"data_hora": "2026-11-18T11:25:46.772+00:00", "execucao_id": "23bf5494e46d4bb89de351767d6ff7cc", "etapa": "arquivo", "resultado": "falha", "codigo": "arquivo_ausente"}
+{"data_hora": "2026-11-18T11:25:46.772+00:00", "execucao_id": "23bf5494e46d4bb89de351767d6ff7cc", "etapa": "lote", "resultado": "falha", "contagens": {"entradas": 0, "processados": 0, "duplicados": 0, "pendencias": 0, "falhas": 0}, "exit_code": 2}

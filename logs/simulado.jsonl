@@ -1,0 +1,9 @@
+{"data_hora": "2026-11-18T11:14:55.078+00:00", "execucao_id": "93985db3a01c4a03883ad6a343cc84a0", "etapa": "lote", "resultado": "iniciado", "modo": "simulado"}
+{"data_hora": "2026-11-18T11:14:55.080+00:00", "execucao_id": "93985db3a01c4a03883ad6a343cc84a0", "etapa": "validacao", "resultado": "aprovado", "linha": 1, "item_ref": "1bcf1932e22c7375"}
+{"data_hora": "2026-11-18T11:14:55.080+00:00", "execucao_id": "93985db3a01c4a03883ad6a343cc84a0", "etapa": "simulador", "resultado": "resposta_simulada", "linha": 1, "item_ref": "1bcf1932e22c7375", "tentativa": 1}
+{"data_hora": "2026-11-18T11:14:55.081+00:00", "execucao_id": "93985db3a01c4a03883ad6a343cc84a0", "etapa": "integracao", "resultado": "processado", "linha": 1, "item_ref": "1bcf1932e22c7375", "request_id": "SIMULADO-027bfecbc7cd4102b1c3676219817646", "status_ia": "analise_preliminar"}
+{"data_hora": "2026-11-18T11:14:55.081+00:00", "execucao_id": "93985db3a01c4a03883ad6a343cc84a0", "etapa": "item", "resultado": "processado", "linha": 1, "codigo": "ok", "item_ref": "1bcf1932e22c7375"}
+{"data_hora": "2026-11-18T11:14:55.081+00:00", "execucao_id": "93985db3a01c4a03883ad6a343cc84a0", "etapa": "item", "resultado": "duplicado", "linha": 2, "codigo": "ja_processado", "item_ref": "1bcf1932e22c7375"}
+{"data_hora": "2026-11-18T11:14:55.081+00:00", "execucao_id": "93985db3a01c4a03883ad6a343cc84a0", "etapa": "item", "resultado": "pendente", "linha": 3, "codigo": "id_conflitante", "item_ref": "1bcf1932e22c7375"}
+{"data_hora": "2026-11-18T11:14:55.081+00:00", "execucao_id": "93985db3a01c4a03883ad6a343cc84a0", "etapa": "item", "resultado": "pendente", "linha": 4, "codigo": "observacao_ausente", "item_ref": null}
+{"data_hora": "2026-11-18T11:14:55.081+00:00", "execucao_id": "93985db3a01c4a03883ad6a343cc84a0", "etapa": "lote", "resultado": "concluida_com_pendencias", "contagens": {"entradas": 4, "processados": 1, "duplicados": 1, "pendencias": 2, "falhas": 0}, "exit_code": 0}

@@ -1,0 +1,4 @@
+ocorrencia_id,simulada,pergunta,relato,tipo,bairro,ponto
+RPA-CSV-001,true,O que registrar sem determinar causa?,Luminária fictícia apagada à noite sem inspeção de causa.,luminaria_apagada,Bairro fictício B,Poste fictício 02
+RPA-CSV-001,true,O que registrar sem determinar causa?,Luminária fictícia apagada à noite sem inspeção de causa.,luminaria_apagada,Bairro fictício B,Poste fictício 02
+RPA-CSV-002,true,Como registrar?,,luminaria_apagada,Bairro fictício B,Poste fictício 03

@@ -1,0 +1,160 @@
+{
+  "data_hora": "2026-11-18T11:32:52.981544+00:00",
+  "teste_ia": false,
+  "testes_aprovados": 26,
+  "contrato_sha256_conferido": true,
+  "evidencias": [
+    {
+      "cenario": "arquivo-ausente",
+      "execucao_id": "23bf5494e46d4bb89de351767d6ff7cc",
+      "contagens": {
+        "entradas": 0,
+        "processados": 0,
+        "duplicados": 0,
+        "pendencias": 0,
+        "falhas": 0
+      }
+    },
+    {
+      "cenario": "csv-simulado",
+      "execucao_id": "337be8239d1743adb07ea2fb7d186765",
+      "contagens": {
+        "entradas": 3,
+        "processados": 1,
+        "duplicados": 1,
+        "pendencias": 1,
+        "falhas": 0
+      }
+    },
+    {
+      "cenario": "real-indisponibilidade",
+      "execucao_id": "0ec3479a81ff41908c7d6529429ff274",
+      "contagens": {
+        "entradas": 4,
+        "processados": 0,
+        "duplicados": 0,
+        "pendencias": 2,
+        "falhas": 2
+      }
+    },
+    {
+      "cenario": "real-retomada",
+      "execucao_id": "57dd12eb306d4501a9e22abb3427c539",
+      "contagens": {
+        "entradas": 4,
+        "processados": 0,
+        "duplicados": 0,
+        "pendencias": 2,
+        "falhas": 2
+      }
+    },
+    {
+      "cenario": "simulado",
+      "execucao_id": "93985db3a01c4a03883ad6a343cc84a0",
+      "contagens": {
+        "entradas": 4,
+        "processados": 1,
+        "duplicados": 1,
+        "pendencias": 2,
+        "falhas": 0
+      }
+    },
+    {
+      "cenario": "simulado-repeticao",
+      "execucao_id": "5b1c07c4b66546f09169751e0ad96dfb",
+      "contagens": {
+        "entradas": 4,
+        "processados": 0,
+        "duplicados": 2,
+        "pendencias": 2,
+        "falhas": 0
+      }
+    }
+  ],
+  "bpmn_ids_referencias": true,
+  "bpmn_xsd_oficial": {
+    "aprovado": true,
+    "origem": "https://www.omg.org/spec/BPMN/20100501/BPMN20.xsd",
+    "bpmn_sha256": "c33e16d2e55db993483de17d58a7d7077fc850adbf5e6d91cd774fcdc9621bae",
+    "schema_sha256": "a07c159cb0594573dd7c97b1370dd116112378f377e43c89a8bf512ac5030705"
+  },
+  "pdf": {
+    "paginas": 8,
+    "equipe_conferida": true,
+    "texto_dentro_das_paginas": true,
+    "urls": [
+      "https://ca-akona-energy-prod.salmoncoast-770d275b.eastus2.azurecontainerapps.io/",
+      "https://docs.astral.sh/uv/guides/integration/github/",
+      "https://docs.github.com/en/actions/how-tos/manage-workflow-runs/download-workflow-artifacts",
+      "https://github.com/laia020/citizentech-iluminacao-ia",
+      "https://laia020-citizentech-iluminacao-ia.hf.space/demo",
+      "https://laia020-citizentech-iluminacao-ia.hf.space/docs",
+      "https://laia020-citizentech-iluminacao-ia.hf.space/openapi.json"
+    ],
+    "sha256": "4157f76642640a1553898be7ee040acaab5b8c230ba109bc7d177500a4f68976"
+  },
+  "links_http": [
+    {
+      "url": "https://ca-akona-energy-prod.salmoncoast-770d275b.eastus2.azurecontainerapps.io/",
+      "status": 200
+    },
+    {
+      "url": "https://docs.astral.sh/uv/guides/integration/github/",
+      "status": 403
+    },
+    {
+      "url": "https://docs.github.com/en/actions/how-tos/manage-workflow-runs/download-workflow-artifacts",
+      "status": 200
+    },
+    {
+      "url": "https://github.com/laia020/citizentech-iluminacao-ia",
+      "status": 200
+    },
+    {
+      "url": "https://laia020-citizentech-iluminacao-ia.hf.space/demo",
+      "status": 200
+    },
+    {
+      "url": "https://laia020-citizentech-iluminacao-ia.hf.space/docs",
+      "status": 200
+    },
+    {
+      "url": "https://laia020-citizentech-iluminacao-ia.hf.space/openapi.json",
+      "status": 200
+    }
+  ],
+  "sha256_evidencias": {
+    "docs/evidencias/README.md": "59453c018af8b62cae42c30be18ea2ed2dee06f84c9a5bb3d2f1821857dd1cd5",
+    "docs/evidencias/arquivo-ausente/auditoria.jsonl": "f85ddda4b9625889088b7a3e5e939e3f338de8c4dd8e07b371250644bf5c1e51",
+    "docs/evidencias/arquivo-ausente/pendencias.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "docs/evidencias/arquivo-ausente/resultados.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "docs/evidencias/arquivo-ausente/resumo.json": "ee7671ec6e2a60545f35347c63aed7fa41b97942bb77bf88cfcbc5f78d8fa41e",
+    "docs/evidencias/cloud-entrada-local.txt": "3a4006732907d79480dddc167b8984e5f5a59cc84366dc41ff8a99e42aae3959",
+    "docs/evidencias/contrato-origem.json": "f86915108551f670e22aed54f064d470c6820513cd1f564dd804e3a4b305b85d",
+    "docs/evidencias/csv-simulado/auditoria.jsonl": "f2ee282751c21660a6ff054ce91ed6dde92bb528b9f73d09d29509a759f535a0",
+    "docs/evidencias/csv-simulado/pendencias.json": "9627bf85d8da8e505aa13cae7067026f6145709062a6a7bca0bf2ca7a746d479",
+    "docs/evidencias/csv-simulado/resultados.json": "0e6fceb1e6d1e6b5489fbefa8b66a487f6ce060b39bcf7ef2fd992feedc034a9",
+    "docs/evidencias/csv-simulado/resumo.json": "d45a1e6aa261440b5538f3d249ceab403e5ad6c56cb13fa9a97bb2c8dcfce1aa",
+    "docs/evidencias/real-indisponibilidade/auditoria.jsonl": "1f07a5e2677c85dd9960327608875f5495987ad45cb97c6fc444cc06221d517a",
+    "docs/evidencias/real-indisponibilidade/pendencias.json": "89e91790ddcb870e4ba939239a697d470e4d97e42ad4a9390ee7c5b794b57add",
+    "docs/evidencias/real-indisponibilidade/resultados.json": "89e91790ddcb870e4ba939239a697d470e4d97e42ad4a9390ee7c5b794b57add",
+    "docs/evidencias/real-indisponibilidade/resumo.json": "b374c3769f0f6b57963d4d2486401b3b4ca2f4d5a77ef1e621800df4163e7d14",
+    "docs/evidencias/real-retomada/auditoria.jsonl": "c45639f0f77f9fd4d52280590694bc1e18d5da9c2bc4c52b565b845c7fdeff29",
+    "docs/evidencias/real-retomada/pendencias.json": "dae8dd46e074fe0d17d18547cb060204515084a34bf56e3b545f3553913fa1d9",
+    "docs/evidencias/real-retomada/resultados.json": "dae8dd46e074fe0d17d18547cb060204515084a34bf56e3b545f3553913fa1d9",
+    "docs/evidencias/real-retomada/resumo.json": "8e8f8f0d641a0b2395096347f26fec62843a74e5d06e39d5aa5137b9fd2a7036",
+    "docs/evidencias/simulado/auditoria.jsonl": "4bda4150bf3e9d02bfeb27fa1720cf10f9016d9272db8f21a415aa20d10750bc",
+    "docs/evidencias/simulado/pendencias.json": "99d6f3b0599b42b59e5baa5aa5ec9a9f82934c634cd2a63d1bc326fbeb2c5921",
+    "docs/evidencias/simulado/resultados.json": "a38b519e3f9dc133f563deb0ec48eee7c97131cadeee002062bfce7e923bfd42",
+    "docs/evidencias/simulado/resumo.json": "38d24e16bffe8c7e848161cfe0d67f19816afa7a9082ac916306161e999d947a",
+    "docs/evidencias/simulado-repeticao/auditoria.jsonl": "da5f4128f0bf11d6a391593703d6915f6c58c61a2e96e25abad1c77b81faef07",
+    "docs/evidencias/simulado-repeticao/pendencias.json": "4b0b55998ed3ae5e229f1a416e47ce88c3f07b1c46b0abff4c0d22bd1f53bc48",
+    "docs/evidencias/simulado-repeticao/resultados.json": "43e31a6479e68cad0ad85f2fccc0db400742fc36f070bb96eadd9f00cd6ae6a1",
+    "docs/evidencias/simulado-repeticao/resumo.json": "6f4cd81c83a95a02fe9947e95cb2384ee50f420a6c260e9a872ccfdbce89d927",
+    "docs/evidencias/tdd-cloud-inicial.txt": "465e1dbceaa97eb998d4b82956ab5c131fd43aa97542ec3168d3fe9da8e9d53f",
+    "docs/evidencias/tdd-inicial.txt": "d496eff2d364968bbd0dc8d21af74421473602529e2493adeec79ea6728b9f34",
+    "docs/evidencias/tdd-retomada-inicial.txt": "2a1d48683f759c984b59e77f154137a07fb1aeeecddca019298d2b7fcd5e02ef",
+    "docs/evidencias/testes.json": "0f9f148f32146fa7cdab157ce5b72bbc0084d05c52c71ee4469c062aa0b20194",
+    "docs/evidencias/testes.txt": "c0270eeb8924241f24e405088be880dc54a5c85870bcbdc951dbead9ac4c1f7b"
+  }
+}

@@ -1,0 +1,127 @@
+# Akona Energy - Ficha Técnica CitizenTech
+
+| Campo | Descrição |
+|---|---|
+| Produto | **Akona Energy**, componente de Robotic Process Automation da GS FIAP 4ES 2026.2. |
+| Cidadão e território | Pessoas que relatam problemas de iluminação e equipes de triagem. Osasco/SP é território **demonstrativo**, sujeito ao alinhamento da ficha com o grupo. Sem operação municipal comprovada. |
+| Problema | Receber ocorrências uma a uma exige validar campos, conferir repetições e organizar encaminhamentos manualmente. |
+| Proposta de valor | Organizar lotes fictícios, separar pendências e manter rastreabilidade até a triagem humana; benefício proposto, sem redução de tempo ou custo medida em campo. |
+| Arquitetura | CSV/JSON → Python RPA → validação + SQLite → cliente da IA → resultados JSON + auditoria → revisão humana. Workflow de GitHub Actions preparado. Consumo pelo backend/interface do Akona ainda pendente. |
+| Fontes de dados | Exemplos autorais fictícios em `examples/`; contrato OpenAPI público da IA. Não usa base municipal, cidadãos reais ou sensor conectado. |
+| Modelos de IA | Serviço existente: Qwen2.5-1.5B-Instruct, RAG e LoRA r1, implantação PyTorch FP32 informada pelo projeto de IA. O RPA não instala modelo, baixa pesos ou treina. O simulador não executa IA. |
+| URLs | [MVP informado](https://ca-akona-energy-prod.salmoncoast-770d275b.eastus2.azurecontainerapps.io/), [IA pública](https://laia020-citizentech-iluminacao-ia.hf.space/demo), [API](https://laia020-citizentech-iluminacao-ia.hf.space/docs), [repositório da IA](https://github.com/laia020/citizentech-iluminacao-ia). **Repositório público do RPA e vídeo: pendentes de publicação/fornecimento.** Repositório do Akona não fornecido. |
+| Indicadores | Medidos nesta POC: contagens operacionais nos arquivos de execução e resultados dos testes. Propostos para estudo futuro: tempo de triagem, completude e encaminhamentos revisados. Não há medição de impacto de campo. |
+| ODS | ODS 11: organização de relatos sobre infraestrutura urbana; ODS 7: apoio proposto à gestão da iluminação. Não demonstra economia de energia ou cumprimento de metas. |
+
+## Equipe
+
+| Nome completo | RM |
+|---|---|
+| Lucas Laia Manentti | 97709 |
+| Guilherme Faustino Vargas | 98278 |
+| Ryan Perez Pacheco | 98782 |
+| João Lucas Yudi Redi Handa | 98458 |
+| Guilherme Dal Posolo Matheus | 98694 |
+
+## Resultado verificável em 18/11/2026
+
+- Implementação e **26 testes automatizados aprovados**, todos com rede de IA simulada. [Registro](docs/evidencias/testes.json), [saída completa](docs/evidencias/testes.txt) e [primeira execução antes do código](docs/evidencias/tdd-inicial.txt).
+- Lote simulado: 4 entradas, 1 processada, 1 duplicada e 2 pendências. Não demonstra análise por IA. [Resultados](docs/evidencias/simulado/resultados.json).
+- Lote real: a API pública retornou **HTTP 503** para as duas ocorrências válidas. 4 entradas, 0 processadas, 0 duplicadas, 2 pendências e 2 falhas. Quatro tentativas HTTP no total, contadas separadamente dos itens. [Auditoria real](docs/evidencias/real-indisponibilidade/auditoria.jsonl).
+- Uma retomada controlada, cerca de dez minutos depois, usou uma tentativa por ID e também recebeu 503: [segunda auditoria real](docs/evidencias/real-retomada/auditoria.jsonl). Foram seis chamadas reais no total das duas execuções, sem testes de carga nem repetição de 502.
+- **Integração funcional RPA–IA ainda parcial:** comunicação HTTP e tratamento de indisponibilidade comprovados; análise bem-sucedida pelo componente remoto não comprovada nesta execução. O backend e a interface do Akona não consumiram a saída.
+- GitHub público, execução hospedada, vídeo e envio ao Teams permanecem pendentes. Não houve commit, push, deploy ou alteração do projeto de IA.
+
+## Executar localmente
+
+Mac/Linux, Python **3.12** e uv. A aplicação usa apenas `jsonschema` como dependência direta de execução; as dependências de PDF ficam no grupo opcional `docs`. Não necessita GPU, bibliotecas de IA nem servidor permanente.
+
+Em uma cópia nova, sem `.venv`:
+
+```sh
+cd ~/Projects/citizentech-rpa
+uv venv --python 3.12 --prompt "venv-citizentech-rpa"
+uv sync --locked --no-default-groups
+source .venv/bin/activate
+python -m unittest discover -s tests -v
+citizentech-rpa examples/lote-demo.json --modo simulado
+```
+
+Se a `.venv` já existe, confira `.venv/pyvenv.cfg`, `.venv/bin/python --version` e `uv pip list --python .venv/bin/python` antes de sincronizar. Não recrie o ambiente. No Mac de desenvolvimento foi criada uma `.venv` exclusiva com Python 3.12.16 e prompt `(venv-citizentech-rpa)`. As dependências de outros projetos foram preservadas.
+
+Modo real, intencional e sequencial, **somente com dados fictícios**:
+
+```sh
+citizentech-rpa examples/lote-real.json --modo real
+```
+
+A API tem cotas/filas. Esta execução pode retornar erro e não possui fallback local. Para retomar apenas falhas HTTP 429/503, preservando a mesma base:
+
+```sh
+citizentech-rpa examples/lote-real.json --modo real --retomar-falhas
+```
+
+Não use retomada em laço. Resultados concluídos são reaproveitados. Timeout, resposta inválida, interrupção durante envio e rejeição HTTP 502 exigem revisão; não são repetidos por esse argumento. Sem API de consulta por chave idempotente no serviço remoto, um timeout não permite garantir se a análise terminou lá.
+
+## Entradas, saídas e decisões
+
+CSV UTF-8 com vírgulas e cabeçalho, ou JSON contendo uma lista. Limites: **1 MiB e 100 registros**. A demonstração usa 4 itens e somente 2 IDs aptos a consulta. CSV usa `true`/`false`; sensores e observações visuais, quando usados em CSV, devem ser arrays JSON corretamente escapados.
+
+Campos obrigatórios: `ocorrencia_id`, `pergunta`, `simulada: true`, mais alguma observação em `relato`, `sensores` ou `observacoes_visuais`. IDs aceitam letras ASCII, dígitos, `_`, `-` e `.`; não coloque nome, e-mail ou documento no identificador. Datas precisam de fuso. Calibração declarada exige referência, sem certificar a informação. Não há conversão ADC/lux nem diagnóstico elétrico.
+
+Metadados opcionais `tipo`, `bairro`, `ponto` são preservados pelo RPA e **não enviados à IA**. Não são suficientes para afirmar compatibilidade de importação com o Akona. Campos desconhecidos geram pendência; não são encaminhados à API nem copiados para logs. O esquema público completo fica em [contrato congelado](src/citizentech_rpa/contracts/ia.openapi.json), com [origem e hash](docs/evidencias/contrato-origem.json).
+
+Cada execução cria um diretório novo `runs/<execucao_id>/`:
+
+| Arquivo | Uso |
+|---|---|
+| `resultados.json` | Um resultado por entrada, com `linha`, status operacional, decisão e, quando houver, análise e `request_id`. |
+| `pendencias.json` | Pendências e falhas para revisão; registros inválidos não incluem conteúdo bruto. |
+| `resumo.json` | SHA-256 da entrada, contagens, modo, situação, início/fim e código de saída. |
+| `auditoria.jsonl` | Eventos com fuso UTC, execução, linha, referência hash do item, etapa, resultado, tentativa e códigos sanitizados. |
+
+Um registro válido é normalizado (NFC, espaços externos e defaults), sem inventar localização ou dados ausentes. Duplicata de sucesso não repete análise; mesmo ID com conteúdo divergente vira conflito e não substitui o original. Registro incompleto fica pendente e o lote continua. A IA pode devolver `informacao_insuficiente` ou `fora_escopo`: são resultados de negócio **processados**, com encaminhamento humano distinto do status do RPA.
+
+Contagens exclusivas: entradas = processados + duplicados + pendências + falhas em uma execução completa. Tentativas não são itens. Se uma infraestrutura impedir o processamento do lote, `erro_execucao` indica interrupção e as contagens podem abranger somente os itens finalizados. Códigos de saída: `0` lote concluído, inclusive pendências de negócio; `1` falha em item; `2` arquivo/infraestrutura inválido. **Exit 0 não certifica ausência de pendências.**
+
+## Persistência e resiliência
+
+O SQLite fica em `state/ocorrencias.sqlite3`, fora do Git, com chave `(modo, ocorrencia_id)` e fingerprint SHA-256 do registro padronizado completo, incluindo metadados. Simulação e integração real têm namespaces separados. O lock de arquivo impede acesso simultâneo pela aplicação no Mac/Linux; esse mecanismo não oferece suporte nativo a Windows.
+
+O estado sobrevive à reinicialização **se o mesmo arquivo for preservado**. Antes do POST, grava `em_envio`. Ao reiniciar após uma interrupção nesse intervalo, marca a entrada para revisão e não repete o POST. O servidor remoto não oferece mecanismo que permita garantir exatamente uma execução após uma falha de rede. A base e as evidências devem ser preservadas; não apague o estado para fazer o exemplo passar.
+
+HTTP 429/503: até 2 tentativas por padrão (máximo configurável 3), espera progressiva ou `Retry-After`, até 15 s por espera. Se `Retry-After` exceder esse limite, encerra o item sem antecipar a chamada. HTTP 413/422/502 e respostas inválidas não são reparados nem repetidos. Timeout padrão 120 s; resultado incerto fica para revisão. Arquivo inválido/ausente gera auditoria e resumo, sem chamadas de rede.
+
+## Execução em nuvem
+
+[Workflow manual](.github/workflows/rpa.yml) preparado para `ubuntu-latest`, sem runner no Mac. **Ainda não executado no GitHub.** A publicação do repositório e o primeiro run precisam de autorização e evidência antes de afirmar independência operacional do Mac.
+
+Após publicar e habilitar Actions:
+
+1. Abra **Actions → Lote CitizenTech RPA → Run workflow**. Comece em `simulado`.
+2. Primeira execução: deixe `estado_run_id` vazio e confirme `iniciar_estado`.
+3. Nas próximas execuções, informe o ID do run **mais recente** que contém `rpa-state`, inclusive se houve falha na API. Desmarque `iniciar_estado`. Não reutilize um ancestral mais antigo.
+4. Para testar a comunicação pública, selecione `real` e `lote-real.json`. Retomada de 429/503 é explícita.
+5. Baixe `rpa-resultados` e `rpa-state`. Confira o resumo mesmo quando o job falhar.
+
+Restauração inexistente, inválida ou expirada aborta sem criar uma base substituta. Artifacts têm retenção configurada de **14 dias**, sujeitos às políticas do GitHub; não são banco permanente nem garantia de persistência. Se o job for cancelado ou falhar antes do upload do estado mais recente, **não restaure um estado anterior e continue cegamente**: preserve logs e reconcilie os itens enviados. A restauração é operacional, não automática; a seleção correta do run é responsabilidade do operador. O SQLite local de desenvolvimento não é enviado automaticamente ao GitHub. Começar lá com estado novo não deduplica as consultas feitas aqui.
+
+A CI roda apenas testes simulados. Os workflows usam permissões de leitura e actions fixadas por SHA. Não criam recursos pagos, fazem commits, publicam páginas ou acionam reparos. Artefatos do Actions exigem login e acesso de leitura; a amostra versionada em `docs/evidencias/` será a evidência pública após a publicação. Confira as cotas da conta antes de executar e não habilite cobrança adicional sem aprovação.
+
+## Documentação e entrega
+
+- [PDD e regras](docs/PDD.md), [requisitos e matriz](docs/requisitos.md), [contrato de saída e integração](docs/integracao.md).
+- [BPMN editável](docs/processo.bpmn) e duas vistas em [assets](assets/README.md).
+- [Relatório técnico PDF](output/pdf/relatorio-tecnico-rpa.pdf).
+- [Roteiro de vídeo, até 3 minutos](docs/roteiro-video.md); **vídeo real ainda não gravado**.
+- [Plano e decisões](docs/plano.md), [evidências](docs/evidencias/README.md), [segurança](docs/seguranca.md).
+
+Regenerar os diagramas e o relatório, sem consultar IA:
+
+```sh
+uv sync --locked --group docs
+uv run --no-sync python scripts/gerar_bpmn.py
+uv run --no-sync python scripts/gerar_relatorio.py
+```
+
+Confira a renderização após regenerar. O PDF declara como pendentes os links ainda não existentes, sem inventar URLs de GitHub/vídeo. Prazo do enunciado: **19/11/2026 às 23h55**, na tarefa de **RPA do Teams**, por um integrante. Confirmar a ficha comum com o grupo e manter links acessíveis durante a correção. A entrega geral continua parcial enquanto esses itens faltarem.

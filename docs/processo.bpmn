@@ -1,0 +1,222 @@
+<?xml version='1.0' encoding='utf-8'?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_AkonaRPA" targetNamespace="https://example.invalid/akona/rpa" exporter="CitizenTech RPA" exporterVersion="0.1.0">
+  <bpmn:error id="Error_API" name="Falha técnica de integração" errorCode="falha_api" />
+  <bpmn:process id="Process_Lote" name="Akona Energy - lote fictício" isExecutable="false">
+    <bpmn:startEvent id="Start_Lote" name="Iniciar lote" />
+    <bpmn:scriptTask id="Task_Ler" name="Ler CSV/JSON e validar arquivo" />
+    <bpmn:exclusiveGateway id="Gate_Arquivo" name="Arquivo válido?" default="Flow_ArquivoErro" />
+    <bpmn:subProcess id="Sub_Item" name="Processar cada registro">
+      <bpmn:multiInstanceLoopCharacteristics isSequential="true">
+        <bpmn:loopCardinality xsi:type="bpmn:tFormalExpression">len(registros)</bpmn:loopCardinality>
+      </bpmn:multiInstanceLoopCharacteristics>
+      <bpmn:startEvent id="Start_Item" name="Próximo item" />
+      <bpmn:scriptTask id="Task_Validar" name="Normalizar, validar e consultar estado" />
+      <bpmn:exclusiveGateway id="Gate_Rota" name="Qual caminho?" default="Flow_Novo" />
+      <bpmn:scriptTask id="Task_Pendente" name="Registrar pendência ou conflito" />
+      <bpmn:scriptTask id="Task_Duplicado" name="Reutilizar sucesso anterior" />
+      <bpmn:serviceTask id="Task_API" name="Consultar IA e validar resposta" />
+      <bpmn:boundaryEvent id="Boundary_API" name="Erro técnico" attachedToRef="Task_API" cancelActivity="true">
+        <bpmn:errorEventDefinition id="ErrorDef_API" errorRef="Error_API" />
+      </bpmn:boundaryEvent>
+      <bpmn:scriptTask id="Task_Salvar" name="Salvar resultado e encaminhar revisão" />
+      <bpmn:scriptTask id="Task_Falha" name="Salvar falha / resultado incerto" />
+      <bpmn:endEvent id="End_Item" name="Item finalizado" />
+      <bpmn:sequenceFlow id="Flow_ItemInicio" sourceRef="Start_Item" targetRef="Task_Validar" />
+      <bpmn:sequenceFlow id="Flow_ItemValido" sourceRef="Task_Validar" targetRef="Gate_Rota" />
+      <bpmn:sequenceFlow id="Flow_Pendente" sourceRef="Gate_Rota" targetRef="Task_Pendente" name="Pendente / conflito">
+        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">rota == pendente</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
+      <bpmn:sequenceFlow id="Flow_Duplicado" sourceRef="Gate_Rota" targetRef="Task_Duplicado" name="Sucesso idêntico">
+        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">rota == duplicado</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
+      <bpmn:sequenceFlow id="Flow_Novo" sourceRef="Gate_Rota" targetRef="Task_API" name="Novo / retomada permitida" />
+      <bpmn:sequenceFlow id="Flow_Resposta" sourceRef="Task_API" targetRef="Task_Salvar" name="200 válido" />
+      <bpmn:sequenceFlow id="Flow_Falha" sourceRef="Boundary_API" targetRef="Task_Falha" />
+      <bpmn:sequenceFlow id="Flow_PendenteFim" sourceRef="Task_Pendente" targetRef="End_Item" />
+      <bpmn:sequenceFlow id="Flow_DuplicadoFim" sourceRef="Task_Duplicado" targetRef="End_Item" />
+      <bpmn:sequenceFlow id="Flow_SalvoFim" sourceRef="Task_Salvar" targetRef="End_Item" />
+      <bpmn:sequenceFlow id="Flow_FalhaFim" sourceRef="Task_Falha" targetRef="End_Item" />
+    </bpmn:subProcess>
+    <bpmn:scriptTask id="Task_Exportar" name="Exportar resultados, pendências e resumo" />
+    <bpmn:scriptTask id="Task_ArquivoErro" name="Auditar arquivo e exportar resumo de erro" />
+    <bpmn:endEvent id="End_Lote" name="Lote finalizado" />
+    <bpmn:endEvent id="End_ArquivoErro" name="Arquivo rejeitado" />
+    <bpmn:sequenceFlow id="Flow_Inicio" sourceRef="Start_Lote" targetRef="Task_Ler" />
+    <bpmn:sequenceFlow id="Flow_Lido" sourceRef="Task_Ler" targetRef="Gate_Arquivo" />
+    <bpmn:sequenceFlow id="Flow_ArquivoOK" sourceRef="Gate_Arquivo" targetRef="Sub_Item" name="Sim">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">arquivo_valido</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_ArquivoErro" sourceRef="Gate_Arquivo" targetRef="Task_ArquivoErro" name="Não" />
+    <bpmn:sequenceFlow id="Flow_Exportar" sourceRef="Sub_Item" targetRef="Task_Exportar" />
+    <bpmn:sequenceFlow id="Flow_Final" sourceRef="Task_Exportar" targetRef="End_Lote" />
+    <bpmn:sequenceFlow id="Flow_FimErro" sourceRef="Task_ArquivoErro" targetRef="End_ArquivoErro" />
+  </bpmn:process>
+  <bpmn:collaboration id="Collaboration_IA">
+    <bpmn:participant id="Participant_RPA" name="RPA Akona Energy" processRef="Process_Lote" />
+    <bpmn:participant id="Participant_IA" name="IA CitizenTech - serviço público (modo real)" />
+    <bpmn:messageFlow id="Message_Request" name="Ocorrência fictícia mapeada" sourceRef="Task_API" targetRef="Participant_IA" />
+    <bpmn:messageFlow id="Message_Response" name="Análise ou erro HTTP" sourceRef="Participant_IA" targetRef="Task_API" />
+  </bpmn:collaboration>
+  <bpmndi:BPMNDiagram id="Diagram_Macro">
+    <bpmndi:BPMNPlane id="Diagram_Macro_Plane" bpmnElement="Process_Lote">
+      <bpmndi:BPMNShape id="Start_Lote_di_Diagram_Macro" bpmnElement="Start_Lote">
+        <dc:Bounds x="40" y="128" width="32" height="32" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_Ler_di_Diagram_Macro" bpmnElement="Task_Ler">
+        <dc:Bounds x="110" y="110" width="200" height="70" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gate_Arquivo_di_Diagram_Macro" bpmnElement="Gate_Arquivo">
+        <dc:Bounds x="355" y="124" width="40" height="40" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Sub_Item_di_Diagram_Macro" bpmnElement="Sub_Item" isExpanded="false">
+        <dc:Bounds x="450" y="110" width="205" height="70" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_Exportar_di_Diagram_Macro" bpmnElement="Task_Exportar">
+        <dc:Bounds x="740" y="110" width="200" height="70" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="End_Lote_di_Diagram_Macro" bpmnElement="End_Lote">
+        <dc:Bounds x="1000" y="128" width="32" height="32" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_ArquivoErro_di_Diagram_Macro" bpmnElement="Task_ArquivoErro">
+        <dc:Bounds x="450" y="235" width="240" height="70" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="End_ArquivoErro_di_Diagram_Macro" bpmnElement="End_ArquivoErro">
+        <dc:Bounds x="775" y="254" width="32" height="32" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_Inicio_di_Diagram_Macro" bpmnElement="Flow_Inicio">
+        <di:waypoint x="72" y="144" />
+        <di:waypoint x="110" y="144" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_Lido_di_Diagram_Macro" bpmnElement="Flow_Lido">
+        <di:waypoint x="310" y="144" />
+        <di:waypoint x="355" y="144" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_ArquivoOK_di_Diagram_Macro" bpmnElement="Flow_ArquivoOK">
+        <di:waypoint x="395" y="144" />
+        <di:waypoint x="450" y="144" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_ArquivoErro_di_Diagram_Macro" bpmnElement="Flow_ArquivoErro">
+        <di:waypoint x="375" y="164" />
+        <di:waypoint x="375" y="270" />
+        <di:waypoint x="450" y="270" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_Exportar_di_Diagram_Macro" bpmnElement="Flow_Exportar">
+        <di:waypoint x="655" y="144" />
+        <di:waypoint x="740" y="144" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_Final_di_Diagram_Macro" bpmnElement="Flow_Final">
+        <di:waypoint x="940" y="144" />
+        <di:waypoint x="1000" y="144" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_FimErro_di_Diagram_Macro" bpmnElement="Flow_FimErro">
+        <di:waypoint x="690" y="270" />
+        <di:waypoint x="775" y="270" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+  <bpmndi:BPMNDiagram id="Diagram_Item">
+    <bpmndi:BPMNPlane id="Diagram_Item_Plane" bpmnElement="Collaboration_IA">
+      <bpmndi:BPMNShape id="Participant_RPA_di_Diagram_Item" bpmnElement="Participant_RPA">
+        <dc:Bounds x="10" y="10" width="1080" height="440" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Participant_IA_di_Diagram_Item" bpmnElement="Participant_IA">
+        <dc:Bounds x="380" y="510" width="460" height="65" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Start_Item_di_Diagram_Item" bpmnElement="Start_Item">
+        <dc:Bounds x="63" y="219" width="32" height="32" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_Validar_di_Diagram_Item" bpmnElement="Task_Validar">
+        <dc:Bounds x="120" y="200" width="160" height="70" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gate_Rota_di_Diagram_Item" bpmnElement="Gate_Rota">
+        <dc:Bounds x="320" y="215" width="40" height="40" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_Pendente_di_Diagram_Item" bpmnElement="Task_Pendente">
+        <dc:Bounds x="450" y="65" width="205" height="65" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_Duplicado_di_Diagram_Item" bpmnElement="Task_Duplicado">
+        <dc:Bounds x="450" y="355" width="205" height="65" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_API_di_Diagram_Item" bpmnElement="Task_API">
+        <dc:Bounds x="460" y="200" width="195" height="70" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Boundary_API_di_Diagram_Item" bpmnElement="Boundary_API">
+        <dc:Bounds x="628" y="254" width="26" height="26" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_Salvar_di_Diagram_Item" bpmnElement="Task_Salvar">
+        <dc:Bounds x="755" y="200" width="180" height="70" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_Falha_di_Diagram_Item" bpmnElement="Task_Falha">
+        <dc:Bounds x="760" y="355" width="180" height="65" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="End_Item_di_Diagram_Item" bpmnElement="End_Item">
+        <dc:Bounds x="1000" y="219" width="32" height="32" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_ItemInicio_di_Diagram_Item" bpmnElement="Flow_ItemInicio">
+        <di:waypoint x="95" y="235" />
+        <di:waypoint x="120" y="235" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_ItemValido_di_Diagram_Item" bpmnElement="Flow_ItemValido">
+        <di:waypoint x="280" y="235" />
+        <di:waypoint x="320" y="235" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_Pendente_di_Diagram_Item" bpmnElement="Flow_Pendente">
+        <di:waypoint x="340" y="215" />
+        <di:waypoint x="340" y="98" />
+        <di:waypoint x="450" y="98" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_Duplicado_di_Diagram_Item" bpmnElement="Flow_Duplicado">
+        <di:waypoint x="340" y="255" />
+        <di:waypoint x="340" y="388" />
+        <di:waypoint x="450" y="388" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_Novo_di_Diagram_Item" bpmnElement="Flow_Novo">
+        <di:waypoint x="360" y="235" />
+        <di:waypoint x="460" y="235" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_Resposta_di_Diagram_Item" bpmnElement="Flow_Resposta">
+        <di:waypoint x="655" y="235" />
+        <di:waypoint x="755" y="235" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_Falha_di_Diagram_Item" bpmnElement="Flow_Falha">
+        <di:waypoint x="641" y="280" />
+        <di:waypoint x="725" y="280" />
+        <di:waypoint x="725" y="388" />
+        <di:waypoint x="760" y="388" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_PendenteFim_di_Diagram_Item" bpmnElement="Flow_PendenteFim">
+        <di:waypoint x="655" y="98" />
+        <di:waypoint x="1016" y="98" />
+        <di:waypoint x="1016" y="219" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_DuplicadoFim_di_Diagram_Item" bpmnElement="Flow_DuplicadoFim">
+        <di:waypoint x="655" y="388" />
+        <di:waypoint x="680" y="388" />
+        <di:waypoint x="680" y="435" />
+        <di:waypoint x="1016" y="435" />
+        <di:waypoint x="1016" y="251" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_SalvoFim_di_Diagram_Item" bpmnElement="Flow_SalvoFim">
+        <di:waypoint x="935" y="235" />
+        <di:waypoint x="1000" y="235" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_FalhaFim_di_Diagram_Item" bpmnElement="Flow_FalhaFim">
+        <di:waypoint x="940" y="388" />
+        <di:waypoint x="1016" y="388" />
+        <di:waypoint x="1016" y="251" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Message_Request_di_Diagram_Item" bpmnElement="Message_Request">
+        <di:waypoint x="570" y="270" />
+        <di:waypoint x="570" y="310" />
+        <di:waypoint x="695" y="310" />
+        <di:waypoint x="695" y="510" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Message_Response_di_Diagram_Item" bpmnElement="Message_Response">
+        <di:waypoint x="710" y="510" />
+        <di:waypoint x="710" y="295" />
+        <di:waypoint x="610" y="295" />
+        <di:waypoint x="610" y="270" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

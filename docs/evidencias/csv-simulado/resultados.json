@@ -1,0 +1,96 @@
+[
+  {
+    "execucao_id": "337be8239d1743adb07ea2fb7d186765",
+    "linha": 1,
+    "integracao": "simulada",
+    "ocorrencia_id": "RPA-CSV-001",
+    "item_ref": "5ea8e1a136eb4e95",
+    "fingerprint": "f6db66acbbac3e1e15add442a9064ccdfd04aa6deaf32dfab1995698ff5e10d6",
+    "entrada": {
+      "ocorrencia_id": "RPA-CSV-001",
+      "simulada": true,
+      "pergunta": "O que registrar sem determinar causa?",
+      "relato": "Luminária fictícia apagada à noite sem inspeção de causa.",
+      "sensores": [],
+      "observacoes_visuais": [],
+      "bairro": "Bairro fictício B",
+      "ponto": "Poste fictício 02",
+      "tipo": "luminaria_apagada"
+    },
+    "status_rpa": "processado",
+    "codigo": "ok",
+    "ia": {
+      "request_id": "SIMULADO-415fc8ebaaf24b69a5138e024e2dc3fc",
+      "ocorrencia_id": "RPA-CSV-001",
+      "analise": {
+        "status": "analise_preliminar",
+        "resumo": "SIMULAÇÃO: observação organizada, sem análise de modelo ou diagnóstico.",
+        "hipoteses": [],
+        "informacoes_faltantes": [],
+        "fontes": [],
+        "encaminhamento": "SIMULAÇÃO: submeter a revisão humana; nenhum chamado foi criado."
+      },
+      "referencias": [],
+      "execucao": {
+        "modo": "rag_finetuning",
+        "modelo": "SIMULADO - nenhum modelo executado",
+        "versao_base": "simulacao-rpa-1",
+        "duracao_ms": 0
+      }
+    },
+    "status_ia": "analise_preliminar",
+    "destino": "revisao_humana",
+    "request_id": "SIMULADO-415fc8ebaaf24b69a5138e024e2dc3fc"
+  },
+  {
+    "execucao_id": "337be8239d1743adb07ea2fb7d186765",
+    "linha": 2,
+    "integracao": "simulada",
+    "ocorrencia_id": "RPA-CSV-001",
+    "item_ref": "5ea8e1a136eb4e95",
+    "fingerprint": "f6db66acbbac3e1e15add442a9064ccdfd04aa6deaf32dfab1995698ff5e10d6",
+    "entrada": {
+      "ocorrencia_id": "RPA-CSV-001",
+      "simulada": true,
+      "pergunta": "O que registrar sem determinar causa?",
+      "relato": "Luminária fictícia apagada à noite sem inspeção de causa.",
+      "sensores": [],
+      "observacoes_visuais": [],
+      "bairro": "Bairro fictício B",
+      "ponto": "Poste fictício 02",
+      "tipo": "luminaria_apagada"
+    },
+    "status_rpa": "duplicado",
+    "codigo": "ja_processado",
+    "execucao_original": "337be8239d1743adb07ea2fb7d186765",
+    "ia": {
+      "request_id": "SIMULADO-415fc8ebaaf24b69a5138e024e2dc3fc",
+      "ocorrencia_id": "RPA-CSV-001",
+      "analise": {
+        "status": "analise_preliminar",
+        "resumo": "SIMULAÇÃO: observação organizada, sem análise de modelo ou diagnóstico.",
+        "hipoteses": [],
+        "informacoes_faltantes": [],
+        "fontes": [],
+        "encaminhamento": "SIMULAÇÃO: submeter a revisão humana; nenhum chamado foi criado."
+      },
+      "referencias": [],
+      "execucao": {
+        "modo": "rag_finetuning",
+        "modelo": "SIMULADO - nenhum modelo executado",
+        "versao_base": "simulacao-rpa-1",
+        "duracao_ms": 0
+      }
+    },
+    "request_id": "SIMULADO-415fc8ebaaf24b69a5138e024e2dc3fc",
+    "status_ia": "analise_preliminar",
+    "destino": "revisao_humana"
+  },
+  {
+    "execucao_id": "337be8239d1743adb07ea2fb7d186765",
+    "linha": 3,
+    "integracao": "simulada",
+    "status_rpa": "pendente",
+    "codigo": "observacao_ausente"
+  }
+]

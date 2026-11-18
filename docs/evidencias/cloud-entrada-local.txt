@@ -1,0 +1,35 @@
+Teste LOCAL do ponto de entrada, não execução no GitHub Actions.
+{
+  "versao": "1.0",
+  "execucao_id": "7f07e06b62eb48a2a91c34b8e94e774f",
+  "inicio": "2026-11-18T11:17:37.213+00:00",
+  "modo": "simulado",
+  "diretorio": "runs/7f07e06b62eb48a2a91c34b8e94e774f",
+  "contagens": {
+    "entradas": 4,
+    "processados": 1,
+    "duplicados": 1,
+    "pendencias": 2,
+    "falhas": 0
+  },
+  "exit_code": 0,
+  "entrada_sha256": "7fad8abfd636b9666b379d5824ae91c97e4c5d8d29dafdd2e0997de065e0a9d7",
+  "fim": "2026-11-18T11:17:37.216+00:00",
+  "situacao": "concluida_com_pendencias"
+}
+
+EXIT=0
+### CitizenTech RPA - simulado
+
+Execução: `7f07e06b62eb48a2a91c34b8e94e774f`. Estado anterior: `NOVO, confirmado`.
+
+| Resultado | Itens |
+|---|---:|
+| entradas | 4 |
+| processados | 1 |
+| duplicados | 1 |
+| pendencias | 2 |
+| falhas | 0 |
+
+Baixe `rpa-resultados` e `rpa-state`. Na próxima execução restaure o estado deste run.
+O consumidor Akona ainda não foi conectado. Modo simulado não comprova integração.

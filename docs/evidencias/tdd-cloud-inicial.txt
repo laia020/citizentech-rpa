@@ -1,0 +1,50 @@
+test_missing_state_cannot_be_silently_reset (test_cloud.CloudTests.test_missing_state_cannot_be_silently_reset) ... ERROR
+test_new_state_is_explicit_and_bad_run_id_cannot_execute_shell (test_cloud.CloudTests.test_new_state_is_explicit_and_bad_run_id_cannot_execute_shell) ... ERROR
+test_restore_failure_aborts_without_fresh_database (test_cloud.CloudTests.test_restore_failure_aborts_without_fresh_database) ... ERROR
+
+======================================================================
+ERROR: test_missing_state_cannot_be_silently_reset (test_cloud.CloudTests.test_missing_state_cannot_be_silently_reset)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<projeto>/tests/test_cloud.py", line 20, in test_missing_state_cannot_be_silently_reset
+    module = self.load()
+             ^^^^^^^^^^^
+  File "<projeto>/tests/test_cloud.py", line 16, in load
+    spec.loader.exec_module(module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1132, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1190, in get_data
+FileNotFoundError: [Errno 2] No such file or directory: '<projeto>/scripts/cloud_run.py'
+
+======================================================================
+ERROR: test_new_state_is_explicit_and_bad_run_id_cannot_execute_shell (test_cloud.CloudTests.test_new_state_is_explicit_and_bad_run_id_cannot_execute_shell)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<projeto>/tests/test_cloud.py", line 26, in test_new_state_is_explicit_and_bad_run_id_cannot_execute_shell
+    module = self.load()
+             ^^^^^^^^^^^
+  File "<projeto>/tests/test_cloud.py", line 16, in load
+    spec.loader.exec_module(module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1132, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1190, in get_data
+FileNotFoundError: [Errno 2] No such file or directory: '<projeto>/scripts/cloud_run.py'
+
+======================================================================
+ERROR: test_restore_failure_aborts_without_fresh_database (test_cloud.CloudTests.test_restore_failure_aborts_without_fresh_database)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<projeto>/tests/test_cloud.py", line 36, in test_restore_failure_aborts_without_fresh_database
+    module = self.load()
+             ^^^^^^^^^^^
+  File "<projeto>/tests/test_cloud.py", line 16, in load
+    spec.loader.exec_module(module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1132, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1190, in get_data
+FileNotFoundError: [Errno 2] No such file or directory: '<projeto>/scripts/cloud_run.py'
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+FAILED (errors=3)

@@ -1,0 +1,8 @@
+{"data_hora": "2026-11-18T11:25:46.701+00:00", "execucao_id": "337be8239d1743adb07ea2fb7d186765", "etapa": "lote", "resultado": "iniciado", "modo": "simulado"}
+{"data_hora": "2026-11-18T11:25:46.703+00:00", "execucao_id": "337be8239d1743adb07ea2fb7d186765", "etapa": "validacao", "resultado": "aprovado", "linha": 1, "item_ref": "5ea8e1a136eb4e95"}
+{"data_hora": "2026-11-18T11:25:46.703+00:00", "execucao_id": "337be8239d1743adb07ea2fb7d186765", "etapa": "simulador", "resultado": "resposta_simulada", "linha": 1, "item_ref": "5ea8e1a136eb4e95", "tentativa": 1}
+{"data_hora": "2026-11-18T11:25:46.703+00:00", "execucao_id": "337be8239d1743adb07ea2fb7d186765", "etapa": "integracao", "resultado": "processado", "linha": 1, "item_ref": "5ea8e1a136eb4e95", "request_id": "SIMULADO-415fc8ebaaf24b69a5138e024e2dc3fc", "status_ia": "analise_preliminar"}
+{"data_hora": "2026-11-18T11:25:46.703+00:00", "execucao_id": "337be8239d1743adb07ea2fb7d186765", "etapa": "item", "resultado": "processado", "linha": 1, "codigo": "ok", "item_ref": "5ea8e1a136eb4e95"}
+{"data_hora": "2026-11-18T11:25:46.703+00:00", "execucao_id": "337be8239d1743adb07ea2fb7d186765", "etapa": "item", "resultado": "duplicado", "linha": 2, "codigo": "ja_processado", "item_ref": "5ea8e1a136eb4e95"}
+{"data_hora": "2026-11-18T11:25:46.703+00:00", "execucao_id": "337be8239d1743adb07ea2fb7d186765", "etapa": "item", "resultado": "pendente", "linha": 3, "codigo": "observacao_ausente", "item_ref": null}
+{"data_hora": "2026-11-18T11:25:46.704+00:00", "execucao_id": "337be8239d1743adb07ea2fb7d186765", "etapa": "lote", "resultado": "concluida_com_pendencias", "contagens": {"entradas": 3, "processados": 1, "duplicados": 1, "pendencias": 1, "falhas": 0}, "exit_code": 0}

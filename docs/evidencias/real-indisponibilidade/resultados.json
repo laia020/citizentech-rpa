@@ -1,0 +1,43 @@
+[
+  {
+    "execucao_id": "0ec3479a81ff41908c7d6529429ff274",
+    "linha": 1,
+    "integracao": "real",
+    "ocorrencia_id": "RPA-LIVE-20261118-001",
+    "item_ref": "d14844466ecff7c3",
+    "fingerprint": "79a2df35c21782f86934f318563b3c63d427a9ae1ef4448a69209e78cdec53dc",
+    "status_rpa": "falha",
+    "codigo": "http_503",
+    "repetivel": true,
+    "resultado_incerto": false
+  },
+  {
+    "execucao_id": "0ec3479a81ff41908c7d6529429ff274",
+    "linha": 2,
+    "integracao": "real",
+    "ocorrencia_id": "RPA-LIVE-20261118-001",
+    "item_ref": "d14844466ecff7c3",
+    "fingerprint": "79a2df35c21782f86934f318563b3c63d427a9ae1ef4448a69209e78cdec53dc",
+    "status_rpa": "pendente",
+    "codigo": "falha_anterior_revisao"
+  },
+  {
+    "execucao_id": "0ec3479a81ff41908c7d6529429ff274",
+    "linha": 3,
+    "integracao": "real",
+    "ocorrencia_id": "RPA-LIVE-20261118-002",
+    "item_ref": "f3e836e6a7b871f5",
+    "fingerprint": "2fdfa6f45b71950f81c099f74b6327df7fba2ecf2ca6fba713e4ca45f09efe16",
+    "status_rpa": "falha",
+    "codigo": "http_503",
+    "repetivel": true,
+    "resultado_incerto": false
+  },
+  {
+    "execucao_id": "0ec3479a81ff41908c7d6529429ff274",
+    "linha": 4,
+    "integracao": "real",
+    "status_rpa": "pendente",
+    "codigo": "observacao_ausente"
+  }
+]

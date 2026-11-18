@@ -1,0 +1,18 @@
+{
+  "versao": "1.0",
+  "execucao_id": "23bf5494e46d4bb89de351767d6ff7cc",
+  "inicio": "2026-11-18T11:25:46.771+00:00",
+  "modo": "simulado",
+  "diretorio": "runs/23bf5494e46d4bb89de351767d6ff7cc",
+  "contagens": {
+    "entradas": 0,
+    "processados": 0,
+    "duplicados": 0,
+    "pendencias": 0,
+    "falhas": 0
+  },
+  "exit_code": 2,
+  "erro_arquivo": "arquivo_ausente",
+  "fim": "2026-11-18T11:25:46.772+00:00",
+  "situacao": "falha"
+}

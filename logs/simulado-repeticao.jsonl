@@ -1,0 +1,6 @@
+{"data_hora": "2026-11-18T11:25:46.630+00:00", "execucao_id": "5b1c07c4b66546f09169751e0ad96dfb", "etapa": "lote", "resultado": "iniciado", "modo": "simulado"}
+{"data_hora": "2026-11-18T11:25:46.632+00:00", "execucao_id": "5b1c07c4b66546f09169751e0ad96dfb", "etapa": "item", "resultado": "duplicado", "linha": 1, "codigo": "ja_processado", "item_ref": "1bcf1932e22c7375"}
+{"data_hora": "2026-11-18T11:25:46.632+00:00", "execucao_id": "5b1c07c4b66546f09169751e0ad96dfb", "etapa": "item", "resultado": "duplicado", "linha": 2, "codigo": "ja_processado", "item_ref": "1bcf1932e22c7375"}
+{"data_hora": "2026-11-18T11:25:46.632+00:00", "execucao_id": "5b1c07c4b66546f09169751e0ad96dfb", "etapa": "item", "resultado": "pendente", "linha": 3, "codigo": "id_conflitante", "item_ref": "1bcf1932e22c7375"}
+{"data_hora": "2026-11-18T11:25:46.632+00:00", "execucao_id": "5b1c07c4b66546f09169751e0ad96dfb", "etapa": "item", "resultado": "pendente", "linha": 4, "codigo": "observacao_ausente", "item_ref": null}
+{"data_hora": "2026-11-18T11:25:46.632+00:00", "execucao_id": "5b1c07c4b66546f09169751e0ad96dfb", "etapa": "lote", "resultado": "concluida_com_pendencias", "contagens": {"entradas": 4, "processados": 0, "duplicados": 2, "pendencias": 2, "falhas": 0}, "exit_code": 0}

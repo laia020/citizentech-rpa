@@ -1,0 +1,83 @@
+[
+  {
+    "execucao_id": "57dd12eb306d4501a9e22abb3427c539",
+    "linha": 1,
+    "integracao": "real",
+    "ocorrencia_id": "RPA-LIVE-20261118-001",
+    "item_ref": "d14844466ecff7c3",
+    "fingerprint": "79a2df35c21782f86934f318563b3c63d427a9ae1ef4448a69209e78cdec53dc",
+    "entrada": {
+      "ocorrencia_id": "RPA-LIVE-20261118-001",
+      "pergunta": "O que pode ser registrado e encaminhado sem determinar a causa?",
+      "simulada": true,
+      "relato": "Uma luminária pública foi observada apagada à noite. A causa não foi inspecionada.",
+      "sensores": [],
+      "observacoes_visuais": [],
+      "bairro": "Bairro fictício de demonstração",
+      "ponto": "Poste fictício A",
+      "tipo": "luminaria_apagada"
+    },
+    "status_rpa": "falha",
+    "codigo": "http_503",
+    "repetivel": true,
+    "resultado_incerto": false
+  },
+  {
+    "execucao_id": "57dd12eb306d4501a9e22abb3427c539",
+    "linha": 2,
+    "integracao": "real",
+    "ocorrencia_id": "RPA-LIVE-20261118-001",
+    "item_ref": "d14844466ecff7c3",
+    "fingerprint": "79a2df35c21782f86934f318563b3c63d427a9ae1ef4448a69209e78cdec53dc",
+    "entrada": {
+      "ocorrencia_id": "RPA-LIVE-20261118-001",
+      "pergunta": "O que pode ser registrado e encaminhado sem determinar a causa?",
+      "simulada": true,
+      "relato": "Uma luminária pública foi observada apagada à noite. A causa não foi inspecionada.",
+      "sensores": [],
+      "observacoes_visuais": [],
+      "bairro": "Bairro fictício de demonstração",
+      "ponto": "Poste fictício A",
+      "tipo": "luminaria_apagada"
+    },
+    "status_rpa": "pendente",
+    "codigo": "falha_anterior_revisao"
+  },
+  {
+    "execucao_id": "57dd12eb306d4501a9e22abb3427c539",
+    "linha": 3,
+    "integracao": "real",
+    "ocorrencia_id": "RPA-LIVE-20261118-002",
+    "item_ref": "f3e836e6a7b871f5",
+    "fingerprint": "2fdfa6f45b71950f81c099f74b6327df7fba2ecf2ca6fba713e4ca45f09efe16",
+    "entrada": {
+      "ocorrencia_id": "RPA-LIVE-20261118-002",
+      "pergunta": "É possível converter a leitura ADC em lux sem uma referência de calibração?",
+      "simulada": true,
+      "relato": "Leitura fictícia de luminosidade sem referência de calibração fornecida.",
+      "sensores": [
+        {
+          "tipo": "luminosidade",
+          "valor": 83,
+          "unidade": "ADC",
+          "calibrado": false
+        }
+      ],
+      "observacoes_visuais": [],
+      "bairro": "Bairro fictício de demonstração",
+      "ponto": "Poste fictício B",
+      "tipo": "verificacao_luminosidade"
+    },
+    "status_rpa": "falha",
+    "codigo": "http_503",
+    "repetivel": true,
+    "resultado_incerto": false
+  },
+  {
+    "execucao_id": "57dd12eb306d4501a9e22abb3427c539",
+    "linha": 4,
+    "integracao": "real",
+    "status_rpa": "pendente",
+    "codigo": "observacao_ausente"
+  }
+]

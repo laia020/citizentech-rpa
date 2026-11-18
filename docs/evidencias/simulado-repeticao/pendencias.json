@@ -1,0 +1,31 @@
+[
+  {
+    "execucao_id": "5b1c07c4b66546f09169751e0ad96dfb",
+    "linha": 3,
+    "integracao": "simulada",
+    "ocorrencia_id": "RPA-DEMO-001",
+    "item_ref": "1bcf1932e22c7375",
+    "fingerprint": "eeefd2fddff7c2112bb3a58c153221a0051cd7af7a6d454db27576e1fcd3f1e8",
+    "entrada": {
+      "ocorrencia_id": "RPA-DEMO-001",
+      "pergunta": "O que pode ser registrado e encaminhado sem determinar a causa?",
+      "simulada": true,
+      "relato": "Observação fictícia divergente: a luminária está acesa.",
+      "municipio": "Osasco/SP - território demonstrativo",
+      "sensores": [],
+      "observacoes_visuais": [],
+      "bairro": "Bairro fictício A",
+      "ponto": "Poste fictício 01",
+      "tipo": "luminaria_apagada"
+    },
+    "status_rpa": "pendente",
+    "codigo": "id_conflitante"
+  },
+  {
+    "execucao_id": "5b1c07c4b66546f09169751e0ad96dfb",
+    "linha": 4,
+    "integracao": "simulada",
+    "status_rpa": "pendente",
+    "codigo": "observacao_ausente"
+  }
+]

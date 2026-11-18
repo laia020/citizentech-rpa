@@ -1,0 +1,19 @@
+[project]
+name = "citizentech-rpa"
+version = "0.1.0"
+description = "POC de automação em lote Akona Energy - CitizenTech FIAP"
+requires-python = ">=3.12,<3.13"
+dependencies = ["jsonschema>=4.25,<5"]
+
+[project.scripts]
+citizentech-rpa = "citizentech_rpa.cli:main"
+
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+docs = ["reportlab>=4.4,<5", "pymupdf>=1.26,<2"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/citizentech_rpa"]

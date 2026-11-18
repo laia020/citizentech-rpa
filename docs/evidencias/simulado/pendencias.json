@@ -1,0 +1,19 @@
+[
+  {
+    "execucao_id": "93985db3a01c4a03883ad6a343cc84a0",
+    "linha": 3,
+    "integracao": "simulada",
+    "ocorrencia_id": "RPA-DEMO-001",
+    "item_ref": "1bcf1932e22c7375",
+    "fingerprint": "eeefd2fddff7c2112bb3a58c153221a0051cd7af7a6d454db27576e1fcd3f1e8",
+    "status_rpa": "pendente",
+    "codigo": "id_conflitante"
+  },
+  {
+    "execucao_id": "93985db3a01c4a03883ad6a343cc84a0",
+    "linha": 4,
+    "integracao": "simulada",
+    "status_rpa": "pendente",
+    "codigo": "observacao_ausente"
+  }
+]

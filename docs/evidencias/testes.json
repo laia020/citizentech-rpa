@@ -1,0 +1,19 @@
+{
+  "data_hora": "2026-11-18T11:25:21.182220+00:00",
+  "python": "3.12.16",
+  "rede_ia": "simulada; sem acesso ao serviço público",
+  "testes": 26,
+  "falhas": 0,
+  "erros": 0,
+  "pulados": 0,
+  "aprovado": true,
+  "sha256_fontes": {
+    "src/citizentech_rpa/__init__.py": "74bc6602a7442b78086da909c18683ab735b7e8e3be04a55519555607077aa96",
+    "src/citizentech_rpa/__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+    "src/citizentech_rpa/api.py": "3c8eda8b8b7c5e1ba55ead2a7555380cf8ce932adae2a085e70f713dd65c8301",
+    "src/citizentech_rpa/cli.py": "32d9828d6da32b48ecebdd01a900bba225d352292e337882a2e20cdd85c36a4b",
+    "src/citizentech_rpa/pipeline.py": "b6b73f8911af74f4ffb11f05f0e4d3e41dfdaf58c1f9bb830a39f8e7078ce092",
+    "src/citizentech_rpa/storage.py": "64068595178838cbea7c114476598e9aaa32d4e784add30f19414ceb8891f3ef",
+    "src/citizentech_rpa/validation.py": "5ae996e843f83c4efd05ee3cbd0286d1acb3f451254d3c0c23036cd7c4ed987c"
+  }
+}

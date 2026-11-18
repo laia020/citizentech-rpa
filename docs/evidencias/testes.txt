@@ -1,0 +1,31 @@
+test_429_respects_retry_after_and_limits_attempts (test_api.ApiTests.test_429_respects_retry_after_and_limits_attempts) ... ok
+test_502_413_422_are_not_retried (test_api.ApiTests.test_502_413_422_are_not_retried) ... ok
+test_503_retry_exhausted (test_api.ApiTests.test_503_retry_exhausted) ... ok
+test_body_limit_prevents_network_call (test_api.ApiTests.test_body_limit_prevents_network_call) ... ok
+test_excessive_retry_after_defers_instead_of_retrying_early (test_api.ApiTests.test_excessive_retry_after_defers_instead_of_retrying_early) ... ok
+test_invalid_json_not_repaired (test_api.ApiTests.test_invalid_json_not_repaired) ... ok
+test_timeout_is_uncertain_and_not_repeated_automatically (test_api.ApiTests.test_timeout_is_uncertain_and_not_repeated_automatically) ... ok
+test_missing_state_cannot_be_silently_reset (test_cloud.CloudTests.test_missing_state_cannot_be_silently_reset) ... ok
+test_new_state_is_explicit_and_bad_run_id_cannot_execute_shell (test_cloud.CloudTests.test_new_state_is_explicit_and_bad_run_id_cannot_execute_shell) ... ok
+test_restore_failure_aborts_without_fresh_database (test_cloud.CloudTests.test_restore_failure_aborts_without_fresh_database) ... ok
+test_business_refusal_is_processed_and_routes_to_human (test_pipeline.PipelineTests.test_business_refusal_is_processed_and_routes_to_human) ... ok
+test_csv_boolean_mapping_and_bad_row (test_pipeline.PipelineTests.test_csv_boolean_mapping_and_bad_row) ... ok
+test_decision_incomplete_continues_remaining_items (test_pipeline.PipelineTests.test_decision_incomplete_continues_remaining_items) ... ok
+test_duplicates_conflict_and_restart (test_pipeline.PipelineTests.test_duplicates_conflict_and_restart) ... ok
+test_failed_item_requires_explicit_resume_and_preserves_others (test_pipeline.PipelineTests.test_failed_item_requires_explicit_resume_and_preserves_others) ... ok
+test_missing_invalid_file_and_invalid_collection (test_pipeline.PipelineTests.test_missing_invalid_file_and_invalid_collection) ... ok
+test_rejects_unknown_fields_real_data_naive_date_and_calibration (test_pipeline.PipelineTests.test_rejects_unknown_fields_real_data_naive_date_and_calibration) ... ok
+test_resume_does_not_repeat_same_failed_id_inside_one_batch (test_pipeline.PipelineTests.test_resume_does_not_repeat_same_failed_id_inside_one_batch) ... ok
+test_schema_or_correlation_error_is_not_success (test_pipeline.PipelineTests.test_schema_or_correlation_error_is_not_success) ... ok
+test_traceability_input_to_response_and_audit (test_pipeline.PipelineTests.test_traceability_input_to_response_and_audit) ... ok
+test_valid_batch_and_contract_mapping (test_pipeline.PipelineTests.test_valid_batch_and_contract_mapping) ... ok
+test_concurrent_batch_cannot_use_locked_state (test_state.RecoveryTests.test_concurrent_batch_cannot_use_locked_state) ... ok
+test_interruption_after_send_marker_requires_human_review (test_state.RecoveryTests.test_interruption_after_send_marker_requires_human_review) ... ok
+test_nonfinite_json_and_duplicate_keys_are_rejected (test_state.RecoveryTests.test_nonfinite_json_and_duplicate_keys_are_rejected) ... ok
+test_simulation_does_not_suppress_real_integration (test_state.RecoveryTests.test_simulation_does_not_suppress_real_integration) ... ok
+test_unicode_and_default_arrays_are_idempotent (test_state.RecoveryTests.test_unicode_and_default_arrays_are_idempotent) ... ok
+
+----------------------------------------------------------------------
+Ran 26 tests in 0.056s
+
+OK
