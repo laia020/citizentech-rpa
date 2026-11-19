@@ -1,0 +1,46 @@
+{
+  "origem": "resultados.json do artifact do run 44327757282",
+  "resultado_fonte_sha256": "939d2d4f7e4439eddc677a2635c87f43b3447bfb37827a260309847f73e2ebfd",
+  "metodo": "Projecao da entrada normalizada preservada, conforme whitelist de Occurrence e cliente RPA; nao e captura independente do corpo HTTP.",
+  "novas_chamadas_ia": 0,
+  "contrato_entrada_conferido": true,
+  "itens": [
+    {
+      "linha": 1,
+      "ocorrencia_id": "RPA-LIVE-20261118-001",
+      "fingerprint": "79a2df35c21782f86934f318563b3c63d427a9ae1ef4448a69209e78cdec53dc",
+      "payload_normalizado": {
+        "ocorrencia_id": "RPA-LIVE-20261118-001",
+        "pergunta": "O que pode ser registrado e encaminhado sem determinar a causa?",
+        "simulada": true,
+        "relato": "Uma luminária pública foi observada apagada à noite. A causa não foi inspecionada.",
+        "sensores": [],
+        "observacoes_visuais": []
+      },
+      "resposta_request_id": "333fecbe-114f-4603-824e-43b7fa8dd2d6",
+      "resposta_status_ia": "analise_preliminar"
+    },
+    {
+      "linha": 3,
+      "ocorrencia_id": "RPA-LIVE-20261118-002",
+      "fingerprint": "2fdfa6f45b71950f81c099f74b6327df7fba2ecf2ca6fba713e4ca45f09efe16",
+      "payload_normalizado": {
+        "ocorrencia_id": "RPA-LIVE-20261118-002",
+        "pergunta": "É possível converter a leitura ADC em lux sem uma referência de calibração?",
+        "simulada": true,
+        "relato": "Leitura fictícia de luminosidade sem referência de calibração fornecida.",
+        "sensores": [
+          {
+            "tipo": "luminosidade",
+            "valor": 83,
+            "unidade": "ADC",
+            "calibrado": false
+          }
+        ],
+        "observacoes_visuais": []
+      },
+      "resposta_request_id": "5e25fa23-6c84-423e-87f8-9a1fb4e849d3",
+      "resposta_status_ia": "informacao_insuficiente"
+    }
+  ]
+}

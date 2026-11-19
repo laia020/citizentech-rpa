@@ -1,0 +1,199 @@
+[
+  {
+    "execucao_id": "dd5f0bb6ea1f4cd6bd39db4fa78b0385",
+    "linha": 1,
+    "integracao": "real",
+    "ocorrencia_id": "RPA-LIVE-20261118-001",
+    "item_ref": "d14844466ecff7c3",
+    "fingerprint": "79a2df35c21782f86934f318563b3c63d427a9ae1ef4448a69209e78cdec53dc",
+    "entrada": {
+      "ocorrencia_id": "RPA-LIVE-20261118-001",
+      "pergunta": "O que pode ser registrado e encaminhado sem determinar a causa?",
+      "simulada": true,
+      "relato": "Uma luminária pública foi observada apagada à noite. A causa não foi inspecionada.",
+      "sensores": [],
+      "observacoes_visuais": [],
+      "bairro": "Bairro fictício de demonstração",
+      "ponto": "Poste fictício A",
+      "tipo": "luminaria_apagada"
+    },
+    "status_rpa": "processado",
+    "codigo": "ok",
+    "ia": {
+      "request_id": "333fecbe-114f-4603-824e-43b7fa8dd2d6",
+      "ocorrencia_id": "RPA-LIVE-20261118-001",
+      "analise": {
+        "status": "analise_preliminar",
+        "resumo": "A observação de iluminação pública pode ser registrada, sem determinar causa elétrica.",
+        "hipoteses": [],
+        "informacoes_faltantes": [
+          "Localização do ponto para o encaminhamento operacional."
+        ],
+        "encaminhamento": "Registrar a observação e encaminhar à equipe competente para verificação humana, sem prazo presumido.",
+        "fontes": [
+          "registro:1",
+          "evidencia:1"
+        ]
+      },
+      "referencias": [
+        {
+          "chunk_id": "evidencia:1",
+          "document_id": "evidencia",
+          "title": "Causa não determinada",
+          "url": null
+        },
+        {
+          "chunk_id": "registro:1",
+          "document_id": "registro",
+          "title": "Registro de ocorrência",
+          "url": null
+        }
+      ],
+      "execucao": {
+        "modo": "rag_finetuning",
+        "modelo": "Qwen/Qwen2.5-1.5B-Instruct",
+        "revisao_modelo": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+        "adaptador": "r1-sha256:c905fee58cb4c0c44baeb9ac14dd9e9b7e412f280b3024c825441d018d573dce",
+        "versao_base": "4856214170a80a63567108e8e33d5240a6e7de42968f903164c028c9e72bf2f5",
+        "duracao_ms": 2747
+      }
+    },
+    "status_ia": "analise_preliminar",
+    "destino": "revisao_humana",
+    "request_id": "333fecbe-114f-4603-824e-43b7fa8dd2d6"
+  },
+  {
+    "execucao_id": "dd5f0bb6ea1f4cd6bd39db4fa78b0385",
+    "linha": 2,
+    "integracao": "real",
+    "ocorrencia_id": "RPA-LIVE-20261118-001",
+    "item_ref": "d14844466ecff7c3",
+    "fingerprint": "79a2df35c21782f86934f318563b3c63d427a9ae1ef4448a69209e78cdec53dc",
+    "entrada": {
+      "ocorrencia_id": "RPA-LIVE-20261118-001",
+      "pergunta": "O que pode ser registrado e encaminhado sem determinar a causa?",
+      "simulada": true,
+      "relato": "Uma luminária pública foi observada apagada à noite. A causa não foi inspecionada.",
+      "sensores": [],
+      "observacoes_visuais": [],
+      "bairro": "Bairro fictício de demonstração",
+      "ponto": "Poste fictício A",
+      "tipo": "luminaria_apagada"
+    },
+    "status_rpa": "duplicado",
+    "codigo": "ja_processado",
+    "execucao_original": "dd5f0bb6ea1f4cd6bd39db4fa78b0385",
+    "ia": {
+      "request_id": "333fecbe-114f-4603-824e-43b7fa8dd2d6",
+      "ocorrencia_id": "RPA-LIVE-20261118-001",
+      "analise": {
+        "status": "analise_preliminar",
+        "resumo": "A observação de iluminação pública pode ser registrada, sem determinar causa elétrica.",
+        "hipoteses": [],
+        "informacoes_faltantes": [
+          "Localização do ponto para o encaminhamento operacional."
+        ],
+        "encaminhamento": "Registrar a observação e encaminhar à equipe competente para verificação humana, sem prazo presumido.",
+        "fontes": [
+          "registro:1",
+          "evidencia:1"
+        ]
+      },
+      "referencias": [
+        {
+          "chunk_id": "evidencia:1",
+          "document_id": "evidencia",
+          "title": "Causa não determinada",
+          "url": null
+        },
+        {
+          "chunk_id": "registro:1",
+          "document_id": "registro",
+          "title": "Registro de ocorrência",
+          "url": null
+        }
+      ],
+      "execucao": {
+        "modo": "rag_finetuning",
+        "modelo": "Qwen/Qwen2.5-1.5B-Instruct",
+        "revisao_modelo": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+        "adaptador": "r1-sha256:c905fee58cb4c0c44baeb9ac14dd9e9b7e412f280b3024c825441d018d573dce",
+        "versao_base": "4856214170a80a63567108e8e33d5240a6e7de42968f903164c028c9e72bf2f5",
+        "duracao_ms": 2747
+      }
+    },
+    "request_id": "333fecbe-114f-4603-824e-43b7fa8dd2d6",
+    "status_ia": "analise_preliminar",
+    "destino": "revisao_humana"
+  },
+  {
+    "execucao_id": "dd5f0bb6ea1f4cd6bd39db4fa78b0385",
+    "linha": 3,
+    "integracao": "real",
+    "ocorrencia_id": "RPA-LIVE-20261118-002",
+    "item_ref": "f3e836e6a7b871f5",
+    "fingerprint": "2fdfa6f45b71950f81c099f74b6327df7fba2ecf2ca6fba713e4ca45f09efe16",
+    "entrada": {
+      "ocorrencia_id": "RPA-LIVE-20261118-002",
+      "pergunta": "É possível converter a leitura ADC em lux sem uma referência de calibração?",
+      "simulada": true,
+      "relato": "Leitura fictícia de luminosidade sem referência de calibração fornecida.",
+      "sensores": [
+        {
+          "tipo": "luminosidade",
+          "valor": 83,
+          "unidade": "ADC",
+          "calibrado": false
+        }
+      ],
+      "observacoes_visuais": [],
+      "bairro": "Bairro fictício de demonstração",
+      "ponto": "Poste fictício B",
+      "tipo": "verificacao_luminosidade"
+    },
+    "status_rpa": "processado",
+    "codigo": "ok",
+    "ia": {
+      "request_id": "5e25fa23-6c84-423e-87f8-9a1fb4e849d3",
+      "ocorrencia_id": "RPA-LIVE-20261118-002",
+      "analise": {
+        "status": "informacao_insuficiente",
+        "resumo": "Uma leitura ADC sem referência de calibração não permite determinar lux ou conformidade.",
+        "hipoteses": [],
+        "informacoes_faltantes": [
+          "Curva e condições de calibração verificáveis."
+        ],
+        "encaminhamento": "Solicitar as informações pertinentes e verificação humana antes de concluir, sem instruir reparo.",
+        "fontes": [
+          "ldr:1"
+        ]
+      },
+      "referencias": [
+        {
+          "chunk_id": "ldr:1",
+          "document_id": "ldr",
+          "title": "Limites de sensor LDR",
+          "url": null
+        }
+      ],
+      "execucao": {
+        "modo": "rag_finetuning",
+        "modelo": "Qwen/Qwen2.5-1.5B-Instruct",
+        "revisao_modelo": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+        "adaptador": "r1-sha256:c905fee58cb4c0c44baeb9ac14dd9e9b7e412f280b3024c825441d018d573dce",
+        "versao_base": "4856214170a80a63567108e8e33d5240a6e7de42968f903164c028c9e72bf2f5",
+        "duracao_ms": 2203
+      }
+    },
+    "status_ia": "informacao_insuficiente",
+    "destino": "complementar_informacoes",
+    "request_id": "5e25fa23-6c84-423e-87f8-9a1fb4e849d3"
+  },
+  {
+    "execucao_id": "dd5f0bb6ea1f4cd6bd39db4fa78b0385",
+    "linha": 4,
+    "integracao": "real",
+    "status_rpa": "pendente",
+    "codigo": "observacao_ausente"
+  }
+]

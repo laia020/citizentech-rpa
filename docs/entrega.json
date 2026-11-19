@@ -1,10 +1,24 @@
 {
   "data_revisao": "2026-11-18",
   "produto": "Akona Energy",
+  "escopo_entrega_rpa": "Automação em lote integrada ao serviço de IA existente do Akona Energy",
+  "consumo_arquivo_final_por_outro_componente_demonstrado": false,
+  "enunciado_original_conferido": true,
+  "enunciado_origem": "docs/evidencias/enunciado-origem.json",
+  "integracao_interpretacao_documentada": true,
+  "integracao_resultado_consumido": "Ocorrência validada e normalizada pelo RPA, consumida via API pela IA existente",
   "repositorio_rpa_url": "https://github.com/laia020/citizentech-rpa",
   "video_url": null,
+  "video_duracao_segundos": null,
+  "video_acesso_publico_conferido": false,
   "workflow_publico_url": "https://github.com/laia020/citizentech-rpa/actions/runs/44296057126",
-  "integracao_bem_sucedida": false,
+  "integracao_bem_sucedida": true,
+  "integracao_evidencia_url": "https://github.com/laia020/citizentech-rpa/actions/runs/44327757282",
+  "integracao_evidencia_local": "docs/evidencias/nuvem-real/github-run.json",
+  "estado_ultimo_run_id": 44327757282,
+  "integracao_akona_backend": false,
+  "revisao_documental_publicada": false,
+  "envio_teams_realizado": false,
   "ficha_alinhada_com_grupo": false,
   "equipe": [
     {
@@ -28,6 +42,6 @@
       "rm": "98694"
     }
   ],
-  "ci_url": "https://github.com/laia020/citizentech-rpa/actions/runs/44296025620",
+  "ci_url": "https://github.com/laia020/citizentech-rpa/actions/runs/44296622327",
   "workflow_repeticao_url": "https://github.com/laia020/citizentech-rpa/actions/runs/44296159102"
 }

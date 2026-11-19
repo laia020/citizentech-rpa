@@ -6,12 +6,28 @@
 | Cidadão e território | Pessoas que relatam problemas de iluminação e equipes de triagem. Osasco/SP é território **demonstrativo**, sujeito ao alinhamento da ficha com o grupo. Sem operação municipal comprovada. |
 | Problema | Receber ocorrências uma a uma exige validar campos, conferir repetições e organizar encaminhamentos manualmente. |
 | Proposta de valor | Organizar lotes fictícios, separar pendências e manter rastreabilidade até a triagem humana; benefício proposto, sem redução de tempo ou custo medida em campo. |
-| Arquitetura | CSV/JSON → Python RPA → validação + SQLite → cliente da IA → resultados JSON + auditoria → revisão humana. Workflow de GitHub Actions executado em nuvem no modo simulado. Consumo pelo backend/interface do Akona ainda pendente. |
+| Arquitetura | CSV/JSON → Python RPA → validação + SQLite → cliente da IA → resultados JSON + auditoria → revisão humana. GitHub Actions executado em nuvem em simulação e em integração real com a IA. Consumo pelo backend/interface do Akona ainda pendente. |
 | Fontes de dados | Exemplos autorais fictícios em `examples/`; contrato OpenAPI público da IA. Não usa base municipal, cidadãos reais ou sensor conectado. |
 | Modelos de IA | Serviço existente: Qwen2.5-1.5B-Instruct, RAG e LoRA r1, implantação PyTorch FP32 informada pelo projeto de IA. O RPA não instala modelo, baixa pesos ou treina. O simulador não executa IA. |
 | URLs | [MVP informado](https://ca-akona-energy-prod.salmoncoast-770d275b.eastus2.azurecontainerapps.io/), [IA pública](https://laia020-citizentech-iluminacao-ia.hf.space/demo), [API](https://laia020-citizentech-iluminacao-ia.hf.space/docs), [repositório da IA](https://github.com/laia020/citizentech-iluminacao-ia). [Repositório público do RPA](https://github.com/laia020/citizentech-rpa). **Vídeo: pendente de gravação/publicação.** Repositório do Akona não fornecido. |
 | Indicadores | Medidos nesta POC: contagens operacionais nos arquivos de execução e resultados dos testes. Propostos para estudo futuro: tempo de triagem, completude e encaminhamentos revisados. Não há medição de impacto de campo. |
 | ODS | ODS 11: organização de relatos sobre infraestrutura urbana; ODS 7: apoio proposto à gestão da iluminação. Não demonstra economia de energia ou cumprimento de metas. |
+
+## Escopo da entrega de RPA
+
+A demonstração desta disciplina apresenta **o RPA integrado ao serviço de IA existente do Akona Energy**: lote fictício → validação e deduplicação → consulta real à IA → resultados, pendências e auditoria → revisão humana.
+
+| Componente | Papel no fluxo demonstrado |
+|---|---|
+| RPA, foco desta entrega | Lê o lote, valida, percorre registros, decide o encaminhamento, preserva estado, evita consultas repetidas e exporta evidências. |
+| IA existente | Recebe a ocorrência normalizada e devolve análise ou informação insuficiente. O RPA valida e preserva a resposta. |
+| Backend/interface do Akona | Importação não implementada; evolução futura fora do fluxo demonstrado. |
+
+As entregas de IA e RPA são distintas e compartilham um componente real do mesmo produto. Este relatório, BPMN e vídeo específico documentam a automação; treinamento e avaliação do modelo pertencem à entrega de IA. O serviço remoto foi reutilizado sem alterações. [Roteiro de gravação](docs/roteiro-video.md) e [narração preparada](docs/narracao-video-rpa.md).
+
+A integração técnica RPA–IA está comprovada. A página 48 do enunciado original permite consumo do resultado por outro componente via API, banco ou arquivo estruturado; não especifica o backend do Akona nem obriga o uso do arquivo final. Nossa evidência é o resultado da validação e normalização consumido pela IA via API, com resposta correlacionada. A interpretação e os limites estão na [auditoria da entrega](docs/auditoria-entrega.md), sujeitos à avaliação dos professores. Não houve importação de `resultados.json` no backend do Akona.
+
+Os lotes são autorais, determinísticos e fictícios, escolhidos para exercitar sucesso, decisão e falha. A [origem e justificativa dos dados](docs/dados-demonstracao.md) documenta a alternativa de dados simulados permitida na página 18 do enunciado.
 
 ## Equipe
 
@@ -29,13 +45,17 @@
 - Lote simulado: 4 entradas, 1 processada, 1 duplicada e 2 pendências. Não demonstra análise por IA. [Resultados](docs/evidencias/simulado/resultados.json).
 - Lote real: a API pública retornou **HTTP 503** para as duas ocorrências válidas. 4 entradas, 0 processadas, 0 duplicadas, 2 pendências e 2 falhas. Quatro tentativas HTTP no total, contadas separadamente dos itens. [Auditoria real](docs/evidencias/real-indisponibilidade/auditoria.jsonl).
 - Uma retomada controlada, cerca de dez minutos depois, usou uma tentativa por ID e também recebeu 503: [segunda auditoria real](docs/evidencias/real-retomada/auditoria.jsonl). Foram seis chamadas reais no total das duas execuções, sem testes de carga nem repetição de 502.
-- **Integração funcional RPA–IA ainda parcial:** comunicação HTTP e tratamento de indisponibilidade comprovados; análise bem-sucedida pelo componente remoto não comprovada nesta execução. O backend e a interface do Akona não consumiram a saída.
+- **Integração funcional RPA–IA demonstrada:** o [lote real hospedado](https://github.com/laia020/citizentech-rpa/actions/runs/44327757282), em 18/11 às 11:45 (Brasília), restaurou o estado `44296159102` e recebeu **duas respostas HTTP 200**, validadas pelo RPA. Foram 4 entradas, **2 processadas, 1 duplicada, 1 pendência e 0 falhas**, com duas chamadas no total. Uma resposta contém análise preliminar; a outra, `informacao_insuficiente`, é sucesso operacional com encaminhamento para complementação. A duplicata reaproveitou o mesmo `request_id`, sem outra consulta. [Respostas e correlação](docs/evidencias/nuvem-real/resultados.json), [auditoria](docs/evidencias/nuvem-real/auditoria.jsonl) e [origem dos artifacts](docs/evidencias/nuvem-real/github-run.json). O backend e a interface do Akona não consumiram a saída.
 - [Código publicado no GitHub](https://github.com/laia020/citizentech-rpa), com [CI aprovada em Ubuntu](https://github.com/laia020/citizentech-rpa/actions/runs/44296025620). O [primeiro lote hospedado](https://github.com/laia020/citizentech-rpa/actions/runs/44296057126) concluiu em modo **simulado**: 4 entradas, 1 processada, 1 duplicada e 2 pendências, sem depender do Mac. Não comprova consumo pela IA. Vídeo e envio ao Teams permanecem pendentes; o projeto de IA não foi alterado.
 - [Segunda execução hospedada](https://github.com/laia020/citizentech-rpa/actions/runs/44296159102) restaurou o estado do primeiro run: 0 novos processamentos, 2 duplicatas e 2 pendências. Restauração e idempotência foram verificadas fora do Mac, sem rede de IA. [Registro da publicação](docs/evidencias/publicacao.json).
+
+As seis chamadas HTTP 503 anteriores foram preservadas como histórico; com o lote novo, são oito chamadas reais documentadas, duas bem-sucedidas. Nenhuma nova execução da suíte automatizada foi feita na atualização documental. As evidências de `nuvem-real/` e esta revisão estão locais, aguardando autorização de commit/push; o run já está no GitHub. Vídeo, ficha comum e envio ao Teams continuam pendentes.
 
 ## Executar localmente
 
 Mac/Linux, Python **3.12** e uv. A aplicação usa apenas `jsonschema` como dependência direta de execução; as dependências de PDF ficam no grupo opcional `docs`. Não necessita GPU, bibliotecas de IA nem servidor permanente.
+
+**Windows:** o lock usa `fcntl` e a execução nativa da aplicação não é suportada. Use o workflow Ubuntu hospedado para processar lotes. Os scripts de documentação podem rodar no Windows com Python 3.12 e o grupo `docs`; isso não comprova compatibilidade do RPA com Windows.
 
 Em uma cópia nova, sem `.venv`:
 
@@ -95,14 +115,14 @@ HTTP 429/503: até 2 tentativas por padrão (máximo configurável 3), espera pr
 
 ## Execução em nuvem
 
-[Workflow manual](.github/workflows/rpa.yml) validado em `ubuntu-latest`, executor hospedado do GitHub, sem runner no Mac. [Execução concluída em modo simulado](https://github.com/laia020/citizentech-rpa/actions/runs/44296057126); resultados públicos preservados em [evidências de nuvem](docs/evidencias/nuvem-simulado/resumo.json). O teste hospedado não consultou a IA.
+[Workflow manual](.github/workflows/rpa.yml) validado em `ubuntu-latest`, executor hospedado do GitHub. A [execução simulada](https://github.com/laia020/citizentech-rpa/actions/runs/44296057126) não consultou a IA. O [lote real posterior](https://github.com/laia020/citizentech-rpa/actions/runs/44327757282) obteve dois HTTP 200; [resumo preservado](docs/evidencias/nuvem-real/resumo.json). Nenhum computador pessoal foi usado como runner.
 
 Para reproduzir no repositório publicado:
 
 1. Abra [Actions → Lote CitizenTech RPA](https://github.com/laia020/citizentech-rpa/actions/workflows/rpa.yml) e clique em **Run workflow**. Comece em `simulado`.
 2. O estado deste repositório já foi inicializado. Para continuar, restaure o run **mais recente** com `rpa-state`. Somente em outra cópia nova, sem histórico a preservar: deixe `estado_run_id` vazio e confirme `iniciar_estado`.
-3. Nas próximas execuções, informe o ID do run **mais recente** que contém `rpa-state`, inclusive se houve falha na API. Último run de lote desta validação: **44296159102**. Desmarque `iniciar_estado`. Não reutilize um ancestral mais antigo; confira se houve execuções posteriores.
-4. Para testar a comunicação pública, selecione `real` e `lote-real.json`. Retomada de 429/503 é explícita.
+3. Nas próximas execuções, informe o ID do run **mais recente** que contém `rpa-state`, inclusive se houve falha na API. Último run de lote desta validação: **44327757282**. Desmarque `iniciar_estado`. Não reutilize um ancestral mais antigo; confira se houve execuções posteriores.
+4. O lote `lote-real.json` já tem dois sucessos reais nesse estado. Preserve-os; não repita a inferência só para demonstrar. Retomada de 429/503 é explícita, após revisão, sem laço.
 5. Baixe `rpa-resultados` e `rpa-state`. Confira o resumo mesmo quando o job falhar.
 
 Restauração inexistente, inválida ou expirada aborta sem criar uma base substituta. Artifacts têm retenção configurada de **14 dias**, sujeitos às políticas do GitHub; não são banco permanente nem garantia de persistência. Se o job for cancelado ou falhar antes do upload do estado mais recente, **não restaure um estado anterior e continue cegamente**: preserve logs e reconcilie os itens enviados. A restauração é operacional, não automática; a seleção correta do run é responsabilidade do operador. O SQLite local de desenvolvimento não é enviado automaticamente ao GitHub. Começar lá com estado novo não deduplica as consultas feitas aqui.
@@ -123,6 +143,11 @@ Regenerar os diagramas e o relatório, sem consultar IA:
 uv sync --locked --group docs
 uv run --no-sync python scripts/gerar_bpmn.py
 uv run --no-sync python scripts/gerar_relatorio.py
+uv run --no-sync python scripts/validar_entrega.py
 ```
+
+O validador confere os artifacts preservados sem chamar a IA nem executar novamente a suíte e grava `docs/evidencias/validacao-atual.json`, separado do manifesto histórico. No checkout Windows, reconhece apenas a equivalência LF/CRLF para os hashes textuais e registra quando ela foi necessária. Os resumos originais não são reescritos.
+
+Antes de enviar, use `uv run --no-sync python scripts/validar_entrega.py --online --final`. Esse modo retorna erro enquanto faltarem vídeo, duração válida, acesso conferido, ficha comum ou publicação da revisão. A validação documental normal não equivale à prontidão para envio. [Auditoria por critério e checklist](docs/auditoria-entrega.md).
 
 Confira a renderização após regenerar. O PDF declara como pendentes os links ainda não existentes, sem inventar URLs de GitHub/vídeo. Prazo do enunciado: **19/11/2026 às 23h55**, na tarefa de **RPA do Teams**, por um integrante. Confirmar a ficha comum com o grupo e manter links acessíveis durante a correção. A entrega geral continua parcial enquanto esses itens faltarem.

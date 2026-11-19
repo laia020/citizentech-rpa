@@ -1,0 +1,57 @@
+{
+  "verificado_em": "2026-11-18T14:48:03.955244+00:00",
+  "run_id": 44327757282,
+  "url": "https://github.com/laia020/citizentech-rpa/actions/runs/44327757282",
+  "status": "completed",
+  "conclusion": "success",
+  "head_sha": "a6c428fd0b563236d49f3a5ec32c52b9b6f65ff9",
+  "actor": "laia020",
+  "created_at": "2026-11-18T14:45:24Z",
+  "estado_anterior_run_id": 44296159102,
+  "estado_mais_recente_run_id": 44327757282,
+  "inputs": {
+    "modo": "real",
+    "exemplo": "lote-real.json",
+    "estado_run_id": "44296159102",
+    "iniciar_estado": "false",
+    "retomar_falhas": "false"
+  },
+  "trechos_log_restauracao": [
+    "2026-11-18T14:45:34.1945593Z   RPA_MODE: real",
+    "2026-11-18T14:45:34.1945728Z   RPA_EXAMPLE: lote-real.json",
+    "2026-11-18T14:45:34.1945894Z   RPA_PREVIOUS_RUN: 44296159102",
+    "2026-11-18T14:45:34.1946051Z   RPA_INITIALIZE: false",
+    "2026-11-18T14:45:34.1946186Z   RPA_RESUME: false",
+    "2026-11-18T14:45:42.9283738Z   \"execucao_id\": \"dd5f0bb6ea1f4cd6bd39db4fa78b0385\",",
+    "2026-11-18T14:45:42.9287482Z   \"situacao\": \"concluida_com_pendencias\""
+  ],
+  "artifacts": [
+    {
+      "id": 14436723784,
+      "name": "rpa-resultados",
+      "sha256": "80a1425e080d6574ba5b4b98ed61c6d69e46951d2659156312358880f16671cf",
+      "expires_at": "2026-12-02T14:45:44Z"
+    },
+    {
+      "id": 14436284656,
+      "name": "rpa-state",
+      "sha256": "556292b6bb3f68d365a344bef9a660f43dda9388be2b50837c50d333d485d187",
+      "expires_at": "2026-12-02T14:45:43Z"
+    }
+  ],
+  "verificacoes": {
+    "hash_lote_git": true,
+    "hashes_artifacts": true,
+    "sqlite_integridade": true,
+    "correlacao_ids_request_ids": true,
+    "chamadas_ia": 2,
+    "respostas_http_200": 2
+  },
+  "novos_testes_automatizados_executados": false,
+  "limites": [
+    "Dados ficticios; simulada:true.",
+    "Akona nao recebeu chamados.",
+    "Nao comprova diagnostico eletrico ou impacto municipal.",
+    "Este registro descreve a execucao; o estado atual da revisao documental consta em docs/entrega.json e CONTINUIDADE.md."
+  ]
+}

@@ -35,7 +35,7 @@ CAPTION = ParagraphStyle("caption", parent=SMALL, textColor=MUTED, spaceAfter=8)
 
 
 def read_json(relative):
-    return json.loads((ROOT / relative).read_text())
+    return json.loads((ROOT / relative).read_text(encoding="utf-8"))
 
 
 def p(text, style=BODY):
@@ -75,28 +75,29 @@ def scaled(drawing, width):
 
 def evidence_panel():
     first = read_json("docs/evidencias/simulado/resumo.json")
-    real = read_json("docs/evidencias/real-indisponibilidade/resumo.json")
+    unavailable = read_json("docs/evidencias/real-indisponibilidade/resumo.json")
+    real = read_json("docs/evidencias/nuvem-real/resumo.json")
     repeat = read_json("docs/evidencias/simulado-repeticao/resumo.json")
     tests = read_json("docs/evidencias/testes.json")
-    drawing = Drawing(1000, 390)
-    drawing.add(Rect(0,0,1000,390,fillColor=colors.white,strokeColor=colors.HexColor("#ccdedd")))
-    drawing.add(Rect(0,332,1000,58,fillColor=INK,strokeColor=None))
+    drawing = Drawing(1000, 430)
+    drawing.add(Rect(0,0,1000,430,fillColor=colors.white,strokeColor=colors.HexColor("#ccdedd")))
+    drawing.add(Rect(0,372,1000,58,fillColor=INK,strokeColor=None))
 
     def text(x,y,value,size=17,color=INK,bold=False):
         drawing.add(String(x,y,value,fontName="Helvetica-Bold" if bold else "Helvetica",fontSize=size,fillColor=color))
 
-    text(24,352,"REGISTRO VISUAL DE EXECUÇÕES - 18/11/2026",19,colors.white,True)
-    text(24,304,"Painel gerado dos JSON e logs preservados. Não é screenshot do Akona.",15,MUTED)
+    text(24,392,"REGISTRO VISUAL DE EXECUÇÕES - 18/11/2026",19,colors.white,True)
+    text(24,344,"Painel gerado dos JSON e logs preservados. Não é screenshot do Akona.",15,MUTED)
     labels=["Cenário", "Entradas", "Processados", "Duplicados", "Pendências", "Falhas"]
     xs=[24,385,490,625,755,890]
     for x,label in zip(xs,labels):
-        text(x,260,label,15,INK,True)
-    for y,name,summary in [(215,"SIMULADOR - sem IA",first),(170,"REPETIÇÃO - sem nova consulta",repeat),(125,"API PÚBLICA - HTTP 503",real)]:
+        text(x,300,label,15,INK,True)
+    for y,name,summary in [(255,"SIMULADOR - sem IA",first),(210,"REPETIÇÃO - sem nova consulta",repeat),(165,"HISTÓRICO - HTTP 503",unavailable),(120,"IA REAL - HTTP 200",real)]:
         text(24,y,name,16,TEAL if "HTTP" not in name else INK,True)
         for x,key in zip(xs[1:],["entradas","processados","duplicados","pendencias","falhas"]):
             text(x+10,y,str(summary["contagens"][key]),20)
-    text(24,70,f"Testes automatizados: {tests['testes']} aprovados; rede da IA simulada.",17,TEAL,True)
-    text(24,35,"Integração com análise 200: pendente. Não houve criação de chamado ou reparo.",16,MUTED)
+    text(24,70,f"Suíte histórica: {tests['testes']} testes aprovados; rede da IA simulada.",17,TEAL,True)
+    text(24,35,"Integração real: 2 chamadas HTTP 200. Não houve criação de chamado ou reparo.",16,MUTED)
     return drawing
 
 
@@ -155,6 +156,7 @@ def main():
     repo_ia="https://github.com/laia020/citizentech-iluminacao-ia"
     repo_rpa=info.get("repositorio_rpa_url")
     workflow=info.get("workflow_publico_url")
+    real_workflow=info["integracao_evidencia_url"]
     repo_label=link("GitHub do RPA",repo_rpa) if repo_rpa else "GitHub do RPA: pendente"
     ficha=[
         ["Campo", "Ficha Técnica comum - versão do componente"],
@@ -162,8 +164,8 @@ def main():
         ["Cidadão / território", "Pessoas que relatam problemas e equipes de triagem. Osasco/SP demonstrativo, a alinhar com o grupo. Sem operação municipal comprovada."],
         ["Problema", "Recepção individual de relatos exige validar campos, conferir duplicidades e organizar encaminhamentos manualmente."],
         ["Proposta de valor", "Organizar lotes e pendências para triagem humana rastreável. Benefício esperado ao cidadão; não há ganho de tempo ou custo medido em campo."],
-        ["Arquitetura", "CSV/JSON → Python RPA → validação + SQLite → cliente IA → JSON e auditoria → revisão humana. Workflow hospedado validado em simulação; Akona não conectado."],
-        ["Fontes de dados", "Lotes autorais fictícios e contrato OpenAPI público. Sem base municipal, sensor conectado ou dados pessoais de moradores."],
+        ["Arquitetura", "CSV/JSON → Python RPA → validação + SQLite → cliente IA → JSON e auditoria → revisão humana. Workflow hospedado com simulação e integração real comprovadas; Akona não conectado."],
+        ["Fontes de dados", "Lotes fictícios autorais, escritos manualmente para testar decisões e falhas; geração em docs/dados-demonstracao.md. Contrato OpenAPI público. Sem dados municipais ou sensores reais."],
         ["Modelos de IA", "Serviço existente: Qwen2.5-1.5B-Instruct + RAG + LoRA r1, PyTorch FP32, conforme projeto da IA. RPA não baixa pesos nem treina. Simulador não executa modelo."],
         ["MVP / repositórios", link("MVP informado",mvp)+" · "+link("IA pública",ia+"/demo")+" · "+link("Repositório da IA",repo_ia)+".<br/>"+repo_label+". Repositório do Akona: não fornecido."],
         ["Indicadores", "Medidos: contagens por execução e testes. Propostos: completude, tempo de triagem e revisão humana. Sem impacto municipal/energético comprovado."],
@@ -190,7 +192,7 @@ def main():
         ],[145,w-145]),
         h("Tecnologias e justificativa"),
         p("Python 3.12, uv e .venv exclusiva; CLI evita servidor permanente. jsonschema valida o contrato público congelado. SQLite mantém estado entre reinícios, se o arquivo for preservado. urllib/HTTPS faz a consulta sequencial; unittest usa falhas simuladas. ReportLab e PyMuPDF são dependências opcionais de documentação. Nenhuma biblioteca de IA foi instalada."),
-        p("Escolhas técnicas desta POC: CSV/JSON, SQLite e GitHub Actions. O enunciado aceita Python; não exige implementar várias plataformas ou agendar um processo permanente. Fonte: enunciado FIAP, páginas 45–50; PDD e decisões completos em docs/.",CAPTION),
+        p("Escopo da entrega: RPA integrado à IA existente do mesmo produto. Esta disciplina demonstra o processo automatizado; treinamento e avaliação do modelo pertencem à entrega de IA. Relatório, BPMN e vídeo de RPA são específicos. Importação no backend do Akona fica como evolução futura.",CAPTION),
     ])
     report.page("BPMN 2.0 - processo do lote","Fonte editável: docs/processo.bpmn | processo descritivo, execução em Python",[
         scaled(render_diagram(source,"Diagram_Macro"),mw),
@@ -201,20 +203,21 @@ def main():
         scaled(render_diagram(source,"Diagram_Item"),mw-12),
         p("Evento de erro de borda captura falha técnica da tarefa de serviço. Linhas tracejadas representam mensagens entre participantes. Timeout e tentativas limitadas são tratados dentro dessa tarefa; o modo simulado não envia mensagens ao serviço público.",CAPTION),
     ],wide=True)
-    report.page("Integração: evidência e limite","Comunicação HTTP real registrada; consumo com análise 200 ainda não comprovado",[
-        p("O RPA mapeia a entrada normalizada para o endpoint "+link("POST /v1/analisar",ia+"/docs")+". Os metadados tipo, bairro e ponto permanecem no lote. Uma resposta 200 precisa cumprir o esquema AnalysisResponse e corresponder ao ID enviado; a análise, a recusa e o request_id são preservados."),
+    report.page("Integração real e histórico","Duas respostas HTTP 200 validadas; falhas anteriores preservadas",[
+        p("O RPA valida e organiza o lote; o serviço de IA existente analisa cada ocorrência apta. O payload normalizado segue para "+link("POST /v1/analisar",ia+"/docs")+". Os metadados tipo, bairro e ponto ficam no RPA. Uma resposta 200 precisa cumprir AnalysisResponse e corresponder ao ID enviado; a análise, a recusa e o request_id são preservados."),
         scaled(evidence_panel(),w),Spacer(1,10),
         table([
-            ["Execução real", "Resultado observado"],
-            ["0ec3479a81ff41908c7d6529429ff274", "18/11, 08:14:55–08:14:59 (São Paulo). Dois IDs válidos, duas tentativas por ID, todos HTTP 503. Lote de quatro entradas: duas falhas e duas pendências."],
-            ["57dd12eb306d4501a9e22abb3427c539", "18/11, 08:24:57–08:24:59 (São Paulo). Retomada explícita, uma tentativa por ID. Ambos HTTP 503; sem reenvio da duplicata interna ao lote."],
-        ],[190,w-190]),
-        h("O que a evidência permite afirmar"),
-        p("Foram seis chamadas HTTP reais em duas execuções pequenas, com falha preservada e sem teste de carga. /ready havia retornado pronto: true; isso não garante disponibilidade de GPU/fila/cota. A causa exata do 503 não foi determinada. O consumo bem-sucedido pela IA permanece pendente. Simulação não é evidência desse consumo."),
-        p("A interface/backend do Akona não consumiu resultados e não recebeu chamados. O repositório e o contrato do grupo ainda são necessários para um adaptador de importação. Nenhum endpoint foi inventado e nenhuma alteração foi feita na IA publicada.",CAPTION),
+            ["Ocorrência / request_id", "Resposta de negócio preservada"],
+            ["RPA-LIVE-20261118-001<br/>333fecbe-114f-4603-824e-43b7fa8dd2d6", "analise_preliminar; revisão humana. A repetição reutilizou a mesma resposta, sem outra chamada."],
+            ["RPA-LIVE-20261118-002<br/>5e25fa23-6c84-423e-87f8-9a1fb4e849d3", "informacao_insuficiente; complementar informações. É sucesso operacional, sem conversão ADC/lux inventada."],
+        ],[240,w-240]),
+        h("Execução e correlação"),
+        p(link("Run real 44327757282",real_workflow)+", 18/11 às 11:45 (Brasília), restaurou o estado 44296159102. Execução dd5f0bb6ea1f4cd6bd39db4fa78b0385. Quatro entradas: duas processadas, uma duplicada, uma pendência e zero falhas. Duas chamadas HTTP 200, uma tentativa por ID. Dados fictícios, simulada: true; cliente real. Evidências em docs/evidencias/nuvem-real/."),
+        p("Histórico preservado: seis chamadas 503 em duas execuções às 08:14 e 08:24 (Brasília). A causa não foi determinada; /ready pronto: true não garantia inferência. Com o lote novo são oito chamadas reais documentadas, duas bem-sucedidas. Não houve teste de carga.",CAPTION),
+        p("Item 6, página 48 do enunciado: outro componente deve consumir o resultado, inclusive via API. Nossa evidência é a ocorrência validada e normalizada pelo RPA, consumida pela IA. O arquivo final não foi importado pelo backend do Akona; nenhum chamado foi criado ou serviço de IA alterado.",CAPTION),
     ])
     report.page("Testes, resiliência e auditoria","Cenários automatizados separados da execução remota",[
-        p(f"<b>{tests['testes']} testes aprovados</b>, com {tests['falhas']} falhas e {tests['erros']} erros, Python {tests['python']}. Transporte e respostas da IA são simulados na suíte, sem acesso ao serviço público. Os testes principais foram escritos e executados antes do código; a primeira execução e a regressão de retomada estão preservadas em docs/evidencias/."),
+        p(f"<b>{tests['testes']} testes aprovados no registro histórico</b>, com {tests['falhas']} falhas e {tests['erros']} erros, Python {tests['python']}. A suíte usa rede de IA simulada e não foi reexecutada nesta revisão documental. A primeira execução antes do código e a regressão de retomada estão em docs/evidencias/. O lote real HTTP 200 é evidência separada de integração."),
         table([
             ["Cenário executado", "Evidência / resultado"],
             ["Lote e contrato", "Dois itens válidos e mapeamento sem metadados extras; correlação da resposta verificada."],
@@ -231,14 +234,14 @@ def main():
         Preformatted('entradas = processados + duplicados + pendencias + falhas\nTentativas HTTP não contam como novos itens.\nExit 0: lote concluído (pode haver pendências).\nExit 1: falha em item. Exit 2: arquivo/infraestrutura.',CODE),
         p("Em falha de infraestrutura, o resumo sinaliza interrupção e as contagens podem abranger somente itens finalizados. Resumos, respostas e logs reais estão em docs/evidencias/ e logs/. O painel anterior foi gerado desses arquivos; não é captura de tela do MVP.",CAPTION),
     ])
-    report.page("Execução, estado e segurança","Sem servidor permanente ou modelo de IA no Mac",[
-        h("Reprodução local"),
+    report.page("Execução, estado e segurança","Processamento em Mac/Linux ou runner Ubuntu; documentação também no Windows",[
+        h("Reprodução local em Mac/Linux"),
         Preformatted('cd ~/Projects/citizentech-rpa\n# Somente se .venv ainda não existir:\nuv venv --python 3.12 --prompt "venv-citizentech-rpa"\nuv sync --locked --no-default-groups\nuv run --no-sync python -m unittest discover -s tests -v\nuv run --no-sync citizentech-rpa examples/lote-demo.json',CODE),
-        p("Para consulta intencional à IA pública: trocar para examples/lote-real.json e acrescentar --modo real. Apenas dados fictícios. Uma falha 429/503 anterior pode ser retomada com --retomar-falhas; sucessos não são reenviados. A API pode estar indisponível. Não há fallback no Mac."),
+        p("O RPA usa fcntl e não tem suporte nativo a Windows. Neste computador, apenas os scripts de documentação foram executados. O lote real já tem sucessos: preservar o estado, sem repetir inferência para filmar. Falhas 429/503 só são retomadas explicitamente, após revisão."),
         h("Persistência e recuperação"),
         p("Estado em state/ocorrencias.sqlite3, fora do Git, chave (modo, ID), fingerprint do conteúdo canônico completo. Simulação e real são separados. O arquivo deve ser preservado entre reinicializações. Antes do POST, grava em_envio; interrupção/timeout não autoriza replay, pois a API não fornece consulta por chave idempotente. Resultados incertos ficam para revisão humana."),
-        h("Workflow hospedado validado em modo simulado"),
-        p("GitHub Actions com workflow_dispatch e ubuntu-latest; sem runner no Mac. "+(link("Primeiro lote hospedado concluído",workflow) if workflow else "Execução hospedada pendente")+". Em simulação: 4 entradas, 1 processada, 1 duplicada e 2 pendências, sem chamada à IA. A segunda execução restaurou o estado: 0 novos processamentos e 2 duplicatas. O estado deste repositório já foi inicializado: nas próximas execuções restaurar o run mais recente com rpa-state. Restauração ausente/inválida aborta. Novo estado precisa de confirmação explícita. Resultados são arquivados mesmo em erro de API."),
+        h("Workflow hospedado e estado mais recente"),
+        p("GitHub Actions com workflow_dispatch e ubuntu-latest. "+link("Primeiro lote simulado",workflow)+": 1 processada, 1 duplicada, 2 pendências. A repetição restaurou o estado: 0 novos processamentos, 2 duplicatas. O "+link("lote real posterior",real_workflow)+" teve 2 processadas, 1 duplicada, 1 pendência e 0 falhas. Estado de referência: <b>44327757282</b>; conferir runs posteriores antes de restaurar rpa-state. Não iniciar base nova nem voltar a ancestral. Restauração ausente/inválida aborta; resultados são arquivados inclusive em erro de API."),
         p("Artifacts configurados por 14 dias, sujeitos à política da conta. São armazenamento temporário, não banco permanente. Cancelamento ou falha antes do upload exige reconciliação; não continuar a partir de estado antigo cegamente. A base usada no Mac não é transferida automaticamente. Baixar artefatos exige login e leitura no GitHub."),
         h("Segurança e LGPD"),
         p("Whitelist, limites de tamanho, HTTPS e sem redirecionamentos; credenciais fora do código. simulada: true é declaração, não detector de dados pessoais. Revisar os lotes antes do envio. Auditoria minimizada; arquivos 0600 e diretórios de execução 0700 no Mac/Linux, sem criptografia do SQLite. Retenção e acesso para uso real exigem definição do responsável. Não há diagnóstico elétrico, conversão ADC/lux, reparo ou mensagem automática a terceiros."),
@@ -252,23 +255,24 @@ def main():
             ["3. Decisão e lote", "Lote de quatro itens, regras e laço sequencial.", "Concluído"],
             ["4. Exceções", "Falhas simuladas e HTTP 503 real preservado.", "Concluído"],
             ["5. Logs e auditoria", "UTC, itens, tentativas e códigos sanitizados.", "Concluído"],
-            ["6. Integração", "HTTP real; sem análise 200 e sem consumo no Akona.", "Parcial"],
+            ["6. Integração", "Duas respostas HTTP 200 validadas; consumo pela IA. Akona sem importação.", "Via IA"],
             ["7. Testes", f"{tests['testes']} aprovados: sucesso, decisão e falha.", "Concluído"],
             ["8. Documentação/publicação", "README, PDD e código públicos; falta vídeo/link final.", "Parcial"],
         ],[147,w-224,77]),
         h("Pendências necessárias antes do envio final"),
-        p("Publicação do GitHub de RPA autorizada e realizada; CI e workflow simulado hospedado concluídos. Falta comprovar consumo real bem-sucedido pela IA ou por outro componente autorizado, alinhar a Ficha Técnica com o grupo e gravar/publicar vídeo específico de até 3 minutos. Repositório/contrato do Akona são necessários apenas para integração adicional com seu backend/interface."),
-        p("Roteiro pronto em docs/roteiro-video.md: problema e papel (20 s), BPMN (25 s), execução e decisão (40 s), integração real (40 s), falhas e auditoria (30 s), links e limites (20 s). Gravar a execução verdadeira; roteiro e imagens não equivalem ao vídeo entregue."),
+        p("Código público, CI e integração real hospedada comprovados. Esta revisão documental e as cópias novas de evidência estão locais, aguardando commit/push autorizado. Falta alinhar a Ficha Técnica com o grupo, gravar/publicar vídeo de até 3 minutos, inserir o link e revisar o PDF. A importação no Akona depende do repositório/contrato e de autorização específica."),
+        p("Roteiro em docs/roteiro-video.md e narração em docs/narracao-video-rpa.md: problema (20 s), BPMN (25 s), run concluído (35 s), respostas (40 s), auditoria (30 s), limites (25 s). Mostrar o run 44327757282 concluído, identificando a data; não repetir inferência. A duração precisa ser medida ao gravar. Roteiro não equivale a vídeo entregue."),
         table([
             ["Link de entrega", "Estado"],
             ["GitHub do RPA", link("Abrir repositório",info["repositorio_rpa_url"]) if info["repositorio_rpa_url"] else "PENDENTE - não publicado/autorizado nesta etapa."],
+            ["Integração real", link("Run 44327757282 - duas respostas HTTP 200",real_workflow)],
             ["Vídeo demonstrativo", link("Abrir vídeo",info["video_url"]) if info["video_url"] else "PENDENTE - vídeo não gravado e URL não fornecida."],
             ["MVP informado", link("Abrir Akona Energy",mvp)+". Não recebeu registros deste RPA."],
             ["IA / contrato", link("Demonstração",ia+"/demo")+" · "+link("API/OpenAPI",ia+"/openapi.json")+" · "+link("GitHub da IA",repo_ia)],
         ],[147,w-147]),
         h("Prazo e avaliação"),
         p("19/11/2026 às 23h55, tarefa de RPA no Teams; um integrante envia pela equipe. Rubrica: integração 1, documentação 2, desenvolvimento 5, vídeo 2 pontos. Manter aplicações, repositórios e vídeo públicos durante a correção, até uma semana após o encerramento. Fonte: PDF FIAP CitizenTech 4ES, páginas 24 e 45–50."),
-        p("Este relatório documenta o estado real da POC. Não é uma declaração de entrega integral: os links e o consumo bem-sucedido pendentes precisam ser resolvidos, inseridos e verificados antes do envio final.",CAPTION),
+        p("Original conferido: páginas 18-24 e 45-50. A página 48 aceita consumo via API e não determina um backend ou arquivo final específico. Justificativa e limites em docs/auditoria-entrega.md. A aceitação depende da avaliação; vídeo, ficha e envio continuam pendentes.",CAPTION),
     ])
     report.save()
     panel=evidence_panel()

@@ -1,0 +1,348 @@
+{
+  "data_hora": "2026-11-19T01:31:34.422390+00:00",
+  "teste_ia": false,
+  "suite_reexecutada": false,
+  "verificacao": "artefatos preservados e relatório",
+  "enunciado_original": {
+    "arquivo": "Desafio-FIAP-GS-CitizenTech 4ES.pdf",
+    "sha256": "236c35530bc23f3f6c48211f022862ff5d1458f17ad2d813e1f9d5130b696c87",
+    "conferido_em": "2026-11-19T01:15:23.835238+00:00",
+    "total_paginas": 60,
+    "paginas_comuns": [
+      18,
+      19,
+      20,
+      21,
+      22,
+      24
+    ],
+    "paginas_rpa": [
+      45,
+      46,
+      47,
+      48,
+      49,
+      50
+    ],
+    "regra_integracao_pagina": 48,
+    "trecho_integracao": "O resultado deve ser consumido por outro componente da CitizenTech",
+    "canais_permitidos": [
+      "API",
+      "banco de dados",
+      "arquivos estruturados"
+    ],
+    "backend_especifico_exigido_no_texto": false,
+    "arquivo_final_especifico_exigido_no_texto": false,
+    "prazo": "2026-11-19T23:55:00-03:00",
+    "video_maximo_segundos": 180,
+    "rubrica_pontos": {
+      "integracao": 1,
+      "documentacao": 2,
+      "desenvolvimento": 5,
+      "video": 2
+    },
+    "original_republicado": false
+  },
+  "fontes_do_registro_historico": {
+    "src/citizentech_rpa/__init__.py": "equivalencia_lf_crlf",
+    "src/citizentech_rpa/__main__.py": "equivalencia_lf_crlf",
+    "src/citizentech_rpa/api.py": "equivalencia_lf_crlf",
+    "src/citizentech_rpa/cli.py": "equivalencia_lf_crlf",
+    "src/citizentech_rpa/pipeline.py": "equivalencia_lf_crlf",
+    "src/citizentech_rpa/storage.py": "equivalencia_lf_crlf",
+    "src/citizentech_rpa/validation.py": "equivalencia_lf_crlf"
+  },
+  "testes_aprovados_no_registro_historico": 26,
+  "contrato_sha256_conferido": true,
+  "evidencias": [
+    {
+      "cenario": "arquivo-ausente",
+      "execucao_id": "23bf5494e46d4bb89de351767d6ff7cc",
+      "contagens": {
+        "entradas": 0,
+        "processados": 0,
+        "duplicados": 0,
+        "pendencias": 0,
+        "falhas": 0
+      },
+      "lotes_compativeis": []
+    },
+    {
+      "cenario": "csv-simulado",
+      "execucao_id": "337be8239d1743adb07ea2fb7d186765",
+      "contagens": {
+        "entradas": 3,
+        "processados": 1,
+        "duplicados": 1,
+        "pendencias": 1,
+        "falhas": 0
+      },
+      "lotes_compativeis": [
+        {
+          "arquivo": "lote-demo.csv",
+          "comparacao": "equivalencia_lf_crlf"
+        }
+      ]
+    },
+    {
+      "cenario": "nuvem-real",
+      "execucao_id": "dd5f0bb6ea1f4cd6bd39db4fa78b0385",
+      "contagens": {
+        "entradas": 4,
+        "processados": 2,
+        "duplicados": 1,
+        "pendencias": 1,
+        "falhas": 0
+      },
+      "lotes_compativeis": [
+        {
+          "arquivo": "lote-real.json",
+          "comparacao": "equivalencia_lf_crlf"
+        }
+      ]
+    },
+    {
+      "cenario": "nuvem-repeticao",
+      "execucao_id": "120bdef0a90b4fe9b4d6bf4750ec06a3",
+      "contagens": {
+        "entradas": 4,
+        "processados": 0,
+        "duplicados": 2,
+        "pendencias": 2,
+        "falhas": 0
+      },
+      "lotes_compativeis": [
+        {
+          "arquivo": "lote-demo.json",
+          "comparacao": "equivalencia_lf_crlf"
+        }
+      ]
+    },
+    {
+      "cenario": "nuvem-simulado",
+      "execucao_id": "b181a214ff2a41e58647c764150b2acc",
+      "contagens": {
+        "entradas": 4,
+        "processados": 1,
+        "duplicados": 1,
+        "pendencias": 2,
+        "falhas": 0
+      },
+      "lotes_compativeis": [
+        {
+          "arquivo": "lote-demo.json",
+          "comparacao": "equivalencia_lf_crlf"
+        }
+      ]
+    },
+    {
+      "cenario": "real-indisponibilidade",
+      "execucao_id": "0ec3479a81ff41908c7d6529429ff274",
+      "contagens": {
+        "entradas": 4,
+        "processados": 0,
+        "duplicados": 0,
+        "pendencias": 2,
+        "falhas": 2
+      },
+      "lotes_compativeis": [
+        {
+          "arquivo": "lote-real.json",
+          "comparacao": "equivalencia_lf_crlf"
+        }
+      ]
+    },
+    {
+      "cenario": "real-retomada",
+      "execucao_id": "57dd12eb306d4501a9e22abb3427c539",
+      "contagens": {
+        "entradas": 4,
+        "processados": 0,
+        "duplicados": 0,
+        "pendencias": 2,
+        "falhas": 2
+      },
+      "lotes_compativeis": [
+        {
+          "arquivo": "lote-real.json",
+          "comparacao": "equivalencia_lf_crlf"
+        }
+      ]
+    },
+    {
+      "cenario": "simulado",
+      "execucao_id": "93985db3a01c4a03883ad6a343cc84a0",
+      "contagens": {
+        "entradas": 4,
+        "processados": 1,
+        "duplicados": 1,
+        "pendencias": 2,
+        "falhas": 0
+      },
+      "lotes_compativeis": [
+        {
+          "arquivo": "lote-demo.json",
+          "comparacao": "equivalencia_lf_crlf"
+        }
+      ]
+    },
+    {
+      "cenario": "simulado-repeticao",
+      "execucao_id": "5b1c07c4b66546f09169751e0ad96dfb",
+      "contagens": {
+        "entradas": 4,
+        "processados": 0,
+        "duplicados": 2,
+        "pendencias": 2,
+        "falhas": 0
+      },
+      "lotes_compativeis": [
+        {
+          "arquivo": "lote-demo.json",
+          "comparacao": "equivalencia_lf_crlf"
+        }
+      ]
+    }
+  ],
+  "integracao_real_preservada": {
+    "run_id": 44327757282,
+    "contrato_e_correlacao": true,
+    "chamadas": 2,
+    "respostas_http_200": 2,
+    "duplicata_sem_nova_consulta": true
+  },
+  "mapeamento_comparacao_fonte": "bytes_originais",
+  "mapeamento_normalizado_conferido": true,
+  "bpmn_ids_referencias": true,
+  "bpmn_registro_xsd_historico": {
+    "arquivo": "docs/evidencias/validacao-artefatos.json",
+    "comparacao_fonte": "equivalencia_lf_crlf"
+  },
+  "bpmn_xsd_revalidado": false,
+  "pdf": {
+    "paginas": 8,
+    "equipe_conferida": true,
+    "texto_dentro_das_paginas": true,
+    "urls": [
+      "https://ca-akona-energy-prod.salmoncoast-770d275b.eastus2.azurecontainerapps.io/",
+      "https://docs.astral.sh/uv/guides/integration/github/",
+      "https://docs.github.com/en/actions/how-tos/manage-workflow-runs/download-workflow-artifacts",
+      "https://github.com/laia020/citizentech-iluminacao-ia",
+      "https://github.com/laia020/citizentech-rpa",
+      "https://github.com/laia020/citizentech-rpa/actions/runs/44296057126",
+      "https://github.com/laia020/citizentech-rpa/actions/runs/44327757282",
+      "https://laia020-citizentech-iluminacao-ia.hf.space/demo",
+      "https://laia020-citizentech-iluminacao-ia.hf.space/docs",
+      "https://laia020-citizentech-iluminacao-ia.hf.space/openapi.json"
+    ],
+    "sha256": "f9bc6e19500c7a4aaebbc9c4e448ec5611f88662eba80e63924a446f1fe95bad"
+  },
+  "links_http": [
+    {
+      "url": "https://ca-akona-energy-prod.salmoncoast-770d275b.eastus2.azurecontainerapps.io/",
+      "status": 200
+    },
+    {
+      "url": "https://docs.astral.sh/uv/guides/integration/github/",
+      "status": 403
+    },
+    {
+      "url": "https://docs.github.com/en/actions/how-tos/manage-workflow-runs/download-workflow-artifacts",
+      "status": 200
+    },
+    {
+      "url": "https://github.com/laia020/citizentech-iluminacao-ia",
+      "status": 200
+    },
+    {
+      "url": "https://github.com/laia020/citizentech-rpa",
+      "status": 200
+    },
+    {
+      "url": "https://github.com/laia020/citizentech-rpa/actions/runs/44296057126",
+      "status": 200
+    },
+    {
+      "url": "https://github.com/laia020/citizentech-rpa/actions/runs/44327757282",
+      "status": 200
+    },
+    {
+      "url": "https://laia020-citizentech-iluminacao-ia.hf.space/demo",
+      "status": 200
+    },
+    {
+      "url": "https://laia020-citizentech-iluminacao-ia.hf.space/docs",
+      "status": 200
+    },
+    {
+      "url": "https://laia020-citizentech-iluminacao-ia.hf.space/openapi.json",
+      "status": 200
+    }
+  ],
+  "pendencias_para_envio": [
+    "video_publicado_com_url_https",
+    "duracao_video_medida_ate_180_segundos",
+    "video_acesso_publico_conferido",
+    "ficha_alinhada_com_grupo",
+    "revisao_documental_publicada"
+  ],
+  "links_conferidos_nesta_execucao": true,
+  "pronto_para_envio": false,
+  "sha256_evidencias": {
+    "docs/evidencias/arquivo-ausente/auditoria.jsonl": "635d5c034401a50fd0ee1beef1df5be913142b34654a3e5acb9dee715950aea0",
+    "docs/evidencias/arquivo-ausente/pendencias.json": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f",
+    "docs/evidencias/arquivo-ausente/resultados.json": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f",
+    "docs/evidencias/arquivo-ausente/resumo.json": "16d4fdba16079ccddf5e34dcfef8566a88d7b7d12cd2cc146727c178db3c2f77",
+    "docs/evidencias/auditoria-criterios.json": "011ec42a521c5720e9d304e3e8fb63d038f74651bdad7b5eea7ed2c912915003",
+    "docs/evidencias/cloud-entrada-local.txt": "2721d88a2acf9b90a6c2ac5f6694167814408ec6fcb2638d648407c222334925",
+    "docs/evidencias/contrato-origem.json": "276e398017801d9734c47fa12d2c7d351a6c453964f9b5351d04b93279f80c18",
+    "docs/evidencias/csv-simulado/auditoria.jsonl": "1a6f40e9c91001bcd6e0d54099fd5cf9f8907604a4a5813a56a9e1291b945a29",
+    "docs/evidencias/csv-simulado/pendencias.json": "5fbc0cca7d9f228d6e4228d21f2f4289a618db1e0521232f3e7c21111c3c04b2",
+    "docs/evidencias/csv-simulado/resultados.json": "ff62c37f672eeaf296385e48056e3cb23f99794f64d5391780271a4ab528ec38",
+    "docs/evidencias/csv-simulado/resumo.json": "5ab9c57a8daf0ab91cc172ed3865a42b10335baa9e395775905e687fcc8b08ab",
+    "docs/evidencias/enunciado-origem.json": "b3f4546da681a2408fa0ad605ad150d2bfbd996b44720b7fe24e5f0612a8d444",
+    "docs/evidencias/nuvem-real/auditoria.jsonl": "00573c99e73300dda5f060d56d7312bd8536062f2e6011890c081dedd6835cd2",
+    "docs/evidencias/nuvem-real/github-run.json": "1a715de4b52637f2b4fecf7051a3a5447a71a8b8a4d7cb7de16f19d2a658282e",
+    "docs/evidencias/nuvem-real/mapeamento-entrada-ia.json": "8b409ad301fdf509a2b13b42c30afec7285fa7bb0384591d10206e33060adcdb",
+    "docs/evidencias/nuvem-real/pendencias.json": "dc4f13572acf3e478b262abc0095e57eabcb946da74736e007c53041048e92db",
+    "docs/evidencias/nuvem-real/README.md": "55fa39ba54a8a878ac6782aea7a51b7dde0605bd3fd22b87e4235dc3ce3d7c45",
+    "docs/evidencias/nuvem-real/resultados.json": "939d2d4f7e4439eddc677a2635c87f43b3447bfb37827a260309847f73e2ebfd",
+    "docs/evidencias/nuvem-real/resumo.json": "2ba93e8d27c3174c5e26e97b02110c045b3bff458216ae1f6244c8c249ae8c44",
+    "docs/evidencias/nuvem-repeticao/auditoria.jsonl": "e6522d47b7947a633179a243c22055ac742f0b2107538978c18ee368ff255519",
+    "docs/evidencias/nuvem-repeticao/github-run.json": "e54dc7c9536d5d5bf13cab3fe57dc94e83c8fce5da3d0bbb038280fa9e303569",
+    "docs/evidencias/nuvem-repeticao/pendencias.json": "10ba48302b9e4e6259c9e4e92828f3d2eaf6426e2f27c0c2d99005c688b89563",
+    "docs/evidencias/nuvem-repeticao/resultados.json": "d84e0040bc2cc839d7fda1fed6d1f2cd2c3d4cb18e0806262a59cb446e79a65d",
+    "docs/evidencias/nuvem-repeticao/resumo.json": "2c04f856a28b2e4bc6efbfcaaa2360bb05a3fdeea68a12c18b2fb33f08cf20a0",
+    "docs/evidencias/nuvem-simulado/auditoria.jsonl": "85c0078a52409f2aafcb9900bf907fb1889ec46096f5b5d1455807bf0c6e50ba",
+    "docs/evidencias/nuvem-simulado/github-run.json": "8d81ea477e97acff5eea4d9e1bca5ce70f9de433ccdb1f277442dbd8ed0bebe1",
+    "docs/evidencias/nuvem-simulado/pendencias.json": "201261d43118873271cd9374404fa45b2bfcd13588a88cbf7ff8e3dd71a63fc7",
+    "docs/evidencias/nuvem-simulado/resultados.json": "e12af562ce40a42dbf4de8f8c77d66530551d022c77b758b3dddd1db1ba689dc",
+    "docs/evidencias/nuvem-simulado/resumo.json": "8bb583a550cf8d8228c07564c3eb9916dea78e9010fd2c3706c8b5d659a9f8bd",
+    "docs/evidencias/publicacao.json": "20ebb314ce8c181b4fee093169974d0272259814312621970ee00862c66237a7",
+    "docs/evidencias/README.md": "dfc4e21df0a754afca60f52162243e99850c953b43e617d6006f87b5bc5fcb46",
+    "docs/evidencias/real-indisponibilidade/auditoria.jsonl": "7e03fba7d4496e80678707855024cc015a7f705f1fc734e46e818add5218b52a",
+    "docs/evidencias/real-indisponibilidade/pendencias.json": "631365561b045d33c621570489c09434ac6267764473bb93722b1e556ea1e8b7",
+    "docs/evidencias/real-indisponibilidade/resultados.json": "631365561b045d33c621570489c09434ac6267764473bb93722b1e556ea1e8b7",
+    "docs/evidencias/real-indisponibilidade/resumo.json": "61debf2e56d38813095ef2671c732c7f5c5ec0877ea985bc28a06c221bc68ca5",
+    "docs/evidencias/real-retomada/auditoria.jsonl": "5d1d672af21ef7b091c7a4dd91dbc4b671627d1a74ae0970fae683a5040f4e9c",
+    "docs/evidencias/real-retomada/pendencias.json": "d543f5940dd12de5c73e19f90d17bf461fa5540ecc90843d79c26156145a3dba",
+    "docs/evidencias/real-retomada/resultados.json": "d543f5940dd12de5c73e19f90d17bf461fa5540ecc90843d79c26156145a3dba",
+    "docs/evidencias/real-retomada/resumo.json": "4bff0795b638f43bf05f9bf454a90095144eb52a5ab9d8aab7007e624ddf8a10",
+    "docs/evidencias/revisao-documental.json": "3c7cddf4ab10774358ddff7bf520ce1e0e7fb2eed5b8fbbb58b46f4d6e496144",
+    "docs/evidencias/revisao-escopo-rpa.json": "c8781e9edfb8ca1cba7e22cc01e198063eb82a87eb041b714bdca123da211cb2",
+    "docs/evidencias/simulado/auditoria.jsonl": "74cbb373c909bd9eb207e8f104fd971822ff1435c8e9ef6fd6bd4492f19810a2",
+    "docs/evidencias/simulado/pendencias.json": "cd8e4fae2efde9d031393e8ff92bded33231ebf4905af4978cea3cda8cc0ccd2",
+    "docs/evidencias/simulado/resultados.json": "d67a61b97d0133eb381c72cd838a06e3912c70a345f27c3ac4e605ee47e162bd",
+    "docs/evidencias/simulado/resumo.json": "c392852e03245d55b08550b40c81f55326f242b2ab1d401909285ffcbbbff7ec",
+    "docs/evidencias/simulado-repeticao/auditoria.jsonl": "c2f418a7bace5f27a8a6a3fb492ff605fc31063fdcffa813bd09cd2bf6f884d6",
+    "docs/evidencias/simulado-repeticao/pendencias.json": "180fe13c577ba2263776517b7b8c56b8ad7651c2cec21caac4d7bc839018c1c8",
+    "docs/evidencias/simulado-repeticao/resultados.json": "8c2d8a29fbd53462d46f23e2ef975c58c3c70d394fe59bcacb6959f7867acd29",
+    "docs/evidencias/simulado-repeticao/resumo.json": "f3d8507de0ae4fb355217aca56265200312d9c5fefb4b91a7561b5c4c6bd0d27",
+    "docs/evidencias/tdd-cloud-inicial.txt": "3fac82546cef2166bf89e11640568ad9eb8f6db369b7c0eba3188a1392930df4",
+    "docs/evidencias/tdd-inicial.txt": "84bfc3d323d6cc1dd908cd016aaafdcf8c9432dd60d2f8f1cfcae3e92a6803f5",
+    "docs/evidencias/tdd-retomada-inicial.txt": "36cf8d1f4dfac0d502f852146db4876b7d6d0ae71f9e8f9c7b472d122dddbd89",
+    "docs/evidencias/testes.json": "27f4d0e6679383c6243b71bac6bfd69c0e8c6ca6da9b6a5c560466c40c0b2c19",
+    "docs/evidencias/testes.txt": "fc59ebc99781e60a739703c22254271c0a3f8d8f0b99083426931458e08d892a",
+    "docs/evidencias/validacao-artefatos.json": "49671388785b7242deafe2042116e5d46b41611558b065af9b0a32ad293fe65d"
+  }
+}

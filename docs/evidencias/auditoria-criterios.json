@@ -1,0 +1,68 @@
+{
+  "data_hora": "2026-11-19T01:19:32.145169+00:00",
+  "fonte": "docs/evidencias/enunciado-origem.json",
+  "auditoria": "docs/auditoria-entrega.md",
+  "enunciado_paginas": [
+    18,
+    20,
+    21,
+    24,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50
+  ],
+  "interpretacao_integracao": "Resultado da validacao/normalizacao do RPA consumido pela IA por API; arquivo final nao importado no backend. Sujeito a avaliacao academica.",
+  "suite_reexecutada": false,
+  "fontes_aplicacao_alterados": false,
+  "novas_chamadas_inferencia": 0,
+  "backup": "tmp/backups/auditoria-entrega-20261118-221115",
+  "backup_integridade_sha256": true,
+  "links_relativos_conferidos": true,
+  "pdf": {
+    "paginas": 8,
+    "revisadas_visualmente": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "renderizador": "PyMuPDF 1.7",
+    "imagens": "tmp/pdfs/auditoria-final-20261118/",
+    "defeitos_visuais_observados": false
+  },
+  "verificacao_final": {
+    "executada": true,
+    "codigo_saida_esperado": 1,
+    "causa": "Pendencias reais de video, ficha comum e publicacao; verificacoes tecnicas aprovadas.",
+    "registro": "tmp/pdfs/verificacao-final-criterios.json"
+  },
+  "entrega_academica_completa": false,
+  "pendencias": [
+    "video e URL real",
+    "duracao e acesso do video",
+    "ficha comum confirmada",
+    "publicacao da revisao com autorizacao",
+    "envio ao Teams"
+  ],
+  "sha256_arquivos": {
+    "README.md": "c92258a8d996b807c1ae8f7228a5442c9922a8e602168e55350d0f8aaf7f6a0b",
+    "docs/auditoria-entrega.md": "de3daefc03b7337c89058261a4b1f9056481ffeb4857cb6f528e0c12eff0cb90",
+    "docs/dados-demonstracao.md": "521092777053a8ad80318796c71f8e093ea485c3ae9aaf09b10bfa45fcb9720b",
+    "docs/requisitos.md": "1e3deda6e3f1f96728a0ead9f7519b6ace4f31de6031f9f603710efcb8461ff7",
+    "docs/integracao.md": "9fa7c8fc9607f3829c5d94d799e23e5f38fbed50c586c31c894582ea746ef9b7",
+    "docs/roteiro-video.md": "48f003a651cd5369905135d9ea79f7798fd12ca82e7b12504d40f026dad608e1",
+    "docs/narracao-video-rpa.md": "f7b59a6befd3e4007bb0b47957c5fa8dcfff2cc31b9a62afc1a4be111668db1a",
+    "docs/evidencias/README.md": "dfc4e21df0a754afca60f52162243e99850c953b43e617d6006f87b5bc5fcb46",
+    "docs/entrega.json": "a5445add358e11b8ed6618d10756f48dba947abbb7738ac05aa8a387e2d56850",
+    "scripts/validar_entrega.py": "49395024400d631a55a89d47ad45408390ad1ce7670517fe59293940a4c88c1b",
+    "scripts/gerar_relatorio.py": "762344d5dde1989bcff52a4ed21b766f163775190783a0f1e27f1521c03d13aa",
+    "output/pdf/relatorio-tecnico-rpa.pdf": "f9bc6e19500c7a4aaebbc9c4e448ec5611f88662eba80e63924a446f1fe95bad"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "data_hora": "2026-11-18T18:13:14.238632+00:00",
+  "tipo": "escopo da entrega RPA com IA existente",
+  "backup": "tmp/backups/escopo-rpa-ia-20261118-151034",
+  "backup_arquivos": 10,
+  "links_relativos_conferidos": true,
+  "narracao_palavras": 319,
+  "duracao_video_medida": false,
+  "video_gravado": false,
+  "publicacao_realizada": false,
+  "novas_chamadas_ia": 0,
+  "suite_reexecutada": false,
+  "pdf": {
+    "paginas": 8,
+    "renderizador": "PyMuPDF, escala 1.7",
+    "paginas_revisadas_visualmente": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "defeitos_observados": false,
+    "imagens": "tmp/pdfs/escopo-rpa-ia-20261118/"
+  },
+  "sha256": {
+    "README.md": "3e452f835a51d12ae18069fbd2778f5a0d702154e87d222bb2d450d9e31ab782",
+    "docs/integracao.md": "cedb3442e1bb4da34d8eaea7000791ead0b80930f4761811e4b8495f81fe0b90",
+    "docs/plano.md": "ce518ec22f22945f2319be2f9fbb16091b138b299c7c04d8c11740b6a3a05fd1",
+    "docs/requisitos.md": "bbc433256d104630d3eeafdb64016841ddaab7e45f3808d15836d5ef276a9259",
+    "docs/entrega.json": "35f267af7d5993dcbef0e3a81d371b33a8e033cc41e84def1c60882081c0e4ed",
+    "docs/roteiro-video.md": "48f003a651cd5369905135d9ea79f7798fd12ca82e7b12504d40f026dad608e1",
+    "docs/narracao-video-rpa.md": "f7b59a6befd3e4007bb0b47957c5fa8dcfff2cc31b9a62afc1a4be111668db1a",
+    "scripts/gerar_relatorio.py": "8fa76d910eedb68fd736d7ab899338cf36a1a379a2c77475926de994af7996f1",
+    "output/pdf/relatorio-tecnico-rpa.pdf": "0f3c62e3973decc8312111f4cd6da804c23837bd95bc86e96b461b628156c630"
+  }
+}

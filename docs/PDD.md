@@ -47,4 +47,6 @@ Fonte editável: [processo.bpmn](processo.bpmn). Vista macro: início/fim, taref
 
 ## Critérios de aceite e limites
 
-Testes de sucesso, decisão e falha devem passar e produzir evidência. Outra parte da CitizenTech precisa consumir efetivamente o registro normalizado. Na execução real documentada, o serviço retornou 503 e esse aceite de integração bem-sucedida permanece parcial. Não há importação pelo Akona, comprovação de reparo ou validação municipal. GitHub público e workflow simulado hospedado foram concluídos após autorização. O vídeo continua pendente; o workflow não demonstra consumo remoto pela IA.
+Testes de sucesso, decisão e falha devem passar e produzir evidência. Os 26 testes aprovados são o registro histórico da suíte, com rede simulada; não foram reexecutados na atualização documental. O consumo real pela IA foi demonstrado no [run `44327757282`](https://github.com/laia020/citizentech-rpa/actions/runs/44327757282), com duas respostas HTTP 200 validadas: análise preliminar e informação insuficiente. Foram 4 entradas, 2 processadas, 1 duplicada, 1 pendência e 0 falhas. A duplicata não repetiu a consulta. As falhas HTTP 503 anteriores foram preservadas.
+
+O estado de referência é o desse run, sujeito à conferência de execuções posteriores. Não há importação pelo Akona, comprovação de reparo ou validação municipal. GitHub público, CI e workflows hospedados foram executados; as evidências novas e a revisão documental ainda aguardam publicação autorizada. Vídeo, alinhamento da ficha e envio ao Teams continuam pendentes.

@@ -1,0 +1,40 @@
+{
+  "arquivo": "Desafio-FIAP-GS-CitizenTech 4ES.pdf",
+  "sha256": "236c35530bc23f3f6c48211f022862ff5d1458f17ad2d813e1f9d5130b696c87",
+  "conferido_em": "2026-11-19T01:15:23.835238+00:00",
+  "total_paginas": 60,
+  "paginas_comuns": [
+    18,
+    19,
+    20,
+    21,
+    22,
+    24
+  ],
+  "paginas_rpa": [
+    45,
+    46,
+    47,
+    48,
+    49,
+    50
+  ],
+  "regra_integracao_pagina": 48,
+  "trecho_integracao": "O resultado deve ser consumido por outro componente da CitizenTech",
+  "canais_permitidos": [
+    "API",
+    "banco de dados",
+    "arquivos estruturados"
+  ],
+  "backend_especifico_exigido_no_texto": false,
+  "arquivo_final_especifico_exigido_no_texto": false,
+  "prazo": "2026-11-19T23:55:00-03:00",
+  "video_maximo_segundos": 180,
+  "rubrica_pontos": {
+    "integracao": 1,
+    "documentacao": 2,
+    "desenvolvimento": 5,
+    "video": 2
+  },
+  "original_republicado": false
+}
