@@ -9,7 +9,7 @@
 | Arquitetura | CSV/JSON → Python RPA → validação + SQLite → cliente da IA → resultados JSON + auditoria → revisão humana. GitHub Actions executado em nuvem em simulação e em integração real com a IA. Consumo pelo backend/interface do Akona ainda pendente. |
 | Fontes de dados | Exemplos autorais fictícios em `examples/`; contrato OpenAPI público da IA. Não usa base municipal, cidadãos reais ou sensor conectado. |
 | Modelos de IA | Serviço existente: Qwen2.5-1.5B-Instruct, RAG e LoRA r1, implantação PyTorch FP32 informada pelo projeto de IA. O RPA não instala modelo, baixa pesos ou treina. O simulador não executa IA. |
-| URLs | [MVP informado](https://ca-akona-energy-prod.salmoncoast-770d275b.eastus2.azurecontainerapps.io/), [IA pública](https://laia020-citizentech-iluminacao-ia.hf.space/demo), [API](https://laia020-citizentech-iluminacao-ia.hf.space/docs), [repositório da IA](https://github.com/laia020/citizentech-iluminacao-ia). [Repositório público do RPA](https://github.com/laia020/citizentech-rpa). **Vídeo: pendente de gravação/publicação.** Repositório do Akona não fornecido. |
+| URLs | [MVP informado](https://ca-akona-energy-prod.salmoncoast-770d275b.eastus2.azurecontainerapps.io/), [IA pública](https://laia020-citizentech-iluminacao-ia.hf.space/demo), [API](https://laia020-citizentech-iluminacao-ia.hf.space/docs), [repositório da IA](https://github.com/laia020/citizentech-iluminacao-ia). [Repositório público do RPA](https://github.com/laia020/citizentech-rpa). [Vídeo demonstrativo de RPA](https://drive.google.com/file/d/1XqlXo0q4_SXJLDD0udv1aNUygJ99lG5k/view?usp=sharing). [Apresentação e evidências de RPA](https://laia020-citizentech-iluminacao-ia.hf.space/rpa). Repositório do Akona não fornecido. |
 | Indicadores | Medidos nesta POC: contagens operacionais nos arquivos de execução e resultados dos testes. Propostos para estudo futuro: tempo de triagem, completude e encaminhamentos revisados. Não há medição de impacto de campo. |
 | ODS | ODS 11: organização de relatos sobre infraestrutura urbana; ODS 7: apoio proposto à gestão da iluminação. Não demonstra economia de energia ou cumprimento de metas. |
 
@@ -49,7 +49,7 @@ Os lotes são autorais, determinísticos e fictícios, escolhidos para exercitar
 - [Código publicado no GitHub](https://github.com/laia020/citizentech-rpa), com [CI aprovada em Ubuntu](https://github.com/laia020/citizentech-rpa/actions/runs/44296025620). O [primeiro lote hospedado](https://github.com/laia020/citizentech-rpa/actions/runs/44296057126) concluiu em modo **simulado**: 4 entradas, 1 processada, 1 duplicada e 2 pendências, sem depender do Mac. Não comprova consumo pela IA. Vídeo e envio ao Teams permanecem pendentes; o projeto de IA não foi alterado.
 - [Segunda execução hospedada](https://github.com/laia020/citizentech-rpa/actions/runs/44296159102) restaurou o estado do primeiro run: 0 novos processamentos, 2 duplicatas e 2 pendências. Restauração e idempotência foram verificadas fora do Mac, sem rede de IA. [Registro da publicação](docs/evidencias/publicacao.json).
 
-As seis chamadas HTTP 503 anteriores foram preservadas como histórico; com o lote novo, são oito chamadas reais documentadas, duas bem-sucedidas. A conferência documental local não reexecutou a suíte; a CI do GitHub executa os testes a cada publicação. As evidências de `nuvem-real/` e a revisão documental foram publicadas com autorização, com [verificação pública dos arquivos](docs/evidencias/publicacao-revisao.json). Vídeo, ficha comum e envio ao Teams continuam pendentes.
+As seis chamadas HTTP 503 anteriores foram preservadas como histórico; com o lote novo, são oito chamadas reais documentadas, duas bem-sucedidas. A conferência documental local não reexecutou a suíte; a CI do GitHub executa os testes a cada publicação. As evidências de `nuvem-real/` e a revisão documental foram publicadas com autorização, com [verificação pública dos arquivos](docs/evidencias/publicacao-revisao.json). O link do vídeo foi fornecido em 19/11/2026 e incluído no README e no PDF desta revisão. Ficha comum e envio ao Teams continuam pendentes. O autor autorizou a publicação desta atualização documental; roteiro, áudios e MP4 permanecem fora do Git.
 
 ## Executar localmente
 
@@ -134,7 +134,7 @@ A CI roda apenas testes simulados. Os workflows usam permissões de leitura e ac
 - [PDD e regras](docs/PDD.md), [requisitos e matriz](docs/requisitos.md), [contrato de saída e integração](docs/integracao.md).
 - [BPMN editável](docs/processo.bpmn) e duas vistas em [assets](assets/README.md).
 - [Relatório técnico PDF](output/pdf/relatorio-tecnico-rpa.pdf).
-- [Roteiro de vídeo, até 3 minutos](docs/roteiro-video.md); **vídeo real ainda não gravado**.
+- [Vídeo demonstrativo de RPA](https://drive.google.com/file/d/1XqlXo0q4_SXJLDD0udv1aNUygJ99lG5k/view?usp=sharing). Link fornecido pelo autor.
 - [Plano e decisões](docs/plano.md), [evidências](docs/evidencias/README.md), [segurança](docs/seguranca.md).
 
 Regenerar os diagramas e o relatório, sem consultar IA:

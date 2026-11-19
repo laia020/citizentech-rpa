@@ -102,12 +102,13 @@ def evidence_panel():
 
 
 class Report:
-    def __init__(self, path):
+    def __init__(self, path, revision_date):
         self.canvas = canvas.Canvas(str(path), pagesize=A4, pageCompression=1)
         self.canvas.setTitle("Akona Energy - Relatório técnico RPA CitizenTech")
         self.canvas.setAuthor("Equipe CitizenTech - FIAP 4ES")
         self.canvas.setSubject("POC de lote fictício, BPMN, auditoria e estado real da entrega")
         self.number = 0
+        self.revision_date = revision_date
 
     def page(self, title, subtitle, blocks, *, wide=False):
         self.number += 1
@@ -134,7 +135,7 @@ class Report:
         c.line(46,38,width-46,38)
         c.setFont("Helvetica",8)
         c.setFillColor(MUTED)
-        c.drawString(46,24,"18/11/2026  |  Dados fictícios  |  Entrega parcial: ver pendências")
+        c.drawString(46,24,f"{self.revision_date}  |  Dados fictícios  |  Relatório técnico RPA")
         c.drawRightString(width-46,24,str(self.number))
         c.showPage()
 
@@ -148,7 +149,7 @@ def main():
     source=ET.parse(ROOT/"docs/processo.bpmn").getroot()
     destination=ROOT/"output/pdf/relatorio-tecnico-rpa.pdf"
     destination.parent.mkdir(parents=True,exist_ok=True)
-    report=Report(destination)
+    report=Report(destination,"/".join(info["data_revisao"].split("-")[::-1]))
     w=A4[0]-92
     mw=landscape(A4)[0]-92
     ia="https://laia020-citizentech-iluminacao-ia.hf.space"
@@ -257,22 +258,23 @@ def main():
             ["5. Logs e auditoria", "UTC, itens, tentativas e códigos sanitizados.", "Concluído"],
             ["6. Integração", "Duas respostas HTTP 200 validadas; consumo pela IA. Akona sem importação.", "Via IA"],
             ["7. Testes", f"{tests['testes']} aprovados: sucesso, decisão e falha.", "Concluído"],
-            ["8. Documentação/publicação", "README, PDD e código públicos; falta vídeo/link final.", "Parcial"],
+            ["8. Documentação/publicação", "Código e evidências públicos; link do vídeo incluído no relatório." if info["video_url"] else "README, PDD e código públicos; falta vídeo/link final.", "Ver notas"],
         ],[147,w-224,77]),
-        h("Pendências necessárias antes do envio final"),
-        p("Código, revisão documental e evidências reais publicados no GitHub com autorização. A integração RPA-IA em nuvem está comprovada. Falta alinhar a Ficha Técnica com o grupo, gravar/publicar vídeo de até 3 minutos, inserir o link e revisar o PDF final. A importação no Akona depende do repositório/contrato e de autorização específica."),
-        p("Roteiro em docs/roteiro-video.md e narração em docs/narracao-video-rpa.md: problema (20 s), BPMN (25 s), run concluído (35 s), respostas (40 s), auditoria (30 s), limites (25 s). Mostrar o run 44327757282 concluído, identificando a data; não repetir inferência. A duração precisa ser medida ao gravar. Roteiro não equivale a vídeo entregue."),
+        h("Vídeo e situação da entrega"),
+        p("O autor disponibilizou o vídeo demonstrativo no Google Drive; o link está na tabela abaixo. O relatório e o README incluem o link informado pelo autor. Código e evidências reais continuam públicos no GitHub. A Ficha Técnica comum permanece PENDENTE de confirmação com o grupo; o envio ao Teams é realizado por um integrante." if info["video_url"] else "Código e evidências reais publicados no GitHub. Falta confirmar a Ficha Técnica comum, disponibilizar o vídeo e inserir seu link no relatório."),
+        p("A demonstração apresenta a execução registrada de 18/11/2026 e suas evidências autênticas. A integração RPA-IA está comprovada no run 44327757282. A página de apresentação permite consultar o fluxo, os resultados e a auditoria sem executar outro lote. A importação no backend do Akona não foi implementada."),
         table([
             ["Link de entrega", "Estado"],
             ["GitHub do RPA", link("Abrir repositório",info["repositorio_rpa_url"]) if info["repositorio_rpa_url"] else "PENDENTE - não publicado/autorizado nesta etapa."],
             ["Integração real", link("Run 44327757282 - duas respostas HTTP 200",real_workflow)],
             ["Vídeo demonstrativo", link("Abrir vídeo",info["video_url"]) if info["video_url"] else "PENDENTE - vídeo não gravado e URL não fornecida."],
+            ["Página de RPA", link("Abrir apresentação e evidências",ia+"/rpa")],
             ["MVP informado", link("Abrir Akona Energy",mvp)+". Não recebeu registros deste RPA."],
             ["IA / contrato", link("Demonstração",ia+"/demo")+" · "+link("API/OpenAPI",ia+"/openapi.json")+" · "+link("GitHub da IA",repo_ia)],
         ],[147,w-147]),
         h("Prazo e avaliação"),
         p("19/11/2026 às 23h55, tarefa de RPA no Teams; um integrante envia pela equipe. Rubrica: integração 1, documentação 2, desenvolvimento 5, vídeo 2 pontos. Manter aplicações, repositórios e vídeo públicos durante a correção, até uma semana após o encerramento. Fonte: PDF FIAP CitizenTech 4ES, páginas 24 e 45–50."),
-        p("Original conferido: páginas 18-24 e 45-50. A página 48 aceita consumo via API e não determina um backend ou arquivo final específico. Justificativa e limites em docs/auditoria-entrega.md. A aceitação depende da avaliação; vídeo, ficha e envio continuam pendentes.",CAPTION),
+        p("Original conferido: páginas 18-24 e 45-50. A página 48 aceita consumo via API e não determina um backend ou arquivo final específico. Justificativa e limites em docs/auditoria-entrega.md. A aceitação depende da avaliação. A confirmação da ficha comum e o envio ao Teams permanecem sob responsabilidade da equipe.",CAPTION),
     ])
     report.save()
     panel=evidence_panel()
