@@ -217,7 +217,7 @@ def main():
         p("Item 6, página 48 do enunciado: outro componente deve consumir o resultado, inclusive via API. Nossa evidência é a ocorrência validada e normalizada pelo RPA, consumida pela IA. O arquivo final não foi importado pelo backend do Akona; nenhum chamado foi criado ou serviço de IA alterado.",CAPTION),
     ])
     report.page("Testes, resiliência e auditoria","Cenários automatizados separados da execução remota",[
-        p(f"<b>{tests['testes']} testes aprovados no registro histórico</b>, com {tests['falhas']} falhas e {tests['erros']} erros, Python {tests['python']}. A suíte usa rede de IA simulada e não foi reexecutada nesta revisão documental. A primeira execução antes do código e a regressão de retomada estão em docs/evidencias/. O lote real HTTP 200 é evidência separada de integração."),
+        p(f"<b>{tests['testes']} testes aprovados no registro histórico</b>, com {tests['falhas']} falhas e {tests['erros']} erros, Python {tests['python']}. A suíte usa rede de IA simulada. A conferência documental local não reexecutou a suíte; a CI do GitHub roda na publicação. A primeira execução antes do código e a regressão estão em docs/evidencias/. O lote real HTTP 200 é evidência separada de integração."),
         table([
             ["Cenário executado", "Evidência / resultado"],
             ["Lote e contrato", "Dois itens válidos e mapeamento sem metadados extras; correlação da resposta verificada."],
@@ -260,7 +260,7 @@ def main():
             ["8. Documentação/publicação", "README, PDD e código públicos; falta vídeo/link final.", "Parcial"],
         ],[147,w-224,77]),
         h("Pendências necessárias antes do envio final"),
-        p("Código público, CI e integração real hospedada comprovados. Esta revisão documental e as cópias novas de evidência estão locais, aguardando commit/push autorizado. Falta alinhar a Ficha Técnica com o grupo, gravar/publicar vídeo de até 3 minutos, inserir o link e revisar o PDF. A importação no Akona depende do repositório/contrato e de autorização específica."),
+        p("Código, revisão documental e evidências reais publicados no GitHub com autorização. A integração RPA-IA em nuvem está comprovada. Falta alinhar a Ficha Técnica com o grupo, gravar/publicar vídeo de até 3 minutos, inserir o link e revisar o PDF final. A importação no Akona depende do repositório/contrato e de autorização específica."),
         p("Roteiro em docs/roteiro-video.md e narração em docs/narracao-video-rpa.md: problema (20 s), BPMN (25 s), run concluído (35 s), respostas (40 s), auditoria (30 s), limites (25 s). Mostrar o run 44327757282 concluído, identificando a data; não repetir inferência. A duração precisa ser medida ao gravar. Roteiro não equivale a vídeo entregue."),
         table([
             ["Link de entrega", "Estado"],

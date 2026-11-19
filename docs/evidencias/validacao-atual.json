@@ -1,5 +1,5 @@
 {
-  "data_hora": "2026-11-19T01:31:34.422390+00:00",
+  "data_hora": "2026-11-19T01:36:47.314947+00:00",
   "teste_ia": false,
   "suite_reexecutada": false,
   "verificacao": "artefatos preservados e relatório",
@@ -235,7 +235,7 @@
       "https://laia020-citizentech-iluminacao-ia.hf.space/docs",
       "https://laia020-citizentech-iluminacao-ia.hf.space/openapi.json"
     ],
-    "sha256": "f9bc6e19500c7a4aaebbc9c4e448ec5611f88662eba80e63924a446f1fe95bad"
+    "sha256": "d4d4fc15a1b07e46e33189312553319fc01a60020373ebb53e0ade41029aece4"
   },
   "links_http": [
     {
@@ -283,8 +283,7 @@
     "video_publicado_com_url_https",
     "duracao_video_medida_ate_180_segundos",
     "video_acesso_publico_conferido",
-    "ficha_alinhada_com_grupo",
-    "revisao_documental_publicada"
+    "ficha_alinhada_com_grupo"
   ],
   "links_conferidos_nesta_execucao": true,
   "pronto_para_envio": false,
@@ -305,7 +304,7 @@
     "docs/evidencias/nuvem-real/github-run.json": "1a715de4b52637f2b4fecf7051a3a5447a71a8b8a4d7cb7de16f19d2a658282e",
     "docs/evidencias/nuvem-real/mapeamento-entrada-ia.json": "8b409ad301fdf509a2b13b42c30afec7285fa7bb0384591d10206e33060adcdb",
     "docs/evidencias/nuvem-real/pendencias.json": "dc4f13572acf3e478b262abc0095e57eabcb946da74736e007c53041048e92db",
-    "docs/evidencias/nuvem-real/README.md": "55fa39ba54a8a878ac6782aea7a51b7dde0605bd3fd22b87e4235dc3ce3d7c45",
+    "docs/evidencias/nuvem-real/README.md": "f7069a1201c5a9f24e66ae90055890db4907a3b145ba697ad1cdc8c33dd5c08f",
     "docs/evidencias/nuvem-real/resultados.json": "939d2d4f7e4439eddc677a2635c87f43b3447bfb37827a260309847f73e2ebfd",
     "docs/evidencias/nuvem-real/resumo.json": "2ba93e8d27c3174c5e26e97b02110c045b3bff458216ae1f6244c8c249ae8c44",
     "docs/evidencias/nuvem-repeticao/auditoria.jsonl": "e6522d47b7947a633179a243c22055ac742f0b2107538978c18ee368ff255519",
@@ -318,8 +317,9 @@
     "docs/evidencias/nuvem-simulado/pendencias.json": "201261d43118873271cd9374404fa45b2bfcd13588a88cbf7ff8e3dd71a63fc7",
     "docs/evidencias/nuvem-simulado/resultados.json": "e12af562ce40a42dbf4de8f8c77d66530551d022c77b758b3dddd1db1ba689dc",
     "docs/evidencias/nuvem-simulado/resumo.json": "8bb583a550cf8d8228c07564c3eb9916dea78e9010fd2c3706c8b5d659a9f8bd",
+    "docs/evidencias/publicacao-revisao.json": "fd0d976aaaaa3bfe432bb6b86cb96e62ff76382f7edf194fe2fb0b68619d5cca",
     "docs/evidencias/publicacao.json": "20ebb314ce8c181b4fee093169974d0272259814312621970ee00862c66237a7",
-    "docs/evidencias/README.md": "dfc4e21df0a754afca60f52162243e99850c953b43e617d6006f87b5bc5fcb46",
+    "docs/evidencias/README.md": "fb9703f0185bcc467fee5b3e1dfd9b59382475f384c91f8cb4e291e4ee00cea1",
     "docs/evidencias/real-indisponibilidade/auditoria.jsonl": "7e03fba7d4496e80678707855024cc015a7f705f1fc734e46e818add5218b52a",
     "docs/evidencias/real-indisponibilidade/pendencias.json": "631365561b045d33c621570489c09434ac6267764473bb93722b1e556ea1e8b7",
     "docs/evidencias/real-indisponibilidade/resultados.json": "631365561b045d33c621570489c09434ac6267764473bb93722b1e556ea1e8b7",

@@ -1,0 +1,57 @@
+{
+  "verificado_em": "2026-11-19T01:34:20.261158+00:00",
+  "repositorio": "https://github.com/laia020/citizentech-rpa",
+  "commit_revisao_inicial": "6b6a2061480c6ca633ed0a408e0d13dfedd75da3",
+  "commit_url": "https://github.com/laia020/citizentech-rpa/commit/6b6a2061480c6ca633ed0a408e0d13dfedd75da3",
+  "verificacao_sem_credenciais": [
+    {
+      "arquivo": "README.md",
+      "status": 200,
+      "comparacao": "LF/CRLF",
+      "sha256_remoto": "152282da1db70b3b56d57f0d840a2a31eaa20f9a606ca1788d44b1bfe2668921"
+    },
+    {
+      "arquivo": "docs/evidencias/nuvem-real/resultados.json",
+      "status": 200,
+      "comparacao": "bytes",
+      "sha256_remoto": "939d2d4f7e4439eddc677a2635c87f43b3447bfb37827a260309847f73e2ebfd"
+    },
+    {
+      "arquivo": "output/pdf/relatorio-tecnico-rpa.pdf",
+      "status": 200,
+      "comparacao": "bytes",
+      "sha256_remoto": "f9bc6e19500c7a4aaebbc9c4e448ec5611f88662eba80e63924a446f1fe95bad"
+    }
+  ],
+  "video_publicado": false,
+  "envio_teams_realizado": false,
+  "nota": "Registro da publicacao inicial desta revisao. A atualizacao seguinte dos indicadores de publicacao nao muda as evidencias de inferencia. Historicos anteriores permanecem preservados.",
+  "ci_revisao_inicial": {
+    "run_id": 44437773380,
+    "status": "completed",
+    "conclusion": "success",
+    "head_sha": "6b6a2061480c6ca633ed0a408e0d13dfedd75da3",
+    "url": "https://github.com/laia020/citizentech-rpa/actions/runs/44437773380"
+  },
+  "atualizacao_status": {
+    "pdf_sha256": "d4d4fc15a1b07e46e33189312553319fc01a60020373ebb53e0ade41029aece4",
+    "pdf_paginas": 8,
+    "paginas_revisadas_visualmente": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "renderizador": "PyMuPDF, escala 1.7",
+    "publicacao_marcada_apos_verificacao_remota": true,
+    "pendencias_mantidas": [
+      "video e URL",
+      "alinhamento da ficha comum",
+      "envio ao Teams"
+    ]
+  }
+}

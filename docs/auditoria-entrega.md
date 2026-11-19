@@ -4,7 +4,7 @@ Conferência em **18/11/2026**, comparando a cópia local com o enunciado origin
 
 ## Resultado da conferência
 
-A implementação e as evidências disponíveis cobrem mapeamento, desenvolvimento em Python, decisões e repetição, falhas, logs e testes. A integração RPA–IA por API está comprovada. A revisão documental atual está local; **a entrega ainda não está pronta para envio**, pois faltam o vídeo, seu link no PDF, a confirmação da ficha comum e a publicação autorizada da revisão.
+A implementação e as evidências disponíveis cobrem mapeamento, desenvolvimento em Python, decisões e repetição, falhas, logs e testes. A integração RPA–IA por API está comprovada. A revisão documental e as evidências foram publicadas com autorização; **a entrega ainda não está pronta para envio**, pois faltam o vídeo, seu link no PDF e a confirmação da ficha comum.
 
 Não houve nova inferência, execução da aplicação no Windows ou reexecução da suíte durante esta auditoria. Os fontes atuais são comparados aos hashes do registro histórico; os 26 testes e a CI são evidências existentes, sem serem apresentados como testes novos.
 
@@ -13,13 +13,13 @@ Não houve nova inferência, execução da aplicação no Windows ou reexecuçã
 | Etapa | Página da fonte | Evidência conferida | Estado |
 |---|---:|---|---|
 | 1. Mapeamento do processo | 47 | `docs/PDD.md`, `docs/processo.bpmn`, imagens e páginas 3–4 do relatório. | Preparado |
-| 2. Desenvolvimento | 47 | `src/citizentech_rpa/`, Python, `pyproject.toml`, `uv.lock` e repositório público. | Implementado e publicado; revisão documental local |
+| 2. Desenvolvimento | 47 | `src/citizentech_rpa/`, Python, `pyproject.toml`, `uv.lock` e repositório público. | Implementado e publicado |
 | 3. Lógica de negócio e lote | 47 | Laço sequencial, validação, duplicidade, conflito, pendências e separação de `status_rpa`/`status_ia`. Lotes demonstrativos preservados. | Comprovado |
 | 4. Exceções e resiliência | 47 | Histórico real HTTP 503; testes de indisponibilidade, arquivo ausente/inválido, limites, timeout e recuperação. | Comprovado no escopo registrado |
 | 5. Logs e auditoria | 48 | `auditoria.jsonl`, resumos, horários UTC, contagens, tentativas e códigos sanitizados. | Comprovado |
 | 6. Integração com o MVP | 48 | Resultado da normalização do RPA enviado à API da IA existente; dois HTTP 200 e correlação de IDs no run `44327757282`. | Integração técnica por API demonstrada; enquadramento acadêmico descrito abaixo |
 | 7. Testes e validação | 48 | `docs/evidencias/testes.json`, `testes.txt`, CI `44296622327` e nove cenários preservados. | Evidência histórica conferida; suíte não reexecutada |
-| 8. Documentação e publicação | 48 | Estrutura, README, documentos, PDF e exemplos existentes. Evidências novas e revisão aguardam commit/push. | Parcial |
+| 8. Documentação e publicação | 48 | Estrutura, README, documentos, PDF e evidências publicados. PDF final ainda depende do link de vídeo. | Publicação feita; entrega parcial |
 
 ## Interpretação explícita da integração
 
@@ -36,7 +36,7 @@ Essa é a interpretação técnica usada na entrega, sujeita à avaliação dos 
 | Descrição, integrantes, arquitetura, instruções e links | `README.md` | Preparado; link de vídeo pendente |
 | Código Python | `src/` | Existente e publicado |
 | PDD e fluxo | `docs/PDD.md`, `docs/processo.bpmn` | Preparado |
-| Imagens e evidências | `assets/`, `docs/evidencias/` | Preparado; evidência nova ainda local |
+| Imagens e evidências | `assets/`, `docs/evidencias/` | Publicado |
 | Logs sem dados sensíveis | `logs/`, auditorias dos cenários | Amostras fictícias existentes |
 | Testes e instruções | `tests/`, README e registros de CI | Existentes |
 | UiPath/Power Automate | Não utilizados | Não se aplica à implementação em Python |
@@ -72,7 +72,7 @@ O envio é feito por um integrante na tarefa de RPA do Teams, até **19/11/2026 
 - [ ] Gravar o vídeo e medir duração de até 3:00.
 - [ ] Publicar o vídeo e conferir acesso ao link.
 - [ ] Informar URL e duração em `docs/entrega.json`, inserir o link no README, regenerar e revisar o PDF.
-- [ ] Autorizar e executar commit/push da revisão, conferindo a publicação dos documentos e evidências.
+- [x] Autorizar e executar commit/push da revisão, conferindo acesso público aos documentos e evidências; registro em `docs/evidencias/publicacao-revisao.json`. Alterações futuras precisam de nova conferência de publicação.
 - [ ] Executar a conferência final: `uv run --no-sync python scripts/validar_entrega.py --online --final`.
 - [ ] Revisar a seleção de arquivos e enviar na tarefa RPA do Teams; conferir o comprovante.
 

@@ -30,4 +30,8 @@ O [run `44327757282`](https://github.com/laia020/citizentech-rpa/actions/runs/44
 
 A revisão documental preservou backup datado em `tmp/backups/documentacao-20261118-140547/`. Uma `.venv` nova foi criada com Python 3.12.10 e `uv sync --locked --group docs`, exclusivamente para geração e conferência documental; ambientes externos foram preservados. Nenhuma suíte ou nova inferência foi executada nessa revisão. PDF, painel e validação documental são gerados dos registros existentes.
 
-Próximos passos: revisar as mudanças locais, alinhar ficha com o grupo, gravar/publicar vídeo de até 3 minutos, inserir o link e revisar novamente o PDF, publicar com autorização e enviar na tarefa RPA do Teams. O estado de referência é `44327757282`, sempre conferindo se houve run posterior. Evidências em `docs/evidencias/nuvem-real/`; backup local do estado em `tmp/nuvem-real-20261118-114522/rpa-state-44327757282.zip`, fora do Git.
+Próximos passos: alinhar ficha com o grupo, gravar/publicar vídeo de até 3 minutos, inserir o link e revisar novamente o PDF, conferir a publicação das alterações finais e enviar na tarefa RPA do Teams. O estado de referência é `44327757282`, sempre conferindo se houve run posterior. Evidências em `docs/evidencias/nuvem-real/`; backup local do estado em `tmp/nuvem-real-20261118-114522/rpa-state-44327757282.zip`, fora do Git.
+
+## Publicação da revisão com evidências reais
+
+Após autorização explícita do usuário para commit e push, a revisão foi publicada na `main` a partir do commit `6b6a2061480c6ca633ed0a408e0d13dfedd75da3`. README, respostas reais preservadas e PDF foram conferidos por acesso público, sem credenciais; registro em `evidencias/publicacao-revisao.json`. Os históricos de falha e as auditorias anteriores foram mantidos. Código da aplicação e projeto de IA não foram alterados. Vídeo, ficha comum e envio ao Teams permanecem pendentes.

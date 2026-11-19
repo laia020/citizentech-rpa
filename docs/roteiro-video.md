@@ -24,7 +24,7 @@
 
 ## Conferência antes e depois da gravação
 
-- Publicar as evidências/documentos novos apenas após autorização; o run já existe no GitHub, mas as cópias locais e esta revisão ainda não estão publicadas.
+- As evidências e esta revisão foram publicadas com autorização; ver `docs/evidencias/publicacao-revisao.json`. Conferir os links públicos antes de gravar. Mudanças futuras continuam sujeitas à autorização de publicação.
 - Não apagar o banco, iniciar estado novo, mudar IDs para repetir consultas ou reexecutar sucessos para gravar. A gravação pode mostrar a execução concluída e os arquivos autênticos, identificando isso em voz e tela.
 - Se uma nova execução for necessária por outro motivo legítimo, conferir o run mais recente e restaurar seu `rpa-state`. O último conhecido aqui é `44327757282`. Não usar o ancestral `44296159102`. Artifacts expiram; seguir as regras de reconciliação do README.
 - O Windows não executa nativamente o RPA por causa de `fcntl`; não apresentar a geração local do PDF como execução do lote. O processamento real foi hospedado no GitHub.

@@ -17,7 +17,8 @@
   "integracao_evidencia_local": "docs/evidencias/nuvem-real/github-run.json",
   "estado_ultimo_run_id": 44327757282,
   "integracao_akona_backend": false,
-  "revisao_documental_publicada": false,
+  "revisao_documental_publicada": true,
+  "publicacao_revisao_evidencia": "docs/evidencias/publicacao-revisao.json",
   "envio_teams_realizado": false,
   "ficha_alinhada_com_grupo": false,
   "equipe": [
@@ -42,6 +43,6 @@
       "rm": "98694"
     }
   ],
-  "ci_url": "https://github.com/laia020/citizentech-rpa/actions/runs/44296622327",
+  "ci_url": "https://github.com/laia020/citizentech-rpa/actions/runs/44437773380",
   "workflow_repeticao_url": "https://github.com/laia020/citizentech-rpa/actions/runs/44296159102"
 }

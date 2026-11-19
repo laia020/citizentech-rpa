@@ -23,7 +23,7 @@ O status operacional fica em `status_rpa`; o status de negócio da IA em `status
 | `RPA-LIVE-20261118-001` | `analise_preliminar` | `333fecbe-114f-4603-824e-43b7fa8dd2d6` |
 | `RPA-LIVE-20261118-002` | `informacao_insuficiente` | `5e25fa23-6c84-423e-87f8-9a1fb4e849d3` |
 
-A repetição da primeira ocorrência reutilizou o mesmo resultado e `request_id`, sem nova consulta. O registro sem observação foi separado para revisão, sem API. A informação insuficiente é uma resposta de negócio válida e processada, com destino `complementar_informacoes`. O consumo bem-sucedido pelo componente de IA está demonstrado; o backend/interface do Akona continua sem consumo. As cópias novas de evidência estão locais, aguardando publicação autorizada.
+A repetição da primeira ocorrência reutilizou o mesmo resultado e `request_id`, sem nova consulta. O registro sem observação foi separado para revisão, sem API. A informação insuficiente é uma resposta de negócio válida e processada, com destino `complementar_informacoes`. O consumo bem-sucedido pelo componente de IA está demonstrado; o backend/interface do Akona continua sem consumo. As cópias novas de evidência foram publicadas com autorização; a origem e a verificação pública constam em [publicacao-revisao.json](evidencias/publicacao-revisao.json).
 
 **Histórico preservado:** a execução `0ec3479a81ff41908c7d6529429ff274` recebeu HTTP 503 nas duas tentativas de cada um dos dois IDs válidos. Não houve resposta 200 naquela execução. `/ready` retornou `pronto: true` antes do teste; prontidão não comprova disponibilidade efetiva de inferência. Não foi determinada a causa exata do 503.
 
